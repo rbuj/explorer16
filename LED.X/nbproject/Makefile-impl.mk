@@ -24,14 +24,14 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=LED_dspic33fj256gp710a.X
+PROJECTNAME=LED.X
 
 # Active Configuration
 DEFAULTCONF=dspic33fj256gp710a_pim
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=dspic33fj256gp710a_pim 
+ALLCONFS=dspic33fj256gp710a_pim pic24fj128ga010_pim 
 
 
 # build
@@ -46,12 +46,14 @@ ALLCONFS=dspic33fj256gp710a_pim
 # clobber
 .clobber-impl: .clobber-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=dspic33fj256gp710a_pim clean
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic24fj128ga010_pim clean
 
 
 
 # all
 .all-impl: .all-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=dspic33fj256gp710a_pim build
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic24fj128ga010_pim build
 
 
 
