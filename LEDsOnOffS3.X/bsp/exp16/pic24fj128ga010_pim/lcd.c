@@ -143,7 +143,6 @@ static void LCD_CarriageReturn(void) {
 
 static void LCD_ShiftCursorLeft(void) {
     uint8_t i;
-
     if (column == 0) {
         if (row == 0) {
             LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_S_INSTR);
@@ -152,7 +151,6 @@ static void LCD_ShiftCursorLeft(void) {
             LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_S_INSTR);
             row = 0;
         }
-
         //Now shift to the end of the row
         for (i = 0; i < (LCD_MAX_COLUMN - 1); i++) {
             LCD_ShiftCursorRight();
@@ -166,7 +164,6 @@ static void LCD_ShiftCursorLeft(void) {
 static void LCD_ShiftCursorRight(void) {
     LCD_SendCommand(LCD_COMMAND_MOVE_CURSOR_RIGHT, LCD_F_INSTR);
     column++;
-
     if (column == LCD_MAX_COLUMN) {
         column = 0;
         if (row == 0) {
@@ -181,7 +178,6 @@ static void LCD_ShiftCursorRight(void) {
 
 static void LCD_ShiftCursorUp(void) {
     uint8_t i;
-
     for (i = 0; i < LCD_MAX_COLUMN; i++) {
         LCD_ShiftCursorLeft();
     }
@@ -189,7 +185,6 @@ static void LCD_ShiftCursorUp(void) {
 
 static void LCD_ShiftCursorDown(void) {
     uint8_t i;
-
     for (i = 0; i < LCD_MAX_COLUMN; i++) {
         LCD_ShiftCursorRight();
     }

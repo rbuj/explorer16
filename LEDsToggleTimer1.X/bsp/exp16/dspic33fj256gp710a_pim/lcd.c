@@ -132,7 +132,6 @@ void LCD_PutChar(char inputCharacter) {
         default:
             LCD_SendData(inputCharacter);
             column++;
-
             if (column == LCD_MAX_COLUMN) {
                 column = 0;
                 if (row == 0) {
@@ -150,7 +149,6 @@ void LCD_PutChar(char inputCharacter) {
 void LCD_ClearScreen(void) {
     LCD_SendCommand(LCD_COMMAND_CLEAR_SCREEN, LCD_S_INSTR);
     LCD_SendCommand(LCD_COMMAND_RETURN_HOME, LCD_S_INSTR);
-
     row = 0;
     column = 0;
 }
@@ -188,7 +186,6 @@ static void LCD_ShiftCursorLeft(void) {
 static void LCD_ShiftCursorRight(void) {
     LCD_SendCommand(LCD_COMMAND_MOVE_CURSOR_RIGHT, LCD_F_INSTR);
     column++;
-
     if (column == LCD_MAX_COLUMN) {
         column = 0;
         if (row == 0) {
@@ -203,7 +200,6 @@ static void LCD_ShiftCursorRight(void) {
 
 static void LCD_ShiftCursorUp(void) {
     uint8_t i;
-
     for (i = 0; i < LCD_MAX_COLUMN; i++) {
         LCD_ShiftCursorLeft();
     }
@@ -211,7 +207,6 @@ static void LCD_ShiftCursorUp(void) {
 
 static void LCD_ShiftCursorDown(void) {
     uint8_t i;
-
     for (i = 0; i < LCD_MAX_COLUMN; i++) {
         LCD_ShiftCursorRight();
     }
