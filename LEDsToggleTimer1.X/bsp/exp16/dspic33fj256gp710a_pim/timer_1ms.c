@@ -26,7 +26,7 @@
 #define TIMER_MAX_1MS_CLIENTS 1
 #endif
 
-#define TMR1_PERIOD 0x8000 /* Timer1 period for 1 ms with FOSC = 20 MHz */
+#define TMR1_PERIOD 0x8000
 
 #define STOP_TIMER_IN_IDLE_MODE     0x2000
 #define TIMER_SOURCE_INTERNAL       0x0000
