@@ -19,29 +19,8 @@
 
 #include <stdbool.h>
 
-typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
-
-#define LED_COUNT 8
-
 void LEDs_Enable();
 void LEDs_On();
 void LEDs_Off();
-void LEDs_Toggle();
-
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
-void LED_Toggle(LED led);
-bool LED_Get(LED led);
 
 #endif // LEDS_H
