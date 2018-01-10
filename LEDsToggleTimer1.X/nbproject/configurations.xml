@@ -456,32 +456,132 @@
         </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/adc.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/adc.h" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/lcd.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/lcd.h" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/leds.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/leds.h" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/print_lcd.h"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/timer_1ms.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/timer_1ms.h"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="system_config/exp16/pic24fj128ga010_pim/system.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
     </conf>
     <conf name="pic24fj128ga010_pim" type="2">
@@ -806,6 +906,16 @@
       <item path="bsp/exp16/dspic33fj256gp710a_pim/adc.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/adc.h"
             ex="true"
@@ -824,6 +934,16 @@
       <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.h"
             ex="true"
@@ -842,6 +962,16 @@
       <item path="bsp/exp16/dspic33fj256gp710a_pim/leds.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/leds.h"
             ex="true"
@@ -860,10 +990,30 @@
       <item path="bsp/exp16/dspic33fj256gp710a_pim/print_lcd.h"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/timer_1ms.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/timer_1ms.h"
             ex="true"
@@ -882,6 +1032,16 @@
       <item path="system_config/exp16/dspic33fj256gp710a_pim/system.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
     </conf>
   </confs>

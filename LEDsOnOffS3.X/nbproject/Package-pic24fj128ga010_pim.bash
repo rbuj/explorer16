@@ -10,9 +10,9 @@ CND_CONF=pic24fj128ga010_pim
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/LED_dspic33fj256gp710a.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=LED_dspic33fj256gp710a.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=leddspic33fj256gp710a.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/LEDsOnOffS3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=LEDsOnOffS3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=ledsonoffs3.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/leddspic33fj256gp710a.x/bin
+makeDirectory ${TMPDIR}/ledsonoffs3.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/leddspic33fj256gp710a.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/ledsonoffs3.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/leddspic33fj256gp710a.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/ledsonoffs3.x.tar *
 checkReturnCode
 
 # Cleanup
