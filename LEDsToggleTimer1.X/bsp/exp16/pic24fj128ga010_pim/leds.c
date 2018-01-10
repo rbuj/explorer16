@@ -14,37 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
+#include <xc.h>
+#include <leds.h>
 #include <stdbool.h>
 
-#include "app.h"
+#define LEDs_LAT        LATA
+#define LEDs_TRIS       TRISA
 
-#define ONE_VOLT 310
-#define ONE_TENTH_VOLT 31
-#define ONE_HUNDREDTH_VOLT 3
+void LEDs_Enable() {
+    LEDs_TRIS &= 0xFF00; // PORTA<7:0> as outputs
+}
 
-void SYS_Initialize(void);
+void LEDs_Off() {
+    LEDs_LAT &= 0xFF00;
+}
 
-APP_DATA appData = {
-    .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "Toggle LEDs 1Hz",
-};
-
-int main(void) {
-    /* Call the System Initialize routine*/
-    SYS_Initialize();
-
-    /* Display welcome message */
-    LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
-    LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
-
-    /*Initialize Timer*/
-    TIMER_Configuration();
-
-    /* Infinite Loop */
-    while (1) {
-        Nop();
-    };
+void LEDs_Toggle() {
+    LEDs_LAT ^= 0x00FF;
 }

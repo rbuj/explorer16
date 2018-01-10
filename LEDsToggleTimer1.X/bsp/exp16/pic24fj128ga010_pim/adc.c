@@ -14,37 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
+#include <xc.h>
+#include <adc.h>
+#include <stdint.h>
 #include <stdbool.h>
 
-#include "app.h"
-
-#define ONE_VOLT 310
-#define ONE_TENTH_VOLT 31
-#define ONE_HUNDREDTH_VOLT 3
-
-void SYS_Initialize(void);
-
-APP_DATA appData = {
-    .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "Toggle LEDs 1Hz",
-};
-
-int main(void) {
-    /* Call the System Initialize routine*/
-    SYS_Initialize();
-
-    /* Display welcome message */
-    LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
-    LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
-
-    /*Initialize Timer*/
-    TIMER_Configuration();
-
-    /* Infinite Loop */
-    while (1) {
-        Nop();
-    };
+bool ADC_ChannelEnable(ADC_CHANNEL channel) {
+    switch (channel) {
+        case ADC_CHANNEL_5:
+            AD1PCFGbits.PCFG5 = 0; // ensure AN5/RB5 is analog (analog pot)
+            return true;
+        case ADC_CHANNEL_4:
+            AD1PCFGbits.PCFG4; // ensure AN4/RB4 is analog (temp sensor)
+            return true;
+        default:
+            return false;
+    }
 }

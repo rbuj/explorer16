@@ -22,6 +22,6 @@
 #ifndef TIMER_1MS
 #define TIMER_1MS
 
-bool TIMER_SetConfiguration();
+bool TIMER_Configuration();
 
 #endif // TIMER_1MS

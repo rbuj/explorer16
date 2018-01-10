@@ -14,37 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
+#ifndef ADC_H
+#define ADC_H
+
+#include <stdint.h>
 #include <stdbool.h>
 
-#include "app.h"
+/*** ADC Channel Definitions *****************************************/
+#define ADC_CHANNEL_POTENTIOMETER ADC_CHANNEL_5
+#define ADC_CHANNEL_TEMPERATURE_SENSOR ADC_CHANNEL_4
 
-#define ONE_VOLT 310
-#define ONE_TENTH_VOLT 31
-#define ONE_HUNDREDTH_VOLT 3
+typedef enum {
+    ADC_CHANNEL_5 = 5,
+    ADC_CHANNEL_4 = 4
+} ADC_CHANNEL;
 
-void SYS_Initialize(void);
+bool ADC_ChannelEnable(ADC_CHANNEL channel);
 
-APP_DATA appData = {
-    .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "Toggle LEDs 1Hz",
-};
-
-int main(void) {
-    /* Call the System Initialize routine*/
-    SYS_Initialize();
-
-    /* Display welcome message */
-    LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
-    LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
-
-    /*Initialize Timer*/
-    TIMER_Configuration();
-
-    /* Infinite Loop */
-    while (1) {
-        Nop();
-    };
-}
+#endif // ADC_H

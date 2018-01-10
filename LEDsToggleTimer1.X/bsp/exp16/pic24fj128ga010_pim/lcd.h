@@ -14,37 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
+#include <stdint.h>
 #include <stdbool.h>
 
-#include "app.h"
+#ifndef LCD_H
+#define LCD_H
 
-#define ONE_VOLT 310
-#define ONE_TENTH_VOLT 31
-#define ONE_HUNDREDTH_VOLT 3
+bool LCD_Initialize(void);
+void LCD_PutString(char* inputString, uint16_t length);
+void LCD_PutChar(char);
+void LCD_ClearScreen(void);
+void LCD_CursorEnable(bool enable);
 
-void SYS_Initialize(void);
-
-APP_DATA appData = {
-    .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "Toggle LEDs 1Hz",
-};
-
-int main(void) {
-    /* Call the System Initialize routine*/
-    SYS_Initialize();
-
-    /* Display welcome message */
-    LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
-    LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
-
-    /*Initialize Timer*/
-    TIMER_Configuration();
-
-    /* Infinite Loop */
-    while (1) {
-        Nop();
-    };
-}
+#endif // LCD_H

@@ -14,37 +14,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
+#ifndef PRINT_LCD_H
+#define PRINT_LCD_H
+
 #include <stdbool.h>
+#include <lcd.h>
 
-#include "app.h"
+typedef enum
+{
+    PRINT_CONFIGURATION_LCD
+} PRINT_CONFIGURATION;
 
-#define ONE_VOLT 310
-#define ONE_TENTH_VOLT 31
-#define ONE_HUNDREDTH_VOLT 3
+bool PRINT_SetConfiguration(PRINT_CONFIGURATION configuration);
+#define PRINT_SetConfiguration(configuration) LCD_Initialize()
 
-void SYS_Initialize(void);
+void PRINT_String(char* string, uint16_t length);
+#define PRINT_String(string, length) LCD_PutString(string, length)
 
-APP_DATA appData = {
-    .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "Toggle LEDs 1Hz",
-};
+void PRINT_Char(char charToPrint);
+#define PRINT_Char(charToPrint) LCD_PutChar(charToPrint)
 
-int main(void) {
-    /* Call the System Initialize routine*/
-    SYS_Initialize();
+void PRINT_ClearScreen(void);
+#define PRINT_ClearScreen() LCD_ClearScreen()
 
-    /* Display welcome message */
-    LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
-    LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
-
-    /*Initialize Timer*/
-    TIMER_Configuration();
-
-    /* Infinite Loop */
-    while (1) {
-        Nop();
-    };
-}
+#endif // PRINT_LCD_H
