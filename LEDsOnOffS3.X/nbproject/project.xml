@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>LED</name>
+            <name>LEDsOnOffS3</name>
             <creation-uuid>f2026c1a-4a37-45c5-abf6-d8251b801cc8</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
