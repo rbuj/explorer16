@@ -44,21 +44,19 @@ void __attribute__((__interrupt__, auto_psv)) _AltStackError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void);
 
 void SYS_Initialize(void) {
-    /* Enable LEDs*/
-    LED_Enable(LED_D9);
-    LED_Enable(LED_D10);
+    /* Enable LEDs */
+    LEDs_Enable();
 
-    /* Turn On LEDs*/
-    LED_On(LED_D9);
-    LED_On(LED_D10);
+    /* Turn Off LEDs */
+    LEDs_Off();
 
-    /* Enable Switch S3*/
+    /* Enable Switch S3 */
     BUTTON_Enable(BUTTON_S3);
 
     /* Enable ADC to the Potentiometer channel */
     ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
-    /* Initialize LCD*/
+    /* Initialize LCD */
     PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
 }
 

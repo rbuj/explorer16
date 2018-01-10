@@ -64,11 +64,11 @@ void __attribute__((__interrupt__, auto_psv)) _AltStackError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void);
 
 void SYS_Initialize(void) {
-    /* Enable LEDs */
-    LEDs_Enable();
+    /* Enable D10 */
+    LED_Enable(LED_D10);
 
     /* Turn Off LEDs */
-    LEDs_Off();
+    LED_Off(LED_D10);
 
     /* Enable Switch S3 */
     BUTTON_Enable(BUTTON_S3);

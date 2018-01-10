@@ -65,10 +65,10 @@ void __attribute__((__interrupt__, auto_psv)) _AltStackError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void);
 
 void SYS_Initialize(void) {
-    /* Enable LEDs*/
+    /* Enable LEDs */
     LEDs_Enable();
 
-    /* Turn Off LEDs*/
+    /* Turn Off LEDs */
     LEDs_Off();
 
     /* Enable ADC to the Potentiometer channel */
