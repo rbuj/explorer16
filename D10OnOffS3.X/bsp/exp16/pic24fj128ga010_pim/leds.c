@@ -16,7 +16,6 @@
  */
 #include <xc.h>
 #include <leds.h>
-#include <stdbool.h>
 
 #define LED_D3_LAT      LATAbits.LATA0
 #define LED_D4_LAT      LATAbits.LATA1

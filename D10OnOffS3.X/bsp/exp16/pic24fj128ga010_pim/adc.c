@@ -15,9 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <xc.h>
-#include <adc.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <adc.h>
 
 bool ADC_ChannelEnable(ADC_CHANNEL channel) {
     switch (channel) {

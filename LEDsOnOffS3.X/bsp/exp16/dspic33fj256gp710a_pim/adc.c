@@ -16,7 +16,6 @@
  */
 #include <xc.h>
 #include <adc.h>
-#include <stdint.h>
 #include <stdbool.h>
 
 bool ADC_ChannelEnable(ADC_CHANNEL channel) {

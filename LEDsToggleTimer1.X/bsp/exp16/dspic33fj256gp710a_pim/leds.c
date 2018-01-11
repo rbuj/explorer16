@@ -16,7 +16,6 @@
  */
 #include <xc.h>
 #include <leds.h>
-#include <stdbool.h>
 
 #define LEDs_LAT        LATA
 #define LEDs_TRIS       TRISA

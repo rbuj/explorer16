@@ -17,8 +17,6 @@
 #ifndef LEDS_H
 #define LEDS_H
 
-#include <stdbool.h>
-
 typedef enum {
     LED_NONE,
     LED_D3,

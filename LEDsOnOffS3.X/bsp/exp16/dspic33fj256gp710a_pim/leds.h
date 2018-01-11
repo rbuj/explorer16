@@ -17,8 +17,6 @@
 #ifndef LEDS_H
 #define LEDS_H
 
-#include <stdbool.h>
-
 void LEDs_Enable();
 void LEDs_On();
 void LEDs_Off();
