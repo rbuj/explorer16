@@ -19,7 +19,7 @@
 /******************************************************************************/
 #include <xc.h>
 #include <stdlib.h> /* Includes EXIT_SUCCESS definition */
-#include <stddef.h> /* includes the type yielded by sizeof */
+#include <stddef.h> /* Includes the type yielded by sizeof */
 #include <stdbool.h> /* Includes true/false definition */
 
 #include "app.h"
@@ -45,7 +45,7 @@ int main(void) {
     LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
     LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
 
-    /*Initialize Timer*/
+    /* Initialize Timer */
     TIMER_Configuration();
 
     /* Infinite Loop */
