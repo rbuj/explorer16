@@ -19,6 +19,8 @@ Samples for Explorer 16 Development Board of Microchip
 ###### Hardware
 - Explorer 16 Development Board with ICD3 Bundle, [Part Number: DV164037](http://www.microchip.com/developmenttools/ProductDetails.aspx?PartNO=DV164037)
 
+<img src="http://www.microchip.com/_ImagedCopy/DV164037.jpg" width="640">
+
 or
 
 - Development Board:
