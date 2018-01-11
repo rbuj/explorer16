@@ -68,8 +68,14 @@ void SYS_Initialize(void) {
     /* Enable D10 */
     LED_Enable(LED_D10);
 
+    /* Enable D9 */
+    LED_Enable(LED_D9);
+
     /* Turn Off D10 */
     LED_Off(LED_D10);
+
+    /* Turn On D9 */
+    LED_On(LED_D9);
 
     /* Enable ADC to the Potentiometer channel */
     ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);

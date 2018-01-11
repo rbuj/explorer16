@@ -46,5 +46,6 @@ int main(void) {
     /* Infinite Loop */
     while (1) {
         Sleep();
+        LED_Toggle(LED_D9); /* Toggle LED at 1 Hz rate */
     };
 }
