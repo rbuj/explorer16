@@ -47,4 +47,6 @@ int main(void) {
     while (1) {
         Sleep();
     };
+
+    return EXIT_SUCCESS;
 }

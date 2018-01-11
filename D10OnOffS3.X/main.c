@@ -46,4 +46,6 @@ int main(void) {
         while (BUTTON_IsPressed(BUTTON_S3));
         LED_Off(LED_D10);
     };
+
+    return EXIT_SUCCESS;
 }
