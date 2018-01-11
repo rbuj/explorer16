@@ -4,4 +4,5 @@
 **/dist/dspic33fj256gp710a_pim/
 **/dist/pic24fj128ga010_pim/
 **/nbproject/private/
-**(nbproject/Makefile-*.*
+**/nbproject/Makefile-*.*
+**/nbproject/*.bash
