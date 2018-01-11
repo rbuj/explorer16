@@ -8,7 +8,11 @@ Samples for Explorer 16 Development Board of Microchip
 - [MPLAB XC16](http://www.microchip.com/mplab/compilers) is a C compiler for 16-bit PIC devices.
 
 ###### Hardware
-- [Explorer 16 Development Board with 100-pin PIM](http://www.microchip.com/explorer16) or [Explorer 16/32 Development Kit](http://www.microchip.com/Explorer1632)
+- Explorer 16 Development Board with ICD3 Bundle, [Part Number: DV164037](http://www.microchip.com/developmenttools/ProductDetails.aspx?PartNO=DV164037)
+or
+- Development Board:
+    - Explorer 16 Development Board with 100-pin PIM, Part Number: [DM240001](http://www.microchip.com/Developmenttools/ProductDetails.aspx?PartNO=DM240001) or
+    - Explorer 16/32 Development Board, Part Number: [DM240001-2](http://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=DM240001-2)
 - Supported Processor Plug-In Modules (PIMs):
     - dsPIC33FJ256GP710A Plug-In-Module [Part Number: MA330011](http://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=MA330011)
     - PIC24FJ128GA010 Plug-In-Module [Part Number: MA240011](http://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=MA240011)
