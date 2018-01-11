@@ -45,6 +45,6 @@ int main(void) {
 
     /* Infinite Loop */
     while (1) {
-        Nop();
+        Sleep();
     };
 }
