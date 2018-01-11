@@ -1,6 +1,15 @@
 # explorer16
 Samples for Explorer 16 Development Board of Microchip
 
+| Project Name     | Short description | [1] | [2] |
+| ---------------- | ----------------- | :-: | :-: |
+| D10OnOffS3       | Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
+| D10ToggleTimer1  | Toggle switch on/off the D10 LED using Timer1 Interrupt at 1Hz. | x | x |
+| LEDsOnOffS3      | Switch on D3:D10 LEDs by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
+| LEDsToggleTimer1 | Toggle switch on/off the D3:D10 LEDs using Timer1 Interrupt at 1Hz. | x | x |
+
+[1] PIC24FJ128GA010,[2] dsPIC33FJ256GP710A
+
 ## Requirements
 
 ###### Software
