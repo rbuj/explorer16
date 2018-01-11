@@ -1,5 +1,4 @@
 .DS_Store
-*.X/Makefile
 **/build/dspic33fj256gp710a_pim/
 **/build/pic24fj128ga010_pim/
 **/dist/dspic33fj256gp710a_pim/
