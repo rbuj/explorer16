@@ -16,7 +16,7 @@
  */
 #include <xc.h>
 #include <lcd.h>
-#include <stdint.h>
+#include <stdint.h> /* Includes uint8_t definition */
 
 /* Private Definitions ***********************************************/
 // Define a fast instruction execution time in terms of loop time

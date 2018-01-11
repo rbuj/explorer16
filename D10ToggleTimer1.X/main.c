@@ -14,24 +14,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdbool.h>
+/******************************************************************************/
+/* Files to Include                                                           */
+/******************************************************************************/
+#include <xc.h>
+#include <stdlib.h> /* Includes EXIT_SUCCESS definition */
+#include <stddef.h> /* includes the type yielded by sizeof */
+#include <stdbool.h> /* Includes true/false definition */
 
 #include "app.h"
 
-#define ONE_VOLT 310
-#define ONE_TENTH_VOLT 31
-#define ONE_HUNDREDTH_VOLT 3
-
 void SYS_Initialize(void);
 
+/******************************************************************************/
+/* Global Variable Declaration                                                */
+/******************************************************************************/
 APP_DATA appData = {
     .messageLine1 = "Explorer 16 Demo",
     .messageLine2 = "Toggle D10 1Hz",
 };
 
+/******************************************************************************/
+/* Main Program                                                               */
+/******************************************************************************/
 int main(void) {
     /* Call the System Initialize routine*/
     SYS_Initialize();
@@ -44,7 +49,7 @@ int main(void) {
     TIMER_Configuration();
 
     /* Infinite Loop */
-    while (1) {
+    while (true) {
         Sleep();
         LED_Toggle(LED_D9); /* Toggle LED at 1 Hz rate */
     };

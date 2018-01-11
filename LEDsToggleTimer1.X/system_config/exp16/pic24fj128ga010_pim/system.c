@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <xc.h>
+#include <stdbool.h> /* Includes true/false definition */
 #include "app.h"
 
 // CONFIG2
@@ -83,40 +84,40 @@ void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
 
 void __attribute__((__interrupt__, auto_psv)) _OscillatorFail(void) {
     INTCON1bits.OSCFAIL = 0; //Clear the trap flag
-    while (1);
+    while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AddressError(void) {
     INTCON1bits.ADDRERR = 0; //Clear the trap flag
-    while (1);
+    while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _StackError(void) {
     INTCON1bits.STKERR = 0; //Clear the trap flag
-    while (1);
+    while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _MathError(void) {
     INTCON1bits.MATHERR = 0; //Clear the trap flag
-    while (1);
+    while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltOscillatorFail(void) {
     INTCON1bits.OSCFAIL = 0;
-    while (1);
+    while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltAddressError(void) {
     INTCON1bits.ADDRERR = 0;
-    while (1);
+    while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltStackError(void) {
     INTCON1bits.STKERR = 0;
-    while (1);
+    while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void) {
     INTCON1bits.MATHERR = 0;
-    while (1);
+    while (true);
 }
