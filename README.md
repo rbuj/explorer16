@@ -19,4 +19,4 @@ or
     - dsPIC33FJ256GP710A Plug-In-Module [Part Number: MA330011](http://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=MA330011)
     - PIC24FJ128GA010 Plug-In-Module [Part Number: MA240011](http://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=MA240011)
 - 9V power supply, Part Number: AC162039, AC002014
-- Hardware debugger/programmer: MPLAB REAL ICE, MPLAB ICD, PICkit
+- Hardware debugger/programmer: MPLAB REAL ICE, MPLAB ICD or PICkit
