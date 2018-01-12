@@ -111,11 +111,8 @@ void SYS_Initialize(void) {
 }
 
 void SOSC_Configuration(void) {
-    // Unlock Sequence to write low byte
-    __builtin_write_OSCCONL(0x46);
-    __builtin_write_OSCCONL(0x57);
-    // Start clock switching
-    __builtin_write_OSCCONL(0x02); // Continuous Secondary Oscillator Operation
+    /* Continuous Secondary Oscillator Operation */
+    __builtin_write_OSCCONL(0x02);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
