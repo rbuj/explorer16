@@ -38,21 +38,6 @@ Switch on D10 LED by pressing and holding S3 switch button, LED is switched off 
 | S5: Active-low switch | RA7                | RA7             | D10           |
 | S6: Active-low switch | RD7                | RD7             |               |
 
-###### 16x2 LCD Display
-| LCD | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
-| --- | :----------------: | :-------------: | :-----------: |
-| E   | RD4                | PMWR            |               |
-| R/W | RD5                | PMRD            |               |
-| RS  | RB15               | PMAO            |               |
-| DB0 | RE0                | PMD0            |               |
-| DB1 | RE1                | PMD1            |               |
-| DB2 | RE2                | PMD2            |               |
-| DB3 | RE3                | PMD3            |               |
-| DB4 | RE4                | PMD4            |               |
-| DB5 | RE5                | PMD5            |               |
-| DB6 | RE6                | PMD6            |               |
-| DB7 | RE7                | PMD7            |               |
-
 ###### ADC
 | Analog Input       | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
 | ------------------ | :----------------: | :-------------: | :-----------: |

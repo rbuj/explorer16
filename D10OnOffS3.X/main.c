@@ -27,23 +27,11 @@
 void SYS_Initialize(void);
 
 /******************************************************************************/
-/* Global Variable Declaration                                                */
-/******************************************************************************/
-APP_DATA appData = {
-    .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "S3: LED D10 ON"
-};
-
-/******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
 int main(void) {
     /* Call the System Initialize routine */
     SYS_Initialize();
-
-    /* Display welcome message */
-    LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
-    LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
 
     /* Infinite Loop */
     while (true) {

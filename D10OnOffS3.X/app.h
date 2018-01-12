@@ -15,10 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "leds.h"
-#include "lcd.h"
 #include "adc.h"
 #include "buttons.h"
-#include "print_lcd.h"
 
 typedef struct {
     /*arrays used for Explorer 16 LCD display*/
