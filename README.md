@@ -16,9 +16,9 @@ Samples for Explorer 16 Development Board of Microchip
 
 | Module Name      | Project Name | [1] | [2] |
 | ---------------- | ------------ | :-: | :-: |
-| Read from input pin | [D10OnOffS3](D10OnOffS3.X/) | x | x |
-| Write to output pin | [D10OnOffS3](D10OnOffS3.X/) | x | x |
-| Parallel write to output pins | [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
+| Read from input pin / S3 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
+| Write to output pin / D10 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
+| Parallel write to output pins / D3:10| [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
 | Change Notification Interrupt / S3 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | x | x |
 | Write to LCD using Parallel Master Port (PMP) | [D10OnOffS3](D10OnOffS3.X/), ... | x |  |
 | Write to LCD (w/ PMP) | [D10OnOffS3](D10OnOffS3.X/), ... |  | x |
