@@ -61,16 +61,35 @@
 /******************************************************************************/
 /* Trap Function Prototypes                                                   */
 /******************************************************************************/
-/* Interrupt Vector Table: Use if ALTIVT=0 (INTCON2<15>) */
+// <editor-fold defaultstate="collapsed" desc="Interrupt Vector Table: Use if ALTIVT=0 (INTCON2<15>)">
 void __attribute__((__interrupt__, auto_psv)) _OscillatorFail(void);
 void __attribute__((__interrupt__, auto_psv)) _AddressError(void);
 void __attribute__((__interrupt__, auto_psv)) _StackError(void);
 void __attribute__((__interrupt__, auto_psv)) _MathError(void);
-/* Alternate Interrupt Vector Table: Use if ALTIVT=1 (INTCON2<15>) */
+#if defined(__HAS_DMA__)
+void __attribute__((interrupt, no_auto_psv)) _DMACError(void);
+#endif
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Alternate Interrupt Vector Table: Use if ALTIVT=1 (INTCON2<15>)">
+#if defined(__dsPIC33F__)
 void __attribute__((__interrupt__, auto_psv)) _AltOscillatorFail(void);
 void __attribute__((__interrupt__, auto_psv)) _AltAddressError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltStackError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void);
+#if defined(__HAS_DMA__)
+void __attribute__((interrupt, no_auto_psv)) _AltDMACError(void);
+#endif
+#endif
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Additional traps in the 33E family. No Alternate Vectors in the 33E family. ">
+#if defined(__dsPIC33E__)
+void __attribute__((interrupt, no_auto_psv)) _HardTrapError(void);
+void __attribute__((interrupt, no_auto_psv)) _SoftTrapError(void);
+#endif
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Default interrupt handler">
+void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void);
+// </editor-fold>
 
 void SYS_Initialize(void) {
     /* Enable D10 */
@@ -89,54 +108,92 @@ void SYS_Initialize(void) {
     PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
 }
 
+/******************************************************************************/
+/* Trap Handling                                                              */
+/******************************************************************************/
+// <editor-fold defaultstate="collapsed" desc="Primary (non-alternate) address error trap function declarations">
+
 void __attribute__((__interrupt__, auto_psv)) _OscillatorFail(void) {
-    INTCON1bits.OSCFAIL = 0; //Clear the trap flag
+    INTCON1bits.OSCFAIL = 0; // Clear the trap flag
     while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AddressError(void) {
-    INTCON1bits.ADDRERR = 0; //Clear the trap flag
+    INTCON1bits.ADDRERR = 0; // Clear the trap flag
     while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _StackError(void) {
-    INTCON1bits.STKERR = 0; //Clear the trap flag
+    INTCON1bits.STKERR = 0; // Clear the trap flag
     while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _MathError(void) {
-    INTCON1bits.MATHERR = 0; //Clear the trap flag
+    INTCON1bits.MATHERR = 0; // Clear the trap flag
     while (true);
 }
 
-void __attribute__((__interrupt__, auto_psv)) _DMACError(void) {
-    DMACS0 = 0;
-    INTCON1bits.DMACERR = 0;
+#if defined(__HAS_DMA__)
+
+void __attribute__((interrupt, no_auto_psv)) _DMACError(void) {
+    INTCON1bits.DMACERR = 0; // Clear the trap flag
     while (true);
 }
+
+#endif
+
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Alternate address error trap function declarations">
+#if defined(__dsPIC33F__)
 
 void __attribute__((__interrupt__, auto_psv)) _AltOscillatorFail(void) {
-    INTCON1bits.OSCFAIL = 0;
+    INTCON1bits.OSCFAIL = 0; // Clear the trap flag
     while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltAddressError(void) {
-    INTCON1bits.ADDRERR = 0;
+    INTCON1bits.ADDRERR = 0; // Clear the trap flag
     while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltStackError(void) {
-    INTCON1bits.STKERR = 0;
+    INTCON1bits.STKERR = 0; // Clear the trap flag
     while (true);
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void) {
-    INTCON1bits.MATHERR = 0;
+    INTCON1bits.MATHERR = 0; // Clear the trap flag
     while (true);
 }
 
-void __attribute__((__interrupt__, auto_psv)) _AltDMACError(void) {
-    DMACS0 = 0;
-    INTCON1bits.DMACERR = 0;
+#if defined(__HAS_DMA__)
+
+void __attribute__((interrupt, no_auto_psv)) _AltDMACError(void) {
+    INTCON1bits.DMACERR = 0; // Clear the trap flag
     while (true);
 }
+
+#endif
+
+#endif
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Specific traps for dsPIC33E family">
+#if defined(__dsPIC33E__)
+
+void __attribute__((interrupt, no_auto_psv)) _HardTrapError(void) {
+    while (true);
+}
+
+void __attribute__((interrupt, no_auto_psv)) _SoftTrapError(void) {
+    while (true);
+}
+
+#endif
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Default Interrupt Handler">
+
+void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void) {
+    while (true);
+}
+
+// </editor-fold>
