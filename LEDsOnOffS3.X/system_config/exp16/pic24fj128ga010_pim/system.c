@@ -83,6 +83,20 @@ void SYS_Initialize(void) {
 
     /* Initialize LCD */
     PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
+
+    /****************************************************************************
+     * Interrupt On Change for group CNEN1
+     ***************************************************************************/
+    CNEN1bits.CN15IE = 1; // Enable RD6 for CN interrupt
+    IEC1bits.CNIE = 1; // Enable CN interrupts
+    IFS1bits.CNIF = 0; // Reset CN interrupt
+}
+
+void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {
+    if (IFS1bits.CNIF == 1) {
+        IFS1bits.CNIF = 0; // Clear the flag
+        LEDs_Toggle(); // Toggle LEDs
+    }
 }
 
 /******************************************************************************/

@@ -34,5 +34,6 @@ typedef enum {
 void LED_Enable(LED led);
 void LED_On(LED led);
 void LED_Off(LED led);
+void LED_Toggle(LED led);
 
 #endif // LEDS_H

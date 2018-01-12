@@ -20,5 +20,6 @@
 void LEDs_Enable();
 void LEDs_On();
 void LEDs_Off();
+void LEDs_Toggle();
 
 #endif // LEDS_H

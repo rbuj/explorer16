@@ -32,3 +32,7 @@ void LEDs_On() {
 void LEDs_Off() {
     LEDs_LAT &= 0xFF00;
 }
+
+void LEDs_Toggle() {
+    LEDs_LAT ^= 0x00FF;
+}

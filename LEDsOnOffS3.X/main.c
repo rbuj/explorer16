@@ -47,10 +47,7 @@ int main(void) {
 
     /* Infinite Loop */
     while (true) {
-        while (!BUTTON_IsPressed(BUTTON_S3));
-        LEDs_On();
-        while (BUTTON_IsPressed(BUTTON_S3));
-        LEDs_Off();
+        Nop();
     };
 
     return EXIT_SUCCESS;
