@@ -18,7 +18,7 @@ Samples for Explorer 16 Development Board of Microchip
 | Module Name      | Project Name | [1] | [2] |
 | ---------------- | ------------ | :-: | :-: |
 | Write to LCD using Parallel Master Port (PMP) | [LCDHelloWorld](LCDHelloWorld.X/) | x |  |
-| Write to LCD (w/ PMP) | [LCDHelloWorld.X](LCDHelloWorld.X/) |  | x |
+| Write to LCD (w/ PMP) | [LCDHelloWorld](LCDHelloWorld.X/) |  | x |
 | Read from input pin / S3 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
 | Write to output pin / D10 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
 | Parallel write to output pins / D3:10| [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
