@@ -1,15 +1,30 @@
 # explorer16
 Samples for Explorer 16 Development Board of Microchip
 
+###### Project List
 | Project Name     | Short description | [1] | [2] |
 | ---------------- | ----------------- | :-: | :-: |
 | [D10OnOffS3](D10OnOffS3.X/) | Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Toggle switch on/off the D10 LED using Timer1 Interrupt at 1Hz. | x | x |
-| [LEDsOnOffS3](LEDsOnOffS3.X/)| Switch on D3:D10 LEDs by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
+| [LEDsOnOffS3](LEDsOnOffS3.X/) | Switch on D3:D10 LEDs by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Toggle switch on/off the D3:D10 LEDs using Timer1 Interrupt at 1Hz. | x | x |
 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | Toggle switch on/off the D9/D10 LEDs using the Change Notification Interrupt on S3 switch button. | x | x |
 
-[1] PIC24FJ128GA010,[2] dsPIC33FJ256GP710A
+[1] PIC24FJ128GA010, [2] dsPIC33FJ256GP710A
+
+###### Module List
+
+| Module Name      | Project Name | [1] | [2] |
+| ---------------- | ------------ | :-: | :-: |
+| Read from input pin | [D10OnOffS3](D10OnOffS3.X/) | x | x |
+| Write to output pin | [D10OnOffS3](D10OnOffS3.X/) | x | x |
+| Parallel write to output pins | [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
+| Change Notification Interrupt / S3 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | x | x |
+| Write to LCD using Parallel Master Port (PMP) | [D10OnOffS3](D10OnOffS3.X/), ... | x |  |
+| Write to LCD (w/ PMP) | [D10OnOffS3](D10OnOffS3.X/), ... |  | x |
+| Low-Power Secondary Oscillator (SOSC) / Timer 1 | [D10ToggleTimer1](D10ToggleTimer1.X/), [LEDsToggleTimer1](LEDsToggleTimer1.X/) | x | x |
+
+[1] PIC24FJ128GA010, [2] dsPIC33FJ256GP710A
 
 ## Requirements
 
