@@ -89,22 +89,16 @@ void SYS_Initialize(void) {
     /* Initialize LCD */
     PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
 
-    /* Configure Secondary Oscillator for Timer 1 to work as RTC counter */
+    /* Low-Power Secondary Oscillator (SOSC) */
     SOSC_Configuration();
 }
 
 void SOSC_Configuration(void) {
-    char a, b, c, *p;
-
-    a = 2;
-    b = 0x46;
-    c = 0x57;
-    p = (char *) &OSCCON;
-
-    asm volatile ("mov.b %1,[%0] \n"
-            "mov.b %2,[%0] \n"
-            "mov.b %3,[%0] \n" : /* no outputs */ : "r"(p), "r"(b), "r"(c),
-            "r"(a));
+    // Unlock Sequence to write low byte
+    __builtin_write_OSCCONL(0x46);
+    __builtin_write_OSCCONL(0x57);
+    // Start clock switching
+    __builtin_write_OSCCONL(0x02); // Continuous Secondary Oscillator Operation
 }
 
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
