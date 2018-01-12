@@ -14,25 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
+#ifndef PRINT_LCD_H
+#define PRINT_LCD_H
+
+#include <stdbool.h>
+#include <lcd.h>
 
 typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
+    PRINT_CONFIGURATION_LCD
+} PRINT_CONFIGURATION;
 
-#define LED_COUNT 8
+bool PRINT_SetConfiguration(PRINT_CONFIGURATION configuration);
+#define PRINT_SetConfiguration(configuration) LCD_Initialize()
 
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
+void PRINT_String(char* string, uint16_t length);
+#define PRINT_String(string, length) LCD_PutString(string, length)
 
-#endif // LEDS_H
+void PRINT_Char(char charToPrint);
+#define PRINT_Char(charToPrint) LCD_PutChar(charToPrint)
+
+void PRINT_ClearScreen(void);
+#define PRINT_ClearScreen() LCD_ClearScreen()
+
+#endif // PRINT_LCD_H

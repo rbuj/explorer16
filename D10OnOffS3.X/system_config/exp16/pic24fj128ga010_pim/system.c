@@ -69,15 +69,11 @@ void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void);
 // </editor-fold>
 
 void SYS_Initialize(void) {
-    /* Enable LEDs: D9 & D10 */
+    /* Enable D10 */
     LED_Enable(LED_D10);
-    LED_Enable(LED_D9);
 
     /* Turn Off LED D10 */
     LED_Off(LED_D10);
-
-    /* Turn On LED D9 */
-    LED_On(LED_D9);
 
     /* Enable Switch S3 */
     BUTTON_Enable(BUTTON_S3);
@@ -87,20 +83,6 @@ void SYS_Initialize(void) {
 
     /* Initialize LCD */
     PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
-
-    /****************************************************************************
-     * Interrupt On Change for group CNEN1
-     ***************************************************************************/
-    CNEN1bits.CN15IE = 1; // Enable RD6 for CN interrupt
-    IEC1bits.CNIE = 1; // Enable CN interrupts
-    IFS1bits.CNIF = 0; // Reset CN interrupt
-}
-
-void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {
-    if (IFS1bits.CNIF == 1) {
-        IFS1bits.CNIF = 0; // Clear the flag
-        LED_Toggle(LED_D10); // Toggle D10
-    }
 }
 
 /******************************************************************************/

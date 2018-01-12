@@ -14,25 +14,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
+#include <xc.h>
+#include <stdbool.h>
+#include <adc.h>
 
-typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
-
-#define LED_COUNT 8
-
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
-
-#endif // LEDS_H
+bool ADC_ChannelEnable(ADC_CHANNEL channel) {
+    switch (channel) {
+        case ADC_CHANNEL_5:
+            AD1PCFGbits.PCFG5 = 0; // ensure AN5/RB5 is analog (analog pot)
+            return true;
+        case ADC_CHANNEL_4:
+            AD1PCFGbits.PCFG4; // ensure AN4/RB4 is analog (temp sensor)
+            return true;
+        default:
+            return false;
+    }
+}

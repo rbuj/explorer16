@@ -14,25 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
+#ifndef ADC_H
+#define ADC_H
+
+#include <stdbool.h>
+
+/*** ADC Channel Definitions *****************************************/
+#define ADC_CHANNEL_POTENTIOMETER ADC_CHANNEL_5
+#define ADC_CHANNEL_TEMPERATURE_SENSOR ADC_CHANNEL_4
 
 typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
+    ADC_CHANNEL_5 = 5,
+    ADC_CHANNEL_4 = 4
+} ADC_CHANNEL;
 
-#define LED_COUNT 8
+bool ADC_ChannelEnable(ADC_CHANNEL channel);
 
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
-
-#endif // LEDS_H
+#endif // ADC_H

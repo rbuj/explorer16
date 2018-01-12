@@ -14,25 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
+#include "leds.h"
+#include "lcd.h"
+#include "adc.h"
+#include "buttons.h"
+#include "print_lcd.h"
 
-typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
+typedef struct {
+    /*arrays used for Explorer 16 LCD display*/
+    char messageLine1[18];
+    char messageLine2[18];
+} APP_DATA;
 
-#define LED_COUNT 8
-
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
-
-#endif // LEDS_H
+extern APP_DATA appData;

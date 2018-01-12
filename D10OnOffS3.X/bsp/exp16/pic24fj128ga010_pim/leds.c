@@ -103,37 +103,6 @@ void LED_Off(LED led) {
     }
 }
 
-void LED_Toggle(LED led) {
-    switch (led) {
-        case LED_D3:
-            LED_D3_LAT ^= 1;
-            break;
-        case LED_D4:
-            LED_D4_LAT ^= 1;
-            break;
-        case LED_D5:
-            LED_D5_LAT ^= 1;
-            break;
-        case LED_D6:
-            LED_D6_LAT ^= 1;
-            break;
-        case LED_D7:
-            LED_D7_LAT ^= 1;
-            break;
-        case LED_D8:
-            LED_D8_LAT ^= 1;
-            break;
-        case LED_D9:
-            LED_D9_LAT ^= 1;
-            break;
-        case LED_D10:
-            LED_D10_LAT ^= 1;
-            break;
-        case LED_NONE:
-            break;
-    }
-}
-
 void LED_Enable(LED led) {
     switch (led) {
         case LED_D3:

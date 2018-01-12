@@ -14,25 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
+#include <stdbool.h>
+
+#ifndef BUTTONS_H
+#define BUTTONS_H
 
 typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
+    BUTTON_DISABLED,
+    BUTTON_S3,
+    BUTTON_S6,
+    BUTTON_S5,
+    BUTTON_S4
+    //S1 is MCLR
+} BUTTON;
 
-#define LED_COUNT 8
+bool BUTTON_IsPressed(BUTTON button);
+void BUTTON_Enable(BUTTON button);
 
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
-
-#endif // LEDS_H
+#endif // BUTTONS_H

@@ -14,25 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
+#include <stdint.h>
+#include <stdbool.h>
 
-typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
+#ifndef LCD_H
+#define LCD_H
 
-#define LED_COUNT 8
+bool LCD_Initialize(void);
+void LCD_PutString(char* inputString, uint16_t length);
+void LCD_PutChar(char);
+void LCD_ClearScreen(void);
+void LCD_CursorEnable(bool enable);
 
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
-
-#endif // LEDS_H
+#endif // LCD_H

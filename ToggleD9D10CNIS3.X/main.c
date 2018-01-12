@@ -31,7 +31,7 @@ void SYS_Initialize(void);
 /******************************************************************************/
 APP_DATA appData = {
     .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "S3: LEDs ON"
+    .messageLine2 = "S3: LED D10 ON"
 };
 
 /******************************************************************************/
@@ -47,10 +47,8 @@ int main(void) {
 
     /* Infinite Loop */
     while (true) {
-        while (!BUTTON_IsPressed(BUTTON_S3));
-        LEDs_On();
-        while (BUTTON_IsPressed(BUTTON_S3));
-        LEDs_Off();
+        Sleep();
+        LED_Toggle(LED_D9);
     };
 
     return EXIT_SUCCESS;

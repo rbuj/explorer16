@@ -1,6 +1,6 @@
 # D10OnOffS3
 ## Description
-Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed.
+Toggle switch on/off the D9/D10 LEDs using the Change Notification Interrupt on S3 switch button.
 
 ## Usage
 - Set up the Developmnent Board:
