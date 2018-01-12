@@ -31,7 +31,7 @@ void SYS_Initialize(void);
 /******************************************************************************/
 APP_DATA appData = {
     .messageLine1 = "Explorer 16 Demo",
-    .messageLine2 = "S3: LED D10 ON"
+    .messageLine2 = "S3: ON/OFF D9/10"
 };
 
 /******************************************************************************/
