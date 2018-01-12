@@ -14,6 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+/******************************************************************************/
+/* Files to Include                                                           */
+/******************************************************************************/
 #include <xc.h>
 #include <stdbool.h> /* Includes true/false definition */
 #include "app.h"
@@ -35,10 +38,15 @@
 #pragma config GCP = OFF                // General Code Segment Code Protect (Code protection is disabled)
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG port is disabled)
 
+/******************************************************************************/
+/* Trap Function Prototypes                                                   */
+/******************************************************************************/
+/* Interrupt Vector Table: Use if ALTIVT=0 (INTCON2<15>) */
 void __attribute__((__interrupt__, auto_psv)) _OscillatorFail(void);
 void __attribute__((__interrupt__, auto_psv)) _AddressError(void);
 void __attribute__((__interrupt__, auto_psv)) _StackError(void);
 void __attribute__((__interrupt__, auto_psv)) _MathError(void);
+/* Alternate Interrupt Vector Table: Use if ALTIVT=1 (INTCON2<15>) */
 void __attribute__((__interrupt__, auto_psv)) _AltOscillatorFail(void);
 void __attribute__((__interrupt__, auto_psv)) _AltAddressError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltStackError(void);
