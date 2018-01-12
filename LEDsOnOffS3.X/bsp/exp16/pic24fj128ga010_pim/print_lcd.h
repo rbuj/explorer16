@@ -20,8 +20,7 @@
 #include <stdbool.h>
 #include <lcd.h>
 
-typedef enum
-{
+typedef enum {
     PRINT_CONFIGURATION_LCD
 } PRINT_CONFIGURATION;
 
