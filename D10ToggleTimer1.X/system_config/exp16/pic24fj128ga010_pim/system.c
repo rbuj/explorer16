@@ -38,8 +38,6 @@
 #pragma config GCP = OFF                // General Code Segment Code Protect (Code protection is disabled)
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG port is disabled)
 
-void SOSC_Configuration(void);
-
 /******************************************************************************/
 /* Trap Function Prototypes                                                   */
 /******************************************************************************/
@@ -90,12 +88,7 @@ void SYS_Initialize(void) {
     PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
 
     /* Low-Power Secondary Oscillator (SOSC) */
-    SOSC_Configuration();
-}
-
-void SOSC_Configuration(void) {
-    /* Continuous Secondary Oscillator Operation */
-    __builtin_write_OSCCONL(0x02);
+    __builtin_write_OSCCONL(0x02); // Continuous Secondary Oscillator Operation
 }
 
 void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
