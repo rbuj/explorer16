@@ -42,8 +42,8 @@ int main(void) {
     SYS_Initialize();
 
     /* Display welcome message */
-    LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
-    LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
+    LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
+    LCD_PutString(appData.messageLine2, sizeof (appData.messageLine2) - 1);
 
     /* Change notification for S3 */
     BUTTON_CN_Configuration(BUTTON_S3);
