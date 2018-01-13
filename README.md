@@ -4,6 +4,7 @@ Samples for Explorer 16 Development Board of Microchip
 ###### Project List
 | Project Name     | Short description | [1] | [2] |
 | ---------------- | ----------------- | :-: | :-: |
+| [ChronometerTimer1SOSC](ChronometerTimer1SOSC/) | Display a chronometer in LCD by using Timer1 Interrupt and SOSC as clock source, change notification interrupt on S3 to start/reset the chronometer. Precision 1/32s. | x | x |
 | [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Display a Clock in LCD by using Timer1 Interrupt and SOSC as clock source, change notification interrupt on S3 to start/reset the clock. | x | x |
 | [D10OnOffS3](D10OnOffS3.X/) | Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Toggle switch on/off the D10 LED @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
@@ -41,6 +42,7 @@ Samples for Explorer 16 Development Board of Microchip
 | 6 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pin / D10; Write to LCD; |
 | 7 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pins / D3:10; Write to LCD; |
 | 8 | [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
+| 9 | [ChronometerTimer1SOSC](ChronometerTimer1SOSC/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
 
 ## Requirements
 

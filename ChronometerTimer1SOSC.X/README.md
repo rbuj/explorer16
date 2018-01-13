@@ -1,6 +1,6 @@
-# ClockTimer1SOSC
+# ChronometerTimer1SOSC
 ## Description
-Display a Clock in LCD by using Timer1 Interrupt and SOSC as clock source, change notification interrupt on S3 to start/reset the clock.
+Display a chronometer in LCD by using Timer1 Interrupt and SOSC as clock source, change notification interrupt on S3 to start/reset the chronometer. Precision 1/32s.
 
 ## Usage
 - Set up the Developmnent Board:
@@ -41,7 +41,6 @@ Display a Clock in LCD by using Timer1 Interrupt and SOSC as clock source, chang
 | S6: Active-low switch | CN16/RD7           | CN16/RD7        |               |     | x   |
 
 *U: Used, I: Implemented*
-
 ###### 16x2 LCD Display
 | LCD | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
 | --- | :----------------: | :-------------: | :-----------: | :-: | :-: |
