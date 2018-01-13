@@ -1,6 +1,6 @@
 # D10ToggleTimer1
 ## Description
-Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed.
+Toggle switch on/off the D10 LED @ 1 Hz using Timer1 Interrupt and SOSC as clock source.
 
 ## Usage
 - Set up the Developmnent Board:
