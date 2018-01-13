@@ -1,4 +1,4 @@
-# D10OnOffS3
+# ToggleD9D10CNIS3
 ## Description
 Toggle switch on/off the D9/D10 LEDs using the Change Notification Interrupt on S3 switch button.
 
@@ -19,55 +19,67 @@ Toggle switch on/off the D9/D10 LEDs using the Change Notification Interrupt on 
 
 ## Pinout
 ###### Indicator LEDs
-| LED | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
-| --- | :----------------: | :-------------: | :-----------: |
-| D3  | RA0                | RA0             |               |
-| D4  | RA1                | RA1             |               |
-| D5  | RA2                | RA2             |               |
-| D6  | RA3                | RA3             |               |
-| D7  | RA4                | RA4             |               |
-| D8  | RA5                | RA5             |               |
-| D9  | RA6                | RA6             |               |
-| D10 | RA7                | RA7             | S5            |
+| LED | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
+| --- | :----------------: | :-------------: | :-----------: | :-: | :-: |
+| D3  | RA0                | RA0             |               |     | x   |
+| D4  | RA1                | RA1             |               |     | x   |
+| D5  | RA2                | RA2             |               |     | x   |
+| D6  | RA3                | RA3             |               |     | x   |
+| D7  | RA4                | RA4             |               |     | x   |
+| D8  | RA5                | RA5             |               |     | x   |
+| D9  | RA6                | RA6             |               | x   | x   |
+| D10 | RA7                | RA7             | S5            | x   | x   |
+
+*U: Used, I: Implemented*
 
 ###### Push button switches
-| Push button switch    | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
-| --------------------- | :----------------: | :-------------: | :-----------: |
-| S3: Active-low switch | CN15/RD6           | CN15/RD6        |               |
-| S4: Active-low switch | CN19/RD13          | CN19/RD13       |               |
-| S5: Active-low switch | CN23/RA7           | CN23/RA7        | D10           |
-| S6: Active-low switch | CN16/RD7           | CN16/RD7        |               |
+| Push button switch    | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
+| --------------------- | :----------------: | :-------------: | :-----------: | :-: | :-: |
+| S3: Active-low switch | CN15/RD6           | CN15/RD6        |               | x   | x   |
+| S4: Active-low switch | CN19/RD13          | CN19/RD13       |               |     |     |
+| S5: Active-low switch | CN23/RA7           | CN23/RA7        | D10           |     |     |
+| S6: Active-low switch | CN16/RD7           | CN16/RD7        |               |     |     |
+
+*U: Used, I: Implemented*
 
 ###### 16x2 LCD Display
-| LCD | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
-| --- | :----------------: | :-------------: | :-----------: |
-| E   | RD4                | PMWR            |               |
-| R/W | RD5                | PMRD            |               |
-| RS  | RB15               | PMAO            |               |
-| DB0 | RE0                | PMD0            |               |
-| DB1 | RE1                | PMD1            |               |
-| DB2 | RE2                | PMD2            |               |
-| DB3 | RE3                | PMD3            |               |
-| DB4 | RE4                | PMD4            |               |
-| DB5 | RE5                | PMD5            |               |
-| DB6 | RE6                | PMD6            |               |
-| DB7 | RE7                | PMD7            |               |
+| LCD | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
+| --- | :----------------: | :-------------: | :-----------: | :-: | :-: |
+| E   | RD4                | PMWR            |               | x   | x   |
+| R/W | RD5                | PMRD            |               | x   | x   |
+| RS  | RB15               | PMAO            |               | x   | x   |
+| DB0 | RE0                | PMD0            |               | x   | x   |
+| DB1 | RE1                | PMD1            |               | x   | x   |
+| DB2 | RE2                | PMD2            |               | x   | x   |
+| DB3 | RE3                | PMD3            |               | x   | x   |
+| DB4 | RE4                | PMD4            |               | x   | x   |
+| DB5 | RE5                | PMD5            |               | x   | x   |
+| DB6 | RE6                | PMD6            |               | x   | x   |
+| DB7 | RE7                | PMD7            |               | x   | x   |
+
+*U: Used, I: Implemented*
 
 ###### ADC
-| Analog Input       | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
-| ------------------ | :----------------: | :-------------: | :-----------: |
-| Potentiometer      | AN5/RB5            | AN5/RB5         |               |
-| Temperature sensor | AN4/RB4            | AN4/RB4         |               |
+| Analog Input       | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
+| ------------------ | :----------------: | :-------------: | :-----------: | :-: | :-: |
+| Potentiometer      | AN5/RB5            | AN5/RB5         |               |     |     |
+| Temperature sensor | AN4/RB4            | AN4/RB4         |               |     |     |
+
+*U: Used, I: Implemented*
 
 ###### Oscillators
-| Oscillator                  | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
-| --------------------------- | :----------------: | :-------------: | :-----------: |
-| Primary: 8 MHz crystal (Y3) | OSC1/RC12          | OSC1/RC12       |               |
-| Primary: 8 MHz crystal (Y3) | OSC2/RC15          | OSC2/RC15       |               |
+| Oscillator                  | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
+| --------------------------- | :----------------: | :-------------: | :-----------: | :-: | :-: |
+| Primary: 8 MHz crystal (Y3) | OSC1/RC12          | OSC1/RC12       |               | x   | x   |
+| Primary: 8 MHz crystal (Y3) | OSC2/RC15          | OSC2/RC15       |               | x   | x   |
+
+*U: Used, I: Implemented*
 
 ###### MPLAB ICD programmer/debugger module
-| ICD Pin   | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
-| --------- | :----------------: | :-------------: | :-----------: |
-| Vpp/!MCLR | !MCLR              | !MCLR           |               |
-| PGD       | PGED1/RB7          | PGED1/RB7       |               |
-| PGC       | PGEC1/RB6          | PGEC1/RB6       |               |
+| ICD Pin   | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
+| --------- | :----------------: | :-------------: | :-----------: | :-: | :-: |
+| Vpp/!MCLR | !MCLR              | !MCLR           |               | x   | x   |
+| PGD       | PGED1/RB7          | PGED1/RB7       |               | x   | x   |
+| PGC       | PGEC1/RB6          | PGEC1/RB6       |               | x   | x   |
+
+*U: Used, I: Implemented*
