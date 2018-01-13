@@ -33,13 +33,13 @@ Samples for Explorer 16 Development Board of Microchip
 ###### Ascending Order of Difficulty
 | # | Project Name     | Modules       |
 | - | ---------------- | ------------- |
-| 1 | [D10FlashDelay](D10FlashDelay.X/) | Write to output pin; Use delay macro; |
-| 2 | [D10OnOffS3](D10OnOffS3.X/) | Write to output pin D10; Read from input pin S3; |
+| 1 | [D10FlashDelay](D10FlashDelay.X/) | Write to output pin / D10; Use delay macro; |
+| 2 | [D10OnOffS3](D10OnOffS3.X/) | Write to output pin / D10; Read from input pin / S3; |
 | 3 | [LCDHelloWorld](LCDHelloWorld.X/) | Write to LCD |
-| 4 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Parallel write to output pins / D3:10; Read from input pin S3; Write to LCD; |
-| 5 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | Change Notification Interrupt / S3; Write to output pin; Write to LCD; |
-| 6 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pin; Write to LCD; |
-| 7 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pins; Write to LCD; |
+| 4 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Parallel write to output pins / D3:10; Read from input pin / S3; Write to LCD; |
+| 5 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | Change Notification Interrupt / S3; Write to output pin / D10; Write to LCD; |
+| 6 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pin / D10; Write to LCD; |
+| 7 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pins / D3:10; Write to LCD; |
 | 8 | [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
 
 ## Requirements
