@@ -6,6 +6,7 @@ Samples for Explorer 16 Development Board of Microchip
 | ---------------- | ----------------- | :-: | :-: |
 | [D10OnOffS3](D10OnOffS3.X/) | Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Toggle switch on/off the D10 LED @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
+| [D10FlashDelay](D10FlashDelay.X/) | Flash LED D10 using __delay_ms(d) macro. | x | x |
 | [LCDHelloWorld](LCDHelloWorld.X/) | Print a message in the LCD Display. | x | x |
 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Switch on D3:D10 LEDs by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Toggle switch on/off the D3:D10 LEDs @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
@@ -17,8 +18,9 @@ Samples for Explorer 16 Development Board of Microchip
 
 | Module Name      | Project Name | [1] | [2] |
 | ---------------- | ------------ | :-: | :-: |
+| Write to output pin / D10 | [D10FlashDelay](D10FlashDelay.X/) | x | x |
+| Use delay macro | [D10FlashDelay](D10FlashDelay.X/) | x | x |
 | Read from input pin / S3 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
-| Write to output pin / D10 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
 | Write to LCD using Parallel Master Port (PMP) | [LCDHelloWorld](LCDHelloWorld.X/) | x |  |
 | Write to LCD (w/ PMP) | [LCDHelloWorld](LCDHelloWorld.X/) |  | x |
 | Parallel write to output pins / D3:10| [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
