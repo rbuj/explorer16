@@ -4,6 +4,7 @@ Samples for Explorer 16 Development Board of Microchip
 ###### Project List
 | Project Name     | Short description | [1] | [2] |
 | ---------------- | ----------------- | :-: | :-: |
+| [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Display a Clock in LCD by using Timer1 Interrupt and SOSC as clock source, change notification interrupt on S3 to start/reset the clock. | x | x |
 | [D10OnOffS3](D10OnOffS3.X/) | Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Toggle switch on/off the D10 LED @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
 | [D10FlashDelay](D10FlashDelay.X/) | Flash LED D10 using __delay_ms(d) macro. | x | x |
@@ -23,11 +24,23 @@ Samples for Explorer 16 Development Board of Microchip
 | Read from input pin / S3 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
 | Write to LCD using Parallel Master Port (PMP) | [LCDHelloWorld](LCDHelloWorld.X/) | x |  |
 | Write to LCD (w/ PMP) | [LCDHelloWorld](LCDHelloWorld.X/) |  | x |
-| Parallel write to output pins / D3:10| [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
+| Parallel write to output pins / D3:10 | [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
 | Change Notification Interrupt / S3 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | x | x |
-| Low-Power Secondary Oscillator (SOSC) / Timer 1 | [D10ToggleTimer1](D10ToggleTimer1.X/), [LEDsToggleTimer1](LEDsToggleTimer1.X/) | x | x |
+| Low-Power Secondary Oscillator (SOSC) / Timer 1 | [D10ToggleTimer1](D10ToggleTimer1.X/) | x | x |
 
 [1] PIC24FJ128GA010, [2] dsPIC33FJ256GP710A
+
+###### Ascending Order of Difficulty
+| # | Project Name     | Modules       |
+| - | ---------------- | ------------- |
+| 1 | [D10FlashDelay](D10FlashDelay.X/) | Write to output pin; Use delay macro; |
+| 2 | [D10OnOffS3](D10OnOffS3.X/) | Write to output pin D10; Read from input pin S3; |
+| 3 | [LCDHelloWorld](LCDHelloWorld.X/) | Write to LCD |
+| 4 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Parallel write to output pins / D3:10; Read from input pin S3; Write to LCD; |
+| 5 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | Change Notification Interrupt / S3; Write to output pin; Write to LCD; |
+| 6 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pin; Write to LCD; |
+| 7 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pins; Write to LCD; |
+| 8 | [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
 
 ## Requirements
 
