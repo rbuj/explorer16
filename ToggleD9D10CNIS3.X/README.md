@@ -32,13 +32,13 @@ Toggle switch on/off the D9/D10 LEDs using the Change Notification Interrupt on 
 
 *U: Used, I: Implemented*
 
-###### Push button switches
+###### Push button switches + Change notification
 | Push button switch    | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with | U   | I   |
 | --------------------- | :----------------: | :-------------: | :-----------: | :-: | :-: |
 | S3: Active-low switch | CN15/RD6           | CN15/RD6        |               | x   | x   |
-| S4: Active-low switch | CN19/RD13          | CN19/RD13       |               |     |     |
-| S5: Active-low switch | CN23/RA7           | CN23/RA7        | D10           |     |     |
-| S6: Active-low switch | CN16/RD7           | CN16/RD7        |               |     |     |
+| S4: Active-low switch | CN19/RD13          | CN19/RD13       |               |     | x   |
+| S5: Active-low switch | CN23/RA7           | -/RA7           | D10           |     | x/- |
+| S6: Active-low switch | CN16/RD7           | CN16/RD7        |               |     | x   |
 
 *U: Used, I: Implemented*
 

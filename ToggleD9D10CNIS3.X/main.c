@@ -45,6 +45,9 @@ int main(void) {
     LCD_PutString((char*) &appData.messageLine1[0], sizeof (appData.messageLine1) - 1);
     LCD_PutString((char*) &appData.messageLine2[0], sizeof (appData.messageLine2) - 1);
 
+    /* Change notification for S3 */
+    BUTTON_CN_Configuration(BUTTON_S3);
+
     /* Infinite Loop */
     while (true) {
         Sleep();

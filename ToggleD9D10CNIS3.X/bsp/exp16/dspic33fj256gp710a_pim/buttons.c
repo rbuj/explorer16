@@ -69,3 +69,25 @@ void BUTTON_Enable(BUTTON button) {
             break;
     }
 }
+
+bool BUTTON_CN_Configuration(BUTTON button) {
+    switch (button) {
+        case BUTTON_S3:
+            CNEN1bits.CN15IE = 1;
+            break;
+        case BUTTON_S4:
+            CNEN2bits.CN19IE = 1;
+            break;
+        case BUTTON_S5:
+            CNEN2bits.CN23IE = 1; // Overlaps with D10
+            break;
+        case BUTTON_S6:
+            CNEN2bits.CN16IE = 1;
+            break;
+        case BUTTON_DISABLED:
+            return false;
+    }
+    IEC1bits.CNIE = 1; // Enable CN interrupts
+    IFS1bits.CNIF = 0; // Reset CN interrupt
+    return true;
+}

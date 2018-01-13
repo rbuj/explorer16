@@ -28,7 +28,8 @@ typedef enum {
     //S1 is MCLR
 } BUTTON;
 
-bool BUTTON_IsPressed(BUTTON button);
-void BUTTON_Enable(BUTTON button);
+bool BUTTON_IsPressed(BUTTON);
+void BUTTON_Enable(BUTTON);
+bool BUTTON_CN_Configuration(BUTTON);
 
 #endif // BUTTONS_H
