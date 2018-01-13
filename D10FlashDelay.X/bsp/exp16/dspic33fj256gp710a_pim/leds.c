@@ -35,72 +35,46 @@
 #define LED_D9_TRIS     TRISAbits.TRISA6
 #define LED_D10_TRIS    TRISAbits.TRISA7    // Overlaps with S5
 
-#define LED_ON  1
-#define LED_OFF 0
-
 #define INPUT  1
 #define OUTPUT 0
 
-void LED_On(LED led) {
+void LED_OnOff(LED led, bool value) {
     switch (led) {
         case LED_D3:
-            LED_D3_LAT = LED_ON;
+            LED_D3_LAT = value;
             break;
         case LED_D4:
-            LED_D4_LAT = LED_ON;
+            LED_D4_LAT = value;
             break;
         case LED_D5:
-            LED_D5_LAT = LED_ON;
+            LED_D5_LAT = value;
             break;
         case LED_D6:
-            LED_D6_LAT = LED_ON;
+            LED_D6_LAT = value;
             break;
         case LED_D7:
-            LED_D7_LAT = LED_ON;
+            LED_D7_LAT = value;
             break;
         case LED_D8:
-            LED_D8_LAT = LED_ON;
+            LED_D8_LAT = value;
             break;
         case LED_D9:
-            LED_D9_LAT = LED_ON;
+            LED_D9_LAT = value;
             break;
         case LED_D10:
-            LED_D10_LAT = LED_ON;
+            LED_D10_LAT = value;
             break;
         case LED_NONE:
             break;
     }
 }
 
-void LED_Off(LED led) {
-    switch (led) {
-        case LED_D3:
-            LED_D3_LAT = LED_OFF;
-            break;
-        case LED_D4:
-            LED_D4_LAT = LED_OFF;
-            break;
-        case LED_D5:
-            LED_D5_LAT = LED_OFF;
-            break;
-        case LED_D6:
-            LED_D6_LAT = LED_OFF;
-            break;
-        case LED_D7:
-            LED_D7_LAT = LED_OFF;
-            break;
-        case LED_D8:
-            LED_D8_LAT = LED_OFF;
-            break;
-        case LED_D9:
-            LED_D9_LAT = LED_OFF;
-            break;
-        case LED_D10:
-            LED_D10_LAT = LED_OFF;
-            break;
-        case LED_NONE:
-            break;
-    }
+inline void LED_On(LED led) {
+    LED_OnOff(led, true);
+}
+
+inline void LED_Off(LED led) {
+    LED_OnOff(led, false);
 }
 
 void LED_Enable(LED led) {

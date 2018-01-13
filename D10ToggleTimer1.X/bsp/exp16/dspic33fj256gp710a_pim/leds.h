@@ -17,6 +17,8 @@
 #ifndef LEDS_H
 #define LEDS_H
 
+#include <stdbool.h> /* Includes true/false definition */
+
 typedef enum {
     LED_NONE,
     LED_D3,
@@ -29,11 +31,10 @@ typedef enum {
     LED_D10
 } LED;
 
-#define LED_COUNT 8
-
-void LED_Enable(LED led);
-void LED_On(LED led);
-void LED_Off(LED led);
-void LED_Toggle(LED led);
+void LED_Enable(LED);
+void LED_OnOff(LED, bool);
+inline void LED_On(LED);
+inline void LED_Off(LED);
+void LED_Toggle(LED);
 
 #endif // LEDS_H
