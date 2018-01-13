@@ -36,5 +36,18 @@ Print a message in the LCD Display
 ###### ADC
 | Analog Input       | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
 | ------------------ | :----------------: | :-------------: | :-----------: |
-| Potentiometer      | RB5/AN5            | RB5/AN5         |               |
-| Temperature sensor | RB4/AN4            | RB4/AN4         |               |
+| Potentiometer      | AN5/RB5            | AN5/RB5         |               |
+| Temperature sensor | AN4/RB4            | AN4/RB4         |               |
+
+###### Oscillators
+| Oscillator                  | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
+| --------------------------- | :----------------: | :-------------: | :-----------: |
+| Primary: 8 MHz crystal (Y3) | OSC1/RC12          | OSC1/RC12       |               |
+| Primary: 8 MHz crystal (Y3) | OSC2/RC15          | OSC2/RC15       |               |
+
+###### MPLAB ICD programmer/debugger module
+| ICD Pin   | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
+| --------- | :----------------: | :-------------: | :-----------: |
+| Vpp/!MCLR | !MCLR              | !MCLR           |               |
+| PGD       | PGED1/RB7          | PGED1/RB7       |               |
+| PGC       | PGEC1/RB6          | PGEC1/RB6       |               |

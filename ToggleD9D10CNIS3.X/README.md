@@ -33,10 +33,10 @@ Toggle switch on/off the D9/D10 LEDs using the Change Notification Interrupt on 
 ###### Push button switches
 | Push button switch    | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
 | --------------------- | :----------------: | :-------------: | :-----------: |
-| S3: Active-low switch | RD6                | RD6             |               |
-| S4: Active-low switch | RD13               | RD13            |               |
-| S5: Active-low switch | RA7                | RA7             | D10           |
-| S6: Active-low switch | RD7                | RD7             |               |
+| S3: Active-low switch | CN15/RD6           | CN15/RD6        |               |
+| S4: Active-low switch | CN19/RD13          | CN19/RD13       |               |
+| S5: Active-low switch | CN23/RA7           | CN23/RA7        | D10           |
+| S6: Active-low switch | CN16/RD7           | CN16/RD7        |               |
 
 ###### 16x2 LCD Display
 | LCD | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
@@ -56,5 +56,18 @@ Toggle switch on/off the D9/D10 LEDs using the Change Notification Interrupt on 
 ###### ADC
 | Analog Input       | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
 | ------------------ | :----------------: | :-------------: | :-----------: |
-| Potentiometer      | RB5/AN5            | RB5/AN5         |               |
-| Temperature sensor | RB4/AN4            | RB4/AN4         |               |
+| Potentiometer      | AN5/RB5            | AN5/RB5         |               |
+| Temperature sensor | AN4/RB4            | AN4/RB4         |               |
+
+###### Oscillators
+| Oscillator                  | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
+| --------------------------- | :----------------: | :-------------: | :-----------: |
+| Primary: 8 MHz crystal (Y3) | OSC1/RC12          | OSC1/RC12       |               |
+| Primary: 8 MHz crystal (Y3) | OSC2/RC15          | OSC2/RC15       |               |
+
+###### MPLAB ICD programmer/debugger module
+| ICD Pin   | dsPIC33FJ256GP710A | PIC24FJ128GA010 | Overlaps with |
+| --------- | :----------------: | :-------------: | :-----------: |
+| Vpp/!MCLR | !MCLR              | !MCLR           |               |
+| PGD       | PGED1/RB7          | PGED1/RB7       |               |
+| PGC       | PGEC1/RB6          | PGEC1/RB6       |               |
