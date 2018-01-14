@@ -69,16 +69,16 @@ static uint8_t column;
 
 bool LCD_Initialize(void) {
     /*
-     * PMMODE = 0x03ff
+     * PMMODE
      * 
      * BUSY:   Port is not busy
      * IRQM:   No Interrupt generated
      * INCM:   No increment or decrement of address
      * MODE16: 8-bit mode: a read or write to the data register invokes a single 8-bit transfer
      * MODE:   Master mode 1 (PMCSx, PMRD/PMWR, PMENB, PMA<x:0>, PMD<7:0>, PMD<8:15>)
-     * WAITB:  Data Setup to Read/Write Strobe Wait States bits = 1 Tpb (250)
-     * WAITM:  Data Read/Write Strobe Wait States bits = 2 Tpb (500ns)
-     * WAITE:  Data Hold After Read/Write Strobe Wait States bits = 1 Tpb (250ns)
+     * WAITB:  Data Setup to Read/Write Strobe Wait States bits = 1 Tpb (1/FCY = 250ns)
+     * WAITM:  Data Read/Write Strobe Wait States bits = 2 Tpb (2/FCY = 500ns)
+     * WAITE:  Data Hold After Read/Write Strobe Wait States bits = 1 Tpb (1/FCY = 250ns)
      */
     PMMODE = 0x0340;
     // Enable PMP Module, No Address & Data Muxing,
