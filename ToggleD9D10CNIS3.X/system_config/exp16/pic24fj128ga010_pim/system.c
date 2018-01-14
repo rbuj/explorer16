@@ -86,14 +86,7 @@ void SYS_Initialize(void) {
     ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
     /* Initialize LCD */
-    PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
-
-    /****************************************************************************
-     * Interrupt On Change for group CNEN1
-     ***************************************************************************/
-    CNEN1bits.CN15IE = 1; // Enable RD6 for CN interrupt
-    IEC1bits.CNIE = 1; // Enable CN interrupts
-    IFS1bits.CNIF = 0; // Reset CN interrupt
+    LCD_Initialize();
 }
 
 void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {

@@ -18,7 +18,6 @@
 #include "lcd.h"
 #include "adc.h"
 #include "timer_1ms.h"
-#include "print_lcd.h"
 
 typedef struct {
     /*arrays used for Explorer 16 LCD display*/

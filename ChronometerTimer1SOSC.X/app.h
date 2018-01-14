@@ -19,7 +19,6 @@
 #include "adc.h"
 #include "buttons.h"
 #include "timer_1ms.h"
-#include "print_lcd.h"
 
 typedef struct {
     /* Variables used by Timer module */

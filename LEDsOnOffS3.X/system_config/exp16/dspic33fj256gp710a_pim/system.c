@@ -105,7 +105,7 @@ void SYS_Initialize(void) {
     ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
     /* Initialize LCD */
-    PRINT_SetConfiguration(PRINT_CONFIGURATION_LCD);
+    LCD_Initialize();
 }
 
 /******************************************************************************/

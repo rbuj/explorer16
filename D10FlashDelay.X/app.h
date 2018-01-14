@@ -16,11 +16,3 @@
  */
 #include "leds.h"
 #include "adc.h"
-
-typedef struct {
-    /*arrays used for Explorer 16 LCD display*/
-    char messageLine1[18];
-    char messageLine2[18];
-} APP_DATA;
-
-extern APP_DATA appData;
