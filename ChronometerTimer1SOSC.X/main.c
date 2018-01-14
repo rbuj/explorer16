@@ -31,8 +31,8 @@ void SYS_Initialize(void);
 /* Global Variable Declaration                                                */
 /******************************************************************************/
 APP_DATA appData = {
-    .messageLine1 = "00:00.00000\n\r",
-    .messageLine2 = "S3 start/reset",
+    .messageLine1 = "S3 start/reset  ",
+    .messageLine2 = "00:00.000",
 };
 
 /******************************************************************************/
@@ -69,8 +69,9 @@ int main(void) {
             appData.lcd_update_flag = 0;
             /* Refresh clock in LCD */
             LCD_ReturnHome();
-            sprintf(appData.messageLine1, "%02u:%02u.%05lu", appData.minutes, appData.seconds, (((unsigned long) appData.microseconds)*100000)/32);
-            LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
+            LCD_ReturnHome();
+            sprintf(appData.messageLine2, "%02u:%02u.%03lu", appData.minutes, appData.seconds, (((unsigned long) appData.microseconds)*1000)/32);
+            LCD_PutString(appData.messageLine2, sizeof (appData.messageLine2) - 1);
         }
         Sleep();
     };

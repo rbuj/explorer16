@@ -486,10 +486,30 @@
       <item path="bsp/exp16/pic24fj128ga010_pim/buttons.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/buttons.h"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/lcd.c" ex="true" overriding="false">
         <C30>
@@ -947,10 +967,30 @@
       <item path="bsp/exp16/dspic33fj256gp710a_pim/buttons.c"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/buttons.h"
             ex="true"
             overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.c"
             ex="true"

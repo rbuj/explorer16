@@ -17,35 +17,35 @@
 #include <xc.h>
 #include <lcd.h>
 #include <stdint.h> /* Includes uint8_t definition */
+#include <libpic30.h> /* Includes __delay32 */
 
 /* Private Definitions ***********************************************/
-// Define a fast instruction execution time in terms of loop time
-// typically > 43us
-#define LCD_F_INSTR         1000
+#define LCD_F_INSTR        160UL // Fast instruction delay = 40us -> cycles for __delay32
+#define LCD_S_INSTR       6560UL // Slow instruction delay = 1.64ms -> cycles for __delay32
+#define LCD_STARTUP     120000UL // Start up delay = 30ms -> cycles for __delay32
+#define LCD_MAX_COLUMN        16
 
-// Define a slow instruction execution time in terms of loop time
-// typically > 1.35ms
-#define LCD_S_INSTR         3000
+/* LCD Instructions **************************************************/
+#define LCD_COMMAND_CLEAR_SCREEN           0b00000001
+#define LCD_COMMAND_RETURN_HOME            0b00000010
+#define LCD_COMMAND_ENTER_DATA_MODE        0b00000110
+#define LCD_COMMAND_CURSOR_OFF             0b00001100
+#define LCD_COMMAND_CURSOR_OFF_BLINK       0b00001101
+#define LCD_COMMAND_CURSOR_ON              0b00001110
+#define LCD_COMMAND_CURSOR_ON_BLINK        0b00001111
+#define LCD_COMMAND_MOVE_CURSOR_LEFT       0b00010000
+#define LCD_COMMAND_MOVE_CURSOR_RIGHT      0b00010100
+#define LCD_COMMAND_MOVE_DISPLAY_LEFT      0b00011000
+#define LCD_COMMAND_MOVE_DISPLAY_RIGHT     0b00011100
+#define LCD_COMMAND_SET_MODE_4_BIT_8_DOTS  0b00101000
+#define LCD_COMMAND_SET_MODE_4_BIT_10_DOTS 0b00101100
+#define LCD_COMMAND_SET_MODE_8_BIT_8_DOTS  0b00111000
+#define LCD_COMMAND_SET_MODE_8_BIT_10_DOTS 0b00111100
+#define LCD_COMMAND_ROW_0_HOME             0b10000000
+#define LCD_COMMAND_ROW_1_HOME             0b11000000
 
-// Define the startup time for the LCD in terms of loop time
-// typically > 30ms
-#define LCD_STARTUP         20000
-
-#define LCD_MAX_COLUMN      16
-
-#define LCD_COMMAND_CLEAR_SCREEN        0x01
-#define LCD_COMMAND_RETURN_HOME         0x02
-#define LCD_COMMAND_ENTER_DATA_MODE     0x06
-#define LCD_COMMAND_CURSOR_OFF          0x0C
-#define LCD_COMMAND_CURSOR_ON           0x0F
-#define LCD_COMMAND_MOVE_CURSOR_LEFT    0x10
-#define LCD_COMMAND_MOVE_CURSOR_RIGHT   0x14
-#define LCD_COMMAND_SET_MODE_8_BIT      0x38
-#define LCD_COMMAND_ROW_0_HOME          0x80
-#define LCD_COMMAND_ROW_1_HOME          0xC0
-
-#define LCD_DATA_LAT                   LATE
-#define LCD_DATA_TRIS                  TRISE
+#define LCD_DATA_LAT              LATE
+#define LCD_DATA_TRIS             TRISE
 #define LCD_RSSignal_Set()        LATBbits.LATB15 = 1 //set Register Select bit
 #define LCD_RSSignal_Clear()      LATBbits.LATB15 = 0 //clear Register Select bit
 #define LCD_RWSignal_Set()        LATDbits.LATD5 = 1  //set Read/Write bit
@@ -65,9 +65,8 @@ static void LCD_ShiftCursorLeft(void);
 static void LCD_ShiftCursorRight(void);
 static void LCD_ShiftCursorUp(void);
 static void LCD_ShiftCursorDown(void);
-static void LCD_Wait(unsigned int);
 static void LCD_SendData(char);
-static void LCD_SendCommand(char, unsigned int);
+static void LCD_SendCommand(char, unsigned long);
 
 /* Private variables ************************************************/
 static uint8_t row;
@@ -88,12 +87,13 @@ bool LCD_Initialize(void) {
     LCD_EnableSignal_Output();
 
     LCD_EnableSignal_Set();
-    LCD_Wait(LCD_STARTUP);
-    LCD_Wait(LCD_STARTUP);
 
-    LCD_SendCommand(LCD_COMMAND_SET_MODE_8_BIT, LCD_F_INSTR + LCD_STARTUP);
+    /* LCD: Wait for more than 30ms after VDD on */
+    __delay32(LCD_STARTUP);
+
+    LCD_SendCommand(LCD_COMMAND_SET_MODE_8_BIT_10_DOTS, LCD_F_INSTR + LCD_STARTUP);
     LCD_SendCommand(LCD_COMMAND_CURSOR_OFF, LCD_F_INSTR);
-    LCD_SendCommand(LCD_COMMAND_ENTER_DATA_MODE, LCD_S_INSTR);
+    LCD_SendCommand(LCD_COMMAND_ENTER_DATA_MODE, LCD_F_INSTR);
 
     LCD_ClearScreen();
 
@@ -135,10 +135,10 @@ void LCD_PutChar(char inputCharacter) {
             if (column == LCD_MAX_COLUMN) {
                 column = 0;
                 if (row == 0) {
-                    LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_S_INSTR);
+                    LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_F_INSTR);
                     row = 1;
                 } else {
-                    LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_S_INSTR);
+                    LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_F_INSTR);
                     row = 0;
                 }
             }
@@ -147,21 +147,26 @@ void LCD_PutChar(char inputCharacter) {
 }
 
 void LCD_ReturnHome(void) {
+    column = 0;
+    if (row == 0) {
+        LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_F_INSTR);
+    } else {
+        LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_F_INSTR);
+    }
+}
+
+void LCD_ClearScreen(void) {
+    LCD_SendCommand(LCD_COMMAND_CLEAR_SCREEN, LCD_S_INSTR);
     LCD_SendCommand(LCD_COMMAND_RETURN_HOME, LCD_S_INSTR);
     row = 0;
     column = 0;
 }
 
-void LCD_ClearScreen(void) {
-    LCD_SendCommand(LCD_COMMAND_CLEAR_SCREEN, LCD_S_INSTR);
-    LCD_ReturnHome();
-}
-
 static void LCD_CarriageReturn(void) {
     if (row == 0) {
-        LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_S_INSTR);
+        LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_F_INSTR);
     } else {
-        LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_S_INSTR);
+        LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_F_INSTR);
     }
     column = 0;
 }
@@ -171,10 +176,10 @@ static void LCD_ShiftCursorLeft(void) {
 
     if (column == 0) {
         if (row == 0) {
-            LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_S_INSTR);
+            LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_F_INSTR);
             row = 1;
         } else {
-            LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_S_INSTR);
+            LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_F_INSTR);
             row = 0;
         }
         //Now shift to the end of the row
@@ -193,10 +198,10 @@ static void LCD_ShiftCursorRight(void) {
     if (column == LCD_MAX_COLUMN) {
         column = 0;
         if (row == 0) {
-            LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_S_INSTR);
+            LCD_SendCommand(LCD_COMMAND_ROW_1_HOME, LCD_F_INSTR);
             row = 1;
         } else {
-            LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_S_INSTR);
+            LCD_SendCommand(LCD_COMMAND_ROW_0_HOME, LCD_F_INSTR);
             row = 0;
         }
     }
@@ -216,17 +221,11 @@ static void LCD_ShiftCursorDown(void) {
     }
 }
 
-static void LCD_Wait(unsigned int delay) {
-    while (delay) {
-        delay--;
-    }
-}
-
 void LCD_CursorEnable(bool enable) {
     if (enable == true) {
-        LCD_SendCommand(LCD_COMMAND_CURSOR_ON, LCD_S_INSTR);
+        LCD_SendCommand(LCD_COMMAND_CURSOR_ON, LCD_F_INSTR);
     } else {
-        LCD_SendCommand(LCD_COMMAND_CURSOR_OFF, LCD_S_INSTR);
+        LCD_SendCommand(LCD_COMMAND_CURSOR_OFF, LCD_F_INSTR);
     }
 }
 
@@ -241,10 +240,11 @@ static void LCD_SendData(char data) {
     Nop();
     LCD_EnableSignal_Clear();
     LCD_RSSignal_Clear();
-    LCD_Wait(LCD_F_INSTR);
+    __delay32(LCD_F_INSTR);
+    Nop();
 }
 
-static void LCD_SendCommand(char command, unsigned int delay) {
+static void LCD_SendCommand(char command, unsigned long delay) {
     LCD_DATA_LAT &= 0xFF00;
     LCD_DATA_LAT |= command;
     LCD_RWSignal_Clear();
@@ -255,5 +255,5 @@ static void LCD_SendCommand(char command, unsigned int delay) {
     Nop();
     LCD_EnableSignal_Clear();
     LCD_EnableSignal_Clear();
-    LCD_Wait(delay);
+    __delay32(delay);
 }
