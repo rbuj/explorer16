@@ -72,7 +72,7 @@ int main(void) {
             /* Reset software flag */
             appData.lcd_update_flag = 0;
             /* Refresh clock in LCD */
-            LCD_ReturnHome();
+            LCD_SetCol(0x00);
             sprintf(appData.messageLine1, "%02u:%02u:%02u\n\r", appData.hours, appData.minutes, appData.seconds);
             LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
         }

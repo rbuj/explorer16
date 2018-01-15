@@ -68,7 +68,7 @@ int main(void) {
             /* Reset software flag */
             appData.lcd_update_flag = 0;
             /* Refresh clock in LCD */
-            LCD_ReturnHome();
+            LCD_SetCol(0x00);
             sprintf(appData.messageLine2, "%02u:%02u.%03lu", appData.minutes, appData.seconds, (((unsigned long) appData.microseconds)*1000)/32);
             LCD_PutString(appData.messageLine2, sizeof (appData.messageLine2) - 1);
         }

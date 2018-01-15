@@ -21,10 +21,15 @@
 #define LCD_H
 
 bool LCD_Initialize(void);
-void LCD_PutString(char* inputString, uint16_t length);
+void LCD_PutString(char*, uint16_t);
 void LCD_PutChar(char);
-void LCD_ReturnHome(void);
+
 void LCD_ClearScreen(void);
-void LCD_CursorEnable(bool enable);
+void LCD_DisplayCursorBlinkActivation(bool, bool, bool);
+void LCD_SetFunctionMode(bool, bool, bool);
+void LCD_ShiftDisplayMoveCursor(bool, bool);
+void LCD_SetCol(unsigned char);
+void LCD_SetRow(unsigned char);
+void LCD_SetDDRAMAdrress(unsigned char);
 
 #endif // LCD_H
