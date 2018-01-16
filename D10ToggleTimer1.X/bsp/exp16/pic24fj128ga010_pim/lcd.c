@@ -188,7 +188,7 @@ void LCD_PutChar(char inputCharacter) {
         case '\b':
             LCD_ShiftCursorLeft();
             LCD_PutChar(' ');
-            LCD_ShiftCursorRight();
+            LCD_ShiftCursorLeft();
             break;
         default:
             LCD_SendData(inputCharacter);
