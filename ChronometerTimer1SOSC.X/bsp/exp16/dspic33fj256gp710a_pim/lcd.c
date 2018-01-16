@@ -117,34 +117,11 @@ static union {
 /* Private Functions *************************************************/
 static void LCD_ShiftCursorLeft(void);
 static void LCD_ShiftCursorRight(void);
+static void LCD_SendData(char);
+static void LCD_SendCommand(char, unsigned long);
 
-static void LCD_SendData(char data) {
-    LCD_RWSignal_Clear();
-    LCD_RSSignal_Set();
-    LCD_DATA_LAT &= 0xFF00;
-    LCD_DATA_LAT |= data;
-    LCD_EnableSignal_Set();
-    Nop();
-    Nop();
-    Nop();
-    LCD_EnableSignal_Clear();
-    LCD_RSSignal_Clear();
-    __delay32(LCD_F_INSTR);
-    Nop();
-}
-
-static void LCD_SendCommand(char command, unsigned long delay) {
-    LCD_DATA_LAT &= 0xFF00;
-    LCD_DATA_LAT |= command;
-    LCD_RWSignal_Clear();
-    LCD_RSSignal_Clear();
-    LCD_EnableSignal_Set();
-    Nop();
-    Nop();
-    Nop();
-    LCD_EnableSignal_Clear();
-    LCD_EnableSignal_Clear();
-    __delay32(delay);
+char LCD_GetChar(unsigned char address){
+    return 0x00;
 }
 
 bool LCD_Initialize(void) {
@@ -260,7 +237,6 @@ void LCD_SetDDRAMAdrress(unsigned char address) {
     LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
 }
 
-
 static void LCD_ShiftCursorLeft(void) {
     if (LCD_COL == 0) {
         LCD_ROW ^= 1;
@@ -279,4 +255,33 @@ static void LCD_ShiftCursorRight(void) {
         LCD_COL++;
     }
     LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
+}
+
+static void LCD_SendData(char data) {
+    LCD_RWSignal_Clear();
+    LCD_RSSignal_Set();
+    LCD_DATA_LAT &= 0xFF00;
+    LCD_DATA_LAT |= data;
+    LCD_EnableSignal_Set();
+    Nop();
+    Nop();
+    Nop();
+    LCD_EnableSignal_Clear();
+    LCD_RSSignal_Clear();
+    __delay32(LCD_F_INSTR);
+    Nop();
+}
+
+static void LCD_SendCommand(char command, unsigned long delay) {
+    LCD_DATA_LAT &= 0xFF00;
+    LCD_DATA_LAT |= command;
+    LCD_RWSignal_Clear();
+    LCD_RSSignal_Clear();
+    LCD_EnableSignal_Set();
+    Nop();
+    Nop();
+    Nop();
+    LCD_EnableSignal_Clear();
+    LCD_EnableSignal_Clear();
+    __delay32(delay);
 }
