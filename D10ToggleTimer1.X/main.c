@@ -30,7 +30,7 @@ void SYS_Initialize(void);
 /* Global Variable Declaration                                                */
 /******************************************************************************/
 APP_DATA appData = {
-    .messageLine1 = "Explorer 16 Demo",
+    .messageLine1 = "Explorer 16 Demo\n\r",
     .messageLine2 = "Toggle D10 1Hz",
 };
 

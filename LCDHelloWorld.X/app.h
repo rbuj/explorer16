@@ -17,10 +17,15 @@
 #include "lcd.h"
 #include "adc.h"
 
+#define LCD_MAX_COLUMN             16
+#define LCD_DISPLAY_DATA_RAM_SIZE  80
+#define LCD_LINE_DATA_RAM_SIZE     (LCD_DISPLAY_DATA_RAM_SIZE/2)
+#define LCD_SHIFT_DATA_RAM_SIZE    LCD_LINE_DATA_RAM_SIZE - LCD_MAX_COLUMN
+
 typedef struct {
-    /*arrays used for Explorer 16 LCD display*/
-    char messageLine1[18];
-    char messageLine2[18];
+    /* Arrays used for Explorer 16 LCD display */
+    char messageLine1[LCD_LINE_DATA_RAM_SIZE];
+    char messageLine2[LCD_LINE_DATA_RAM_SIZE];
 } APP_DATA;
 
 extern APP_DATA appData;

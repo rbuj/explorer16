@@ -31,7 +31,7 @@ void SYS_Initialize(void);
 /* Global Variable Declaration                                                */
 /******************************************************************************/
 APP_DATA appData = {
-    .messageLine1 = "S3 start/reset  ",
+    .messageLine1 = "S3 start/reset\n\r",
     .messageLine2 = "00:00.000",
 };
 

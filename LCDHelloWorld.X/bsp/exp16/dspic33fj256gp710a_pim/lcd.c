@@ -19,7 +19,8 @@
 #include <stdint.h> /* Includes uint8_t definition */
 #include <libpic30.h> /* Includes __delay32 */
 
-/* Private variables ************************************************/
+// <editor-fold defaultstate="collapsed" desc="Private Variables">
+
 static union {
     unsigned char CMD;
 
@@ -80,11 +81,16 @@ static union {
     };
 } SET_DD_RAM_ADDRbits = {.CMD = 0x80};
 
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Private Function Prototypes">
+static void LCD_SendData(char);
+static void LCD_SendCommand(char, unsigned long);
+// </editor-fold>
+
 /* Private Definitions ***********************************************/
 #define LCD_F_INSTR        160UL // Fast instruction delay = 40us -> cycles for __delay32
 #define LCD_S_INSTR       6560UL // Slow instruction delay = 1.64ms -> cycles for __delay32
 #define LCD_STARTUP     120000UL // Start up delay = 30ms -> cycles for __delay32
-#define LCD_MAX_COLUMN        16
 
 /* LCD Instructions **************************************************/
 #define LCD_COMMAND_CLEAR_SCREEN              0x01
@@ -114,12 +120,7 @@ static union {
 #define LCD_EnableSignal_Input()  TRISDbits.TRISD4 = 1  //set Enable bit
 #define LCD_EnableSignal_Output() TRISDbits.TRISD4 = 0  //clear Enable bit
 
-/* Private Functions *************************************************/
-static void LCD_ShiftCursorLeft(void);
-static void LCD_ShiftCursorRight(void);
-static void LCD_SendData(char);
-static void LCD_SendCommand(char, unsigned long);
-
+// <editor-fold defaultstate="collapsed" desc="User Functions">
 char LCD_GetChar(unsigned char address){
     return 0x00;
 }
@@ -152,26 +153,6 @@ bool LCD_Initialize(void) {
     return true;
 }
 
-void LCD_DisplayCursorBlinkActivation(bool display, bool cursor, bool blink){
-    DISPLAY_CURSOR_BLINK_ACTbits.D = display;
-    DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
-    DISPLAY_CURSOR_BLINK_ACTbits.B = blink;
-    LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
-}
-
-void LCD_ShiftDisplayMoveCursor(bool shiftDisplayCursor, bool rightLeft){
-    SHIFT_DISPLAY_MOVE_CURSORbits.SC = shiftDisplayCursor;
-    SHIFT_DISPLAY_MOVE_CURSORbits.RL = rightLeft;
-    LCD_SendCommand(LCD_COMMAND_SHIFT_DISPLAY_MOVE_CURSOR, LCD_F_INSTR);
-}
-
-void LCD_SetFunctionMode(bool eightBitsDataLenght, bool twoLines, bool tenDots){
-    SET_FUNCTION_MODEbits.DL = eightBitsDataLenght;
-    SET_FUNCTION_MODEbits.F = twoLines;
-    SET_FUNCTION_MODEbits.N = tenDots;
-    LCD_SendCommand(LCD_COMMAND_SET_FUNCTION_MODE, LCD_F_INSTR);
-}
-
 void LCD_PutString(char* inputString, uint16_t length) {
     while (length--) {
         switch (*inputString) {
@@ -195,21 +176,22 @@ void LCD_PutChar(char inputCharacter) {
             LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
             break;
         case '\b':
-            LCD_ShiftCursorLeft();
+            LCD_MoveCursor_Left();
             LCD_PutChar(' ');
-            LCD_ShiftCursorLeft();
+            LCD_MoveCursor_Left();
             break;
         default:
             LCD_SendData(inputCharacter);
-            if (LCD_COL == LCD_MAX_COLUMN - 1) {
-                LCD_ROW ^= 1;
-                LCD_COL = 0;
-                LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
-            } else {
-                LCD_COL++;
-            }
             break;
     }
+}
+
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Primary Setters">
+
+void LCD_ClearScreen(void) {
+    LCD_SendCommand(LCD_COMMAND_CLEAR_SCREEN, LCD_S_INSTR);
+    SET_DD_RAM_ADDRbits.ADDR = 0x00;
 }
 
 void LCD_ReturnHome(void) {
@@ -217,9 +199,78 @@ void LCD_ReturnHome(void) {
     SET_DD_RAM_ADDRbits.ADDR = 0x00;
 }
 
-void LCD_ClearScreen(void) {
-    LCD_SendCommand(LCD_COMMAND_CLEAR_SCREEN, LCD_S_INSTR);
-    SET_DD_RAM_ADDRbits.ADDR = 0x00;
+void LCD_SetEntryMode(bool incdec, bool shift) {
+    SET_ENTRY_MODEbits.S = shift;
+    SET_ENTRY_MODEbits.ID = incdec;
+    LCD_SendCommand(LCD_COMMAND_SET_ENTRY_MODE, LCD_F_INSTR);
+}
+
+void LCD_DisplayCursorBlinkActivation(bool display, bool cursor, bool blink){
+    DISPLAY_CURSOR_BLINK_ACTbits.D = display;
+    DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
+    DISPLAY_CURSOR_BLINK_ACTbits.B = blink;
+    LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
+}
+
+void LCD_ShiftDisplayMoveCursor(bool shiftDisplayCursor, bool rightLeft){
+    SHIFT_DISPLAY_MOVE_CURSORbits.SC = shiftDisplayCursor;
+    SHIFT_DISPLAY_MOVE_CURSORbits.RL = rightLeft;
+    LCD_SendCommand(LCD_COMMAND_SHIFT_DISPLAY_MOVE_CURSOR, LCD_F_INSTR);
+}
+
+void LCD_SetFunctionMode(bool eightBitsDataLenght, bool twoLines, bool tenDots){
+    SET_FUNCTION_MODEbits.DL = eightBitsDataLenght;
+    SET_FUNCTION_MODEbits.F = tenDots;
+    SET_FUNCTION_MODEbits.N = twoLines;
+    LCD_SendCommand(LCD_COMMAND_SET_FUNCTION_MODE, LCD_F_INSTR);
+}
+
+void LCD_SetDDRAMAdrress(unsigned char address) {
+    LCD_DD_RAM_ADDRESS = address;
+    LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
+}
+
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Non Primary Setters">
+
+void LCD_SetIncCursor_CursorMoviment(bool incdec) {
+    SET_ENTRY_MODEbits.ID = incdec;
+    LCD_SendCommand(LCD_COMMAND_SET_ENTRY_MODE, LCD_F_INSTR);
+}
+
+void LCD_SetEntryMode_Shift(bool shift) {
+    SET_ENTRY_MODEbits.S = shift;
+    LCD_SendCommand(LCD_COMMAND_SET_ENTRY_MODE, LCD_F_INSTR);
+}
+
+void LCD_DisplayCursorBlinkActivation_Display(bool display){
+    DISPLAY_CURSOR_BLINK_ACTbits.D = display;
+    LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
+}
+
+void LCD_DisplayCursorBlinkActivation_Cursor(bool cursor){
+    DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
+    LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
+}
+
+void LCD_DisplayCursorBlinkActivation_Blink(bool blink){
+    DISPLAY_CURSOR_BLINK_ACTbits.B = blink;
+    LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
+}
+
+void LCD_SetFunctionMode_DataLenght(bool eightBitsDataLenght) {
+    SET_FUNCTION_MODEbits.DL = eightBitsDataLenght;
+    LCD_SendCommand(LCD_COMMAND_SET_FUNCTION_MODE, LCD_F_INSTR);
+}
+
+void LCD_SetFunctionMode_Lines(bool twoLines) {
+    SET_FUNCTION_MODEbits.N = twoLines;
+    LCD_SendCommand(LCD_COMMAND_SET_FUNCTION_MODE, LCD_F_INSTR);
+}
+
+void LCD_SetFunctionMode_Font(bool tenDots) {
+    SET_FUNCTION_MODEbits.F = tenDots;
+    LCD_SendCommand(LCD_COMMAND_SET_FUNCTION_MODE, LCD_F_INSTR);
 }
 
 void LCD_SetCol(unsigned char column) {
@@ -232,30 +283,8 @@ void LCD_SetRow(unsigned char row) {
     LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
 }
 
-void LCD_SetDDRAMAdrress(unsigned char address) {
-    LCD_DD_RAM_ADDRESS = address;
-    LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
-}
-
-static void LCD_ShiftCursorLeft(void) {
-    if (LCD_COL == 0) {
-        LCD_ROW ^= 1;
-        LCD_COL = LCD_MAX_COLUMN - 1;
-    } else {
-        LCD_COL--;
-    }
-    LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
-}
-
-static void LCD_ShiftCursorRight(void) {
-    if (LCD_COL == LCD_MAX_COLUMN - 1) {
-        LCD_COL = 0;
-        LCD_ROW ^= 1;
-    } else {
-        LCD_COL++;
-    }
-    LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
-}
+// </editor-fold>
+// <editor-fold defaultstate="collapsed" desc="Private Functions">
 
 static void LCD_SendData(char data) {
     LCD_RWSignal_Clear();
@@ -285,3 +314,5 @@ static void LCD_SendCommand(char command, unsigned long delay) {
     LCD_EnableSignal_Clear();
     __delay32(delay);
 }
+
+// </editor-fold>
