@@ -60,9 +60,6 @@ void LCD_SetFunctionMode_DataLenght(bool);
 void LCD_SetFunctionMode_Lines(bool);
 void LCD_SetFunctionMode_Font(bool);
 void LCD_ShiftDisplayMoveCursor(bool, bool);
-
-void LCD_SetCol(unsigned char);
-void LCD_SetRow(unsigned char);
 void LCD_SetDDRAMAdrress(unsigned char);
 char LCD_GetChar(unsigned char);
 

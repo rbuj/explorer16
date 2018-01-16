@@ -76,10 +76,26 @@ static union {
     };
 
     struct {
+        unsigned OFFSET : 6;
+        unsigned : 2;
+    };
+
+    struct {
         unsigned ADDR : 7;
         unsigned : 1;
     };
 } SET_DD_RAM_ADDRbits = {.CMD = 0x80};
+
+static union {
+    unsigned char ANS;
+
+    struct {
+        unsigned AC : 7;
+        unsigned BF : 1;
+    };
+} BF_ACbits;
+
+static int8_t LCD_ACUMULATOR = 0x00;
 
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Private Function Prototypes">
@@ -98,12 +114,13 @@ static void LCD_SendCommand(char, unsigned long);
 #define LCD_COMMAND_SET_ENTRY_MODE            SET_ENTRY_MODEbits.CMD
 #define LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT  DISPLAY_CURSOR_BLINK_ACTbits.CMD
 #define LCD_COMMAND_SHIFT_DISPLAY_MOVE_CURSOR SHIFT_DISPLAY_MOVE_CURSORbits.CMD
+#define LCD_COMMAND_SET_RAM_ADDR              SET_RAM_ADDRbits.CMD
 #define LCD_COMMAND_SET_DD_RAM_ADDR           SET_DD_RAM_ADDRbits.CMD
 #define LCD_COMMAND_SET_FUNCTION_MODE         SET_FUNCTION_MODEbits.CMD
 
-#define LCD_COL                               SET_DD_RAM_ADDRbits.COL
-#define LCD_ROW                               SET_DD_RAM_ADDRbits.ROW
+#define LCD_RAM_ADDRESS                       SET_RAM_ADDRbits.ADDR
 #define LCD_DD_RAM_ADDRESS                    SET_DD_RAM_ADDRbits.ADDR
+#define LCD_ROW                               SET_DD_RAM_ADDRbits.ROW
 
 #define LCD_DATA_LAT              LATE
 #define LCD_DATA_TRIS             TRISE
@@ -168,20 +185,28 @@ void LCD_PutString(char* inputString, uint16_t length) {
 void LCD_PutChar(char inputCharacter) {
     switch (inputCharacter) {
         case '\r':
-            LCD_COL = 0;
+            if (LCD_ACUMULATOR >= 40) {
+                SET_DD_RAM_ADDRbits.OFFSET = 0;
+            } else {
+                SET_DD_RAM_ADDRbits.OFFSET = 40;
+            }
             LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
+            LCD_ACUMULATOR = SET_DD_RAM_ADDRbits.OFFSET;
             break;
         case '\n':
             LCD_ROW ^= 1;
             LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
+            LCD_ACUMULATOR = SET_DD_RAM_ADDRbits.OFFSET;
             break;
         case '\b':
             LCD_MoveCursor_Left();
             LCD_PutChar(' ');
             LCD_MoveCursor_Left();
+            LCD_ACUMULATOR--;
             break;
         default:
             LCD_SendData(inputCharacter);
+            LCD_ACUMULATOR++;
             break;
     }
 }
@@ -191,12 +216,12 @@ void LCD_PutChar(char inputCharacter) {
 
 void LCD_ClearScreen(void) {
     LCD_SendCommand(LCD_COMMAND_CLEAR_SCREEN, LCD_S_INSTR);
-    SET_DD_RAM_ADDRbits.ADDR = 0x00;
+    LCD_ACUMULATOR = 0x00;
 }
 
 void LCD_ReturnHome(void) {
     LCD_SendCommand(LCD_COMMAND_RETURN_HOME, LCD_S_INSTR);
-    SET_DD_RAM_ADDRbits.ADDR = 0x00;
+    LCD_ACUMULATOR = 0x00;
 }
 
 void LCD_SetEntryMode(bool incdec, bool shift) {
@@ -271,16 +296,6 @@ void LCD_SetFunctionMode_Lines(bool twoLines) {
 void LCD_SetFunctionMode_Font(bool tenDots) {
     SET_FUNCTION_MODEbits.F = tenDots;
     LCD_SendCommand(LCD_COMMAND_SET_FUNCTION_MODE, LCD_F_INSTR);
-}
-
-void LCD_SetCol(unsigned char column) {
-    LCD_COL = column;
-    LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
-}
-
-void LCD_SetRow(unsigned char row) {
-    LCD_ROW = row;
-    LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
 }
 
 // </editor-fold>
