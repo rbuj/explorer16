@@ -95,8 +95,6 @@ static union {
     };
 } BF_ACbits;
 
-static int8_t LCD_ACUMULATOR = 0x00;
-
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Private Function Prototypes">
 static void LCD_SendData(char);
@@ -117,13 +115,17 @@ static void LCD_SendCommand(char, unsigned long);
 #define LCD_COMMAND_SET_RAM_ADDR              SET_RAM_ADDRbits.CMD
 #define LCD_COMMAND_SET_DD_RAM_ADDR           SET_DD_RAM_ADDRbits.CMD
 #define LCD_COMMAND_SET_FUNCTION_MODE         SET_FUNCTION_MODEbits.CMD
+#define LCD_ANSWER_BF_AC                      BF_ACbits.ANS
 
 #define LCD_RAM_ADDRESS                       SET_RAM_ADDRbits.ADDR
 #define LCD_DD_RAM_ADDRESS                    SET_DD_RAM_ADDRbits.ADDR
 #define LCD_ROW                               SET_DD_RAM_ADDRbits.ROW
+#define LCD_ACUMULATOR                        BF_ACbits.AC
+#define LCD_BUSY_FLAG                         BF_ACbits.BF
 
 #define LCD_DATA_LAT              LATE
 #define LCD_DATA_TRIS             TRISE
+#define LCD_DATA_PORT             PORTE
 #define LCD_RSSignal_Set()        LATBbits.LATB15 = 1 //set Register Select bit
 #define LCD_RSSignal_Clear()      LATBbits.LATB15 = 0 //clear Register Select bit
 #define LCD_RWSignal_Set()        LATDbits.LATD5 = 1  //set Read/Write bit
@@ -136,27 +138,32 @@ static void LCD_SendCommand(char, unsigned long);
 #define LCD_RWSignal_Output()     TRISDbits.TRISD5 = 0  //clear Read/Write bit
 #define LCD_EnableSignal_Input()  TRISDbits.TRISD4 = 1  //set Enable bit
 #define LCD_EnableSignal_Output() TRISDbits.TRISD4 = 0  //clear Enable bit
+/* Configure PORTE<7:0> as outputs/ inpputs.
+ * One instruction cycle is required between a port direction change.  */
+#define LCD_WriteData(d)          LCD_DATA_LAT &= 0xFF00; LCD_DATA_LAT |= d
+#define LCD_ConfigureDataOutput() LCD_DATA_TRIS &= 0xFF00; Nop()
+#define LCD_ConfigureDataInput()  LCD_DATA_TRIS |= 0x00FF; Nop()
 
 // <editor-fold defaultstate="collapsed" desc="User Functions">
-char LCD_GetChar(unsigned char address){
+
+char LCD_GetChar(unsigned char address) {
     return 0x00;
 }
 
 bool LCD_Initialize(void) {
-    LCD_DATA_LAT &= 0xFF00;
-    LCD_DATA_TRIS &= 0xFF00;
+    /* Initialize data pins to zero */
+    LCD_WriteData(0x00);
 
-    // Control signal data pins
-    LCD_RWSignal_Clear(); // LCD R/W signal
-    LCD_RSSignal_Clear(); // LCD RS signal
-    LCD_EnableSignal_Clear(); // LCD E signal
+    /* Initialize the control signal data pins */
+    LCD_RWSignal_Clear();
+    LCD_RSSignal_Clear();
+    LCD_EnableSignal_Clear();
 
-    // Control signal pin direction
+    /* Pin direction */
+    LCD_ConfigureDataInput(); // Configure the data pins as input
     LCD_RSSignal_Output();
     LCD_RWSignal_Output();
     LCD_EnableSignal_Output();
-
-    LCD_EnableSignal_Set();
 
     /* LCD: Wait for more than 30ms after VDD on */
     __delay32(LCD_STARTUP);
@@ -191,22 +198,18 @@ void LCD_PutChar(char inputCharacter) {
                 SET_DD_RAM_ADDRbits.OFFSET = 40;
             }
             LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
-            LCD_ACUMULATOR = SET_DD_RAM_ADDRbits.OFFSET;
             break;
         case '\n':
             LCD_ROW ^= 1;
             LCD_SendCommand(LCD_COMMAND_SET_DD_RAM_ADDR, LCD_F_INSTR);
-            LCD_ACUMULATOR = SET_DD_RAM_ADDRbits.OFFSET;
             break;
         case '\b':
             LCD_MoveCursor_Left();
             LCD_PutChar(' ');
             LCD_MoveCursor_Left();
-            LCD_ACUMULATOR--;
             break;
         default:
             LCD_SendData(inputCharacter);
-            LCD_ACUMULATOR++;
             break;
     }
 }
@@ -216,12 +219,10 @@ void LCD_PutChar(char inputCharacter) {
 
 void LCD_ClearScreen(void) {
     LCD_SendCommand(LCD_COMMAND_CLEAR_SCREEN, LCD_S_INSTR);
-    LCD_ACUMULATOR = 0x00;
 }
 
 void LCD_ReturnHome(void) {
     LCD_SendCommand(LCD_COMMAND_RETURN_HOME, LCD_S_INSTR);
-    LCD_ACUMULATOR = 0x00;
 }
 
 void LCD_SetEntryMode(bool incdec, bool shift) {
@@ -230,20 +231,20 @@ void LCD_SetEntryMode(bool incdec, bool shift) {
     LCD_SendCommand(LCD_COMMAND_SET_ENTRY_MODE, LCD_F_INSTR);
 }
 
-void LCD_DisplayCursorBlinkActivation(bool display, bool cursor, bool blink){
+void LCD_DisplayCursorBlinkActivation(bool display, bool cursor, bool blink) {
     DISPLAY_CURSOR_BLINK_ACTbits.D = display;
     DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
     DISPLAY_CURSOR_BLINK_ACTbits.B = blink;
     LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
 }
 
-void LCD_ShiftDisplayMoveCursor(bool shiftDisplayCursor, bool rightLeft){
+void LCD_ShiftDisplayMoveCursor(bool shiftDisplayCursor, bool rightLeft) {
     SHIFT_DISPLAY_MOVE_CURSORbits.SC = shiftDisplayCursor;
     SHIFT_DISPLAY_MOVE_CURSORbits.RL = rightLeft;
     LCD_SendCommand(LCD_COMMAND_SHIFT_DISPLAY_MOVE_CURSOR, LCD_F_INSTR);
 }
 
-void LCD_SetFunctionMode(bool eightBitsDataLenght, bool twoLines, bool tenDots){
+void LCD_SetFunctionMode(bool eightBitsDataLenght, bool twoLines, bool tenDots) {
     SET_FUNCTION_MODEbits.DL = eightBitsDataLenght;
     SET_FUNCTION_MODEbits.F = tenDots;
     SET_FUNCTION_MODEbits.N = twoLines;
@@ -268,17 +269,17 @@ void LCD_SetEntryMode_Shift(bool shift) {
     LCD_SendCommand(LCD_COMMAND_SET_ENTRY_MODE, LCD_F_INSTR);
 }
 
-void LCD_DisplayCursorBlinkActivation_Display(bool display){
+void LCD_DisplayCursorBlinkActivation_Display(bool display) {
     DISPLAY_CURSOR_BLINK_ACTbits.D = display;
     LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
 }
 
-void LCD_DisplayCursorBlinkActivation_Cursor(bool cursor){
+void LCD_DisplayCursorBlinkActivation_Cursor(bool cursor) {
     DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
     LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
 }
 
-void LCD_DisplayCursorBlinkActivation_Blink(bool blink){
+void LCD_DisplayCursorBlinkActivation_Blink(bool blink) {
     DISPLAY_CURSOR_BLINK_ACTbits.B = blink;
     LCD_SendCommand(LCD_COMMAND_DISPLAY_CURSOR_BLINK_ACT, LCD_F_INSTR);
 }
@@ -302,32 +303,49 @@ void LCD_SetFunctionMode_Font(bool tenDots) {
 // <editor-fold defaultstate="collapsed" desc="Private Functions">
 
 static void LCD_SendData(char data) {
-    LCD_RWSignal_Clear();
-    LCD_RSSignal_Set();
-    LCD_DATA_LAT &= 0xFF00;
-    LCD_DATA_LAT |= data;
+    LCD_RWSignal_Clear(); /* select write operation */
+    LCD_RSSignal_Set(); /* select data register */
+    LCD_ConfigureDataOutput();
+    LCD_WriteData(data);
     LCD_EnableSignal_Set();
-    Nop();
-    Nop();
-    Nop();
+    __delay32(18);
     LCD_EnableSignal_Clear();
     LCD_RSSignal_Clear();
-    __delay32(LCD_F_INSTR);
-    Nop();
+    LCD_ConfigureDataInput();
+
+    // Receive BF & AC
+    LCD_RWSignal_Set(); /* select read operation */
+    LCD_RSSignal_Clear(); /* select BF/AC register */
+    __delay32(18);
+    do {
+        LCD_EnableSignal_Set();
+        __delay32(18);
+        LCD_EnableSignal_Clear();
+        LCD_ANSWER_BF_AC = LCD_DATA_PORT & 0x00FF;
+    } while (LCD_BUSY_FLAG);
 }
 
 static void LCD_SendCommand(char command, unsigned long delay) {
-    LCD_DATA_LAT &= 0xFF00;
-    LCD_DATA_LAT |= command;
-    LCD_RWSignal_Clear();
-    LCD_RSSignal_Clear();
+    LCD_RWSignal_Clear(); /* select write operation */
+    LCD_RSSignal_Clear(); /* select instruction register */
+    LCD_ConfigureDataOutput();
+    LCD_WriteData(command);
     LCD_EnableSignal_Set();
-    Nop();
-    Nop();
-    Nop();
+    __delay32(18);
     LCD_EnableSignal_Clear();
     LCD_EnableSignal_Clear();
-    __delay32(delay);
+    LCD_ConfigureDataInput();
+
+    // Receive BF & AC
+    LCD_RWSignal_Set(); /* select read operation */
+    LCD_RSSignal_Clear(); /* select BF/AC register */
+    __delay32(18);
+    do {
+        LCD_EnableSignal_Set();
+        __delay32(18);
+        LCD_EnableSignal_Clear();
+        LCD_ANSWER_BF_AC = LCD_DATA_PORT & 0x00FF;
+    } while (LCD_BUSY_FLAG);
 }
 
 // </editor-fold>
