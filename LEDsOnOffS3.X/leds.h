@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LED_H
-#define LED_H
+#ifndef LEDS_H
+#define LEDS_H
 
 #define LED_D3_LAT      LATAbits.LATA0
 #define LED_D4_LAT      LATAbits.LATA1
@@ -67,4 +67,4 @@ void LED_Toggle(LED) __attribute__ ((section (".libexplorer16")));
 #define LEDs_Off() LEDs_LAT &= 0xFF00
 #define LEDs_Toggle() LEDs_LAT ^= 0x00FF
 
-#endif // LED_H
+#endif // LEDS_H
