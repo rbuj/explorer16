@@ -22,7 +22,7 @@
       </logicalFolder>
       <itemPath>app.h</itemPath>
       <itemPath>leds.h</itemPath>
-      <itemPath>../D10OnOffS3.X/buttons.h</itemPath>
+      <itemPath>buttons.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
