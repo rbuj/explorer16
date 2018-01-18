@@ -19,7 +19,7 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>app.h</itemPath>
-      <itemPath>libexplorer16.h</itemPath>
+      <itemPath>led.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

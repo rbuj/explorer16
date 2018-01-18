@@ -36,8 +36,10 @@
 #define LED_D9_TRIS     TRISAbits.TRISA6
 #define LED_D10_TRIS    TRISAbits.TRISA7    // Overlaps with S5
 
-#define INPUT  1
-#define OUTPUT 0
+#define INPUT   1
+#define OUTPUT  0
+#define LED_ON  1
+#define LED_OFF 0
 
 #include <xc.h>
 #include <stdbool.h> /* Includes true/false definition */
@@ -56,8 +58,8 @@ typedef enum {
 
 void LED_Enable(LED) __attribute__ ((section (".libexplorer16")));
 void LED_OnOff(LED, bool) __attribute__ ((section (".libexplorer16")));
-inline void LED_On(LED) __attribute__ ((section (".libexplorer16")));
-inline void LED_Off(LED) __attribute__ ((section (".libexplorer16")));
-void LED_Toggle(LED) __attribute__ ((section (".libexplorer16")));
+
+#define LED_On(LED) LED_OnOff(LED, LED_ON);
+#define LED_Off(LED) LED_OnOff(LED, LED_OFF);
 
 #endif // LED_H
