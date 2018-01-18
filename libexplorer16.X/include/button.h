@@ -14,10 +14,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#ifndef BUTTON_H
+#define BUTTON_H
+
+#include <xc.h>
 #include <stdbool.h>
 
-#ifndef BUTTONS_H
-#define BUTTONS_H
+// S1  is MCLR button
+#define S3_PORT  PORTDbits.RD6
+#define S6_PORT  PORTDbits.RD7
+#define S5_PORT  PORTAbits.RA7       // Overlaps with D10
+#define S4_PORT  PORTDbits.RD13
+
+#define S3_TRIS  TRISDbits.TRISD6
+#define S6_TRIS  TRISDbits.TRISD7
+#define S5_TRIS  TRISAbits.TRISA7
+#define S4_TRIS  TRISDbits.TRISD13
+
+#define BUTTON_PRESSED      0
+#define BUTTON_NOT_PRESSED  1
+
+#define PIN_INPUT           1
+#define PIN_OUTPUT          0
 
 typedef enum {
     BUTTON_DISABLED,
@@ -28,7 +47,8 @@ typedef enum {
     //S1 is MCLR
 } BUTTON;
 
-bool BUTTON_IsPressed(BUTTON button);
-void BUTTON_Enable(BUTTON button);
+bool BUTTON_IsPressed(BUTTON) __attribute__ ((section (".libexplorer16")));
+void BUTTON_Enable(BUTTON) __attribute__ ((section (".libexplorer16")));
+bool BUTTON_CN_Configuration(BUTTON) __attribute__ ((section (".libexplorer16")));
 
-#endif // BUTTONS_H
+#endif // BUTTON_H

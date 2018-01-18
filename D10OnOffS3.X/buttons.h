@@ -14,9 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#ifndef BUTTON_H
+#define BUTTON_H
+
 #include <xc.h>
 #include <stdbool.h>
-#include <buttons.h>
 
 // S1  is MCLR button
 #define S3_PORT  PORTDbits.RD6
@@ -35,37 +38,17 @@
 #define PIN_INPUT           1
 #define PIN_OUTPUT          0
 
-bool BUTTON_IsPressed(BUTTON button) {
-    switch (button) {
-        case BUTTON_S3:
-            return ( (S3_PORT == BUTTON_PRESSED) ? true : false);
-        case BUTTON_S6:
-            return ( (S6_PORT == BUTTON_PRESSED) ? true : false);
-        case BUTTON_S5:
-            return ( (S5_PORT == BUTTON_PRESSED) ? true : false);
-        case BUTTON_S4:
-            return ( (S4_PORT == BUTTON_PRESSED) ? true : false);
-        case BUTTON_DISABLED:
-            return false;
-    }
-    return false;
-}
+typedef enum {
+    BUTTON_DISABLED,
+    BUTTON_S3,
+    BUTTON_S6,
+    BUTTON_S5,
+    BUTTON_S4
+    //S1 is MCLR
+} BUTTON;
 
-void BUTTON_Enable(BUTTON button) {
-    switch (button) {
-        case BUTTON_S3:
-            S3_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_S6:
-            S6_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_S5:
-            S5_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_S4:
-            S4_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_DISABLED:
-            break;
-    }
-}
+bool BUTTON_IsPressed(BUTTON) __attribute__ ((section (".libexplorer16")));
+void BUTTON_Enable(BUTTON) __attribute__ ((section (".libexplorer16")));
+bool BUTTON_CN_Configuration(BUTTON) __attribute__ ((section (".libexplorer16")));
+
+#endif // BUTTON_H

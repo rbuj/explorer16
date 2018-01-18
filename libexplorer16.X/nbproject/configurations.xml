@@ -30,6 +30,7 @@
   <sourceRootList>
     <Elem>include</Elem>
     <Elem>src/led</Elem>
+    <Elem>src/button</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

@@ -18,6 +18,7 @@
 #ifndef LEDS_H
 #define LEDS_H
 
+#define LEDs_LAT        LATA
 #define LED_D3_LAT      LATAbits.LATA0
 #define LED_D4_LAT      LATAbits.LATA1
 #define LED_D5_LAT      LATAbits.LATA2
@@ -27,6 +28,7 @@
 #define LED_D9_LAT      LATAbits.LATA6
 #define LED_D10_LAT     LATAbits.LATA7      // Overlaps with S5
 
+#define LEDs_TRIS       TRISA
 #define LED_D3_TRIS     TRISAbits.TRISA0
 #define LED_D4_TRIS     TRISAbits.TRISA1
 #define LED_D5_TRIS     TRISAbits.TRISA2

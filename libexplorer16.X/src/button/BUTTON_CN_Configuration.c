@@ -14,21 +14,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdbool.h>
 
-#ifndef BUTTONS_H
-#define BUTTONS_H
+#include "../../include/button.h"
 
-typedef enum {
-    BUTTON_DISABLED,
-    BUTTON_S3,
-    BUTTON_S6,
-    BUTTON_S5,
-    BUTTON_S4
-    //S1 is MCLR
-} BUTTON;
-
-bool BUTTON_IsPressed(BUTTON button);
-void BUTTON_Enable(BUTTON button);
-
-#endif // BUTTONS_H
+bool BUTTON_CN_Configuration(BUTTON button) {
+    switch (button) {
+        case BUTTON_S3:
+            CNEN1bits.CN15IE = 1;
+            break;
+        case BUTTON_S4:
+            CNEN2bits.CN19IE = 1;
+            break;
+        case BUTTON_S5:
+#if defined(__dsPIC30F5011__)
+            CNEN2bits.CN23IE = 1; // Overlaps with D10
+#elif defined(__PIC24FJ128GA010__)
+            return false;
+#endif
+            break;
+        case BUTTON_S6:
+            CNEN2bits.CN16IE = 1;
+            break;
+        case BUTTON_DISABLED:
+            return false;
+    }
+    IEC1bits.CNIE = 1; // Enable CN interrupts
+    IFS1bits.CNIF = 0; // Reset CN interrupt
+    return true;
+}
