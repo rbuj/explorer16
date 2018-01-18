@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "leds.h"
+#include "led.h"
 #include "lcd.h"
 #include "adc.h"
 #include "timer_1ms.h"

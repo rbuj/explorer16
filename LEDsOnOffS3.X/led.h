@@ -14,20 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#ifndef LED_H
+#define LED_H
+
 #include <xc.h>
-#include <leds.h>
 
 #define LEDs_LAT        LATA
 #define LEDs_TRIS       TRISA
 
-void LEDs_Enable() {
-    LEDs_TRIS &= 0xFF00; // PORTA<7:0> as outputs
-}
+#define LEDs_Enable() LEDs_TRIS &= 0xFF00 // PORTA<7:0> as outputs
+#define LEDs_On() LEDs_LAT &= 0xFF00; LEDs_LAT += 0x00FF
+#define LEDs_Off() LEDs_LAT &= 0xFF00
+#define LEDs_Toggle() LEDs_LAT ^= 0x00FF
 
-void LEDs_Off() {
-    LEDs_LAT &= 0xFF00;
-}
-
-void LEDs_Toggle() {
-    LEDs_LAT ^= 0x00FF;
-}
+#endif // LED_H

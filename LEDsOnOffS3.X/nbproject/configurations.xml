@@ -14,17 +14,16 @@
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/adc.h</itemPath>
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/buttons.h</itemPath>
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/lcd.h</itemPath>
-            <itemPath>bsp/exp16/dspic33fj256gp710a_pim/leds.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pic24fj128ga010_pim" projectFiles="true">
             <itemPath>bsp/exp16/pic24fj128ga010_pim/adc.h</itemPath>
             <itemPath>bsp/exp16/pic24fj128ga010_pim/buttons.h</itemPath>
             <itemPath>bsp/exp16/pic24fj128ga010_pim/lcd.h</itemPath>
-            <itemPath>bsp/exp16/pic24fj128ga010_pim/leds.h</itemPath>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
       <itemPath>app.h</itemPath>
+      <itemPath>led.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -41,14 +40,12 @@
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/adc.c</itemPath>
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/lcd.c</itemPath>
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/buttons.c</itemPath>
-            <itemPath>bsp/exp16/dspic33fj256gp710a_pim/leds.c</itemPath>
             <itemPath>system_config/exp16/dspic33fj256gp710a_pim/system.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pic24fj128ga010_pim" projectFiles="true">
             <itemPath>bsp/exp16/pic24fj128ga010_pim/adc.c</itemPath>
             <itemPath>bsp/exp16/pic24fj128ga010_pim/lcd.c</itemPath>
             <itemPath>bsp/exp16/pic24fj128ga010_pim/buttons.c</itemPath>
-            <itemPath>bsp/exp16/pic24fj128ga010_pim/leds.c</itemPath>
             <itemPath>system_config/exp16/pic24fj128ga010_pim/system.c</itemPath>
           </logicalFolder>
         </logicalFolder>
@@ -473,30 +470,6 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="bsp/exp16/pic24fj128ga010_pim/leds.c" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/pic24fj128ga010_pim/leds.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
       <item path="system_config/exp16/pic24fj128ga010_pim/system.c"
             ex="true"
             overriding="false">
@@ -902,34 +875,6 @@
         </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.h"
-            ex="true"
-            overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/dspic33fj256gp710a_pim/leds.c"
-            ex="true"
-            overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/dspic33fj256gp710a_pim/leds.h"
             ex="true"
             overriding="false">
         <C30>
