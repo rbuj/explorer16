@@ -14,26 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
 
-#include <stdbool.h> /* Includes true/false definition */
+#include "../../include/led.h"
 
-typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
-
-void LED_Enable(LED);
-void LED_OnOff(LED, bool);
-inline void LED_On(LED);
-inline void LED_Off(LED);
-
-#endif // LEDS_H
+inline void LED_On(LED led) {
+    LED_OnOff(led, true);
+}

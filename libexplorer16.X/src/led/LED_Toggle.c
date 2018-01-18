@@ -14,27 +14,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
 
-#include <stdbool.h> /* Includes true/false definition */
+#include "../../include/led.h"
 
-typedef enum {
-    LED_NONE,
-    LED_D3,
-    LED_D4,
-    LED_D5,
-    LED_D6,
-    LED_D7,
-    LED_D8,
-    LED_D9,
-    LED_D10
-} LED;
-
-void LED_Enable(LED);
-void LED_OnOff(LED, bool);
-inline void LED_On(LED);
-inline void LED_Off(LED);
-void LED_Toggle(LED);
-
-#endif // LEDS_H
+void LED_Toggle(LED led) {
+    switch (led) {
+        case LED_D3:
+            LED_D3_LAT ^= 1;
+            break;
+        case LED_D4:
+            LED_D4_LAT ^= 1;
+            break;
+        case LED_D5:
+            LED_D5_LAT ^= 1;
+            break;
+        case LED_D6:
+            LED_D6_LAT ^= 1;
+            break;
+        case LED_D7:
+            LED_D7_LAT ^= 1;
+            break;
+        case LED_D8:
+            LED_D8_LAT ^= 1;
+            break;
+        case LED_D9:
+            LED_D9_LAT ^= 1;
+            break;
+        case LED_D10:
+            LED_D10_LAT ^= 1;
+            break;
+        case LED_NONE:
+            break;
+    }
+}

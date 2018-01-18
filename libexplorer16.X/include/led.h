@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LEDS_H
-#define LEDS_H
-
-#include <stdbool.h> /* Includes true/false definition */
+#ifndef LED_H
+#define LED_H
 
 #define LED_D3_LAT      LATAbits.LATA0
 #define LED_D4_LAT      LATAbits.LATA1
@@ -37,6 +35,12 @@
 #define LED_D9_TRIS     TRISAbits.TRISA6
 #define LED_D10_TRIS    TRISAbits.TRISA7    // Overlaps with S5
 
+#define INPUT  1
+#define OUTPUT 0
+
+#include <xc.h>
+#include <stdbool.h> /* Includes true/false definition */
+
 typedef enum {
     LED_NONE,
     LED_D3,
@@ -49,10 +53,10 @@ typedef enum {
     LED_D10
 } LED;
 
-void LED_Enable(LED);
-void LED_OnOff(LED, bool);
-inline void LED_On(LED);
-inline void LED_Off(LED);
-void LED_Toggle(LED);
+void LED_Enable(LED) __attribute__ ((section (".libexplorer16")));
+void LED_OnOff(LED, bool) __attribute__ ((section (".libexplorer16")));
+inline void LED_On(LED) __attribute__ ((section (".libexplorer16")));
+inline void LED_Off(LED) __attribute__ ((section (".libexplorer16")));
+void LED_Toggle(LED) __attribute__ ((section (".libexplorer16")));
 
-#endif // LEDS_H
+#endif // LED_H

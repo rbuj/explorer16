@@ -3,17 +3,15 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>D10OnOffS3</name>
-            <creation-uuid>f2026c1a-4a37-45c5-abf6-d8251b801cc8</creation-uuid>
+            <name>libexplorer16</name>
+            <creation-uuid>d7eb4fbd-35b7-4455-a57d-b5243b6e5dc0</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
-            <sourceEncoding>ISO-8859-1</sourceEncoding>
             <asminc-extensions/>
-            <make-dep-projects>
-                <make-dep-project>../libexplorer16.X</make-dep-project>
-            </make-dep-projects>
+            <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <make-dep-projects/>
         </data>
     </configuration>
 </project>
