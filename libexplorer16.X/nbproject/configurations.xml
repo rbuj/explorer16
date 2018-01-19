@@ -4,11 +4,11 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>include/led.h</itemPath>
       <itemPath>include/button.h</itemPath>
-      <itemPath>include/pmp_lcd.h</itemPath>
       <itemPath>include/lcd.h</itemPath>
       <itemPath>include/lcd_regs.h</itemPath>
+      <itemPath>include/led.h</itemPath>
+      <itemPath>include/pmp_lcd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,58 +17,54 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <logicalFolder name="f2" displayName="button" projectFiles="true">
+      <logicalFolder name="f1" displayName="button" projectFiles="true">
         <itemPath>src/button/BUTTON_CN_Configuration.c</itemPath>
         <itemPath>src/button/BUTTON_Enable.c</itemPath>
         <itemPath>src/button/BUTTON_IsPressed.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="lcd" projectFiles="true">
-        <logicalFolder name="f1" displayName="common" projectFiles="true">
-        </logicalFolder>
-        <logicalFolder name="f2" displayName="pmp" projectFiles="true">
-          <itemPath>src/pmp/lcd/LCD_ClearScreen.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Blink.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Display.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_Initialize.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_PutChar.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_PutString.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_Receive.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_ReturnHome.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_Send.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_SetDDRAMAdrress.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_SetEntryMode_CursorMoviment.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_SetEntryMode_Shift.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_SetFunctionMode.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_SetFunctionMode_DataLenght.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_SetFunctionMode_Font.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_SetFunctionMode_Lines.c</itemPath>
-          <itemPath>src/pmp/lcd/LCD_ShiftDisplayMoveCursor.c</itemPath>
-        </logicalFolder>
-        <logicalFolder name="f3" displayName="standard" projectFiles="true">
-          <itemPath>src/lcd/LCD_ClearScreen.c</itemPath>
-          <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation.c</itemPath>
-          <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation_Blink.c</itemPath>
-          <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c</itemPath>
-          <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation_Display.c</itemPath>
-          <itemPath>src/lcd/LCD_Initialize.c</itemPath>
-          <itemPath>src/lcd/LCD_PutChar.c</itemPath>
-          <itemPath>src/lcd/LCD_PutString.c</itemPath>
-          <itemPath>src/lcd/LCD_ReturnHome.c</itemPath>
-          <itemPath>src/lcd/LCD_SendCommand.c</itemPath>
-          <itemPath>src/lcd/LCD_SendData.c</itemPath>
-          <itemPath>src/lcd/LCD_SetDDRAMAdrress.c</itemPath>
-          <itemPath>src/lcd/LCD_SetEntryMode_CursorMoviment.c</itemPath>
-          <itemPath>src/lcd/LCD_SetEntryMode_Shift.c</itemPath>
-          <itemPath>src/lcd/LCD_SetFunctionMode.c</itemPath>
-          <itemPath>src/lcd/LCD_SetFunctionMode_DataLenght.c</itemPath>
-          <itemPath>src/lcd/LCD_SetFunctionMode_Font.c</itemPath>
-          <itemPath>src/lcd/LCD_SetFunctionMode_Lines.c</itemPath>
-          <itemPath>src/lcd/LCD_ShiftDisplayMoveCursor.c</itemPath>
-        </logicalFolder>
+        <itemPath>src/lcd/LCD_ClearScreen.c</itemPath>
+        <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation.c</itemPath>
+        <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation_Blink.c</itemPath>
+        <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c</itemPath>
+        <itemPath>src/lcd/LCD_DisplayCursorBlinkActivation_Display.c</itemPath>
+        <itemPath>src/lcd/LCD_Initialize.c</itemPath>
+        <itemPath>src/lcd/LCD_PutChar.c</itemPath>
+        <itemPath>src/lcd/LCD_PutString.c</itemPath>
+        <itemPath>src/lcd/LCD_ReturnHome.c</itemPath>
+        <itemPath>src/lcd/LCD_SendCommand.c</itemPath>
+        <itemPath>src/lcd/LCD_SendData.c</itemPath>
+        <itemPath>src/lcd/LCD_SetDDRAMAdrress.c</itemPath>
+        <itemPath>src/lcd/LCD_SetEntryMode_CursorMoviment.c</itemPath>
+        <itemPath>src/lcd/LCD_SetEntryMode_Shift.c</itemPath>
+        <itemPath>src/lcd/LCD_SetFunctionMode.c</itemPath>
+        <itemPath>src/lcd/LCD_SetFunctionMode_DataLenght.c</itemPath>
+        <itemPath>src/lcd/LCD_SetFunctionMode_Font.c</itemPath>
+        <itemPath>src/lcd/LCD_SetFunctionMode_Lines.c</itemPath>
+        <itemPath>src/lcd/LCD_ShiftDisplayMoveCursor.c</itemPath>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="led" projectFiles="true">
+      <logicalFolder name="f4" displayName="lcd_pmp" projectFiles="true">
+        <itemPath>src/pmp/lcd/LCD_ClearScreen.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Blink.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Display.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_Initialize.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_PutChar.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_PutString.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_Receive.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_ReturnHome.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_Send.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetDDRAMAdrress.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetEntryMode_CursorMoviment.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetEntryMode_Shift.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode_DataLenght.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode_Font.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode_Lines.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_ShiftDisplayMoveCursor.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="led" projectFiles="true">
         <itemPath>src/led/LED_Enable.c</itemPath>
         <itemPath>src/led/LED_OnOff.c</itemPath>
         <itemPath>src/led/LED_Toggle.c</itemPath>
@@ -81,11 +77,11 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>include</Elem>
-    <Elem>src/led</Elem>
     <Elem>src/button</Elem>
-    <Elem>src/pmp/lcd</Elem>
+    <Elem>src/led</Elem>
     <Elem>src/lcd</Elem>
+    <Elem>src/pmp/lcd</Elem>
+    <Elem>include</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -282,7 +278,7 @@
         <property key="memories.instruction.ram.ranges"
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.ranges" value="0-157fb"/>
+        <property key="memories.programmemory.ranges" value="0-2abff"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
@@ -301,16 +297,6 @@
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
       <item path="include/pmp_lcd.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
       </item>
       <item path="src/pmp/lcd/LCD_ClearScreen.c" ex="true" overriding="false">
       </item>
@@ -551,7 +537,7 @@
         <property key="memories.instruction.ram.ranges"
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.ranges" value="0-157fb"/>
+        <property key="memories.programmemory.ranges" value="0-2abff"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
