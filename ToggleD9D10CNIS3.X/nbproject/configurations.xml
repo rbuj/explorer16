@@ -23,8 +23,8 @@
       <itemPath>buttons.h</itemPath>
       <itemPath>pmp_lcd.h</itemPath>
       <itemPath>lcd_regs.h</itemPath>
-      <itemPath>../LEDsToggleTimer1.X/lcd_const.h</itemPath>
-      <itemPath>../LEDsToggleTimer1.X/no_pmp_lcd.h</itemPath>
+      <itemPath>no_pmp_lcd.h</itemPath>
+      <itemPath>lcd_const.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
