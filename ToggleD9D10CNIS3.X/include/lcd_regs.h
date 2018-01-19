@@ -129,7 +129,6 @@ typedef union {
     BF_ACbits_st BF_ACbits;
 } BF_AC_u;
 
-//////////////////////////////////////////////////////////////////////
 
 typedef struct {
     ENTRY_MODE_u ENTRY_MODE;
