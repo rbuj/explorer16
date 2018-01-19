@@ -60,9 +60,6 @@
   <sourceRootList>
     <Elem>bsp</Elem>
     <Elem>.</Elem>
-    <Elem>../D10FlashDelay.X</Elem>
-    <Elem>../ChronometerTimer1SOSC.X</Elem>
-    <Elem>../ClockTimer1SOSC.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

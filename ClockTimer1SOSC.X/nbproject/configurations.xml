@@ -61,8 +61,6 @@
   <sourceRootList>
     <Elem>bsp</Elem>
     <Elem>.</Elem>
-    <Elem>../ChronometerTimer1SOSC.X</Elem>
-    <Elem>../libexplorer16.X/include</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

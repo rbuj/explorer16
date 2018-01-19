@@ -60,8 +60,6 @@
   <sourceRootList>
     <Elem>bsp</Elem>
     <Elem>.</Elem>
-    <Elem>../ChronometerTimer1SOSC.X</Elem>
-    <Elem>../LEDsOnOffS3.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

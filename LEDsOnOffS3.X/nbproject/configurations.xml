@@ -57,10 +57,6 @@
   <sourceRootList>
     <Elem>bsp</Elem>
     <Elem>.</Elem>
-    <Elem>../D10OnOffS3.X</Elem>
-    <Elem>../ChronometerTimer1SOSC.X</Elem>
-    <Elem>../ClockTimer1SOSC.X</Elem>
-    <Elem>../LCDHelloWorld.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

@@ -55,7 +55,6 @@
   <sourceRootList>
     <Elem>bsp</Elem>
     <Elem>.</Elem>
-    <Elem>../ClockTimer1SOSC.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

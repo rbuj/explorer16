@@ -57,8 +57,6 @@
   <sourceRootList>
     <Elem>bsp</Elem>
     <Elem>.</Elem>
-    <Elem>../LEDsOnOffS3.X</Elem>
-    <Elem>../LEDsToggleTimer1.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
