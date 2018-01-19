@@ -56,18 +56,18 @@
 #define LCD_DATA_LAT              LATE
 #define LCD_DATA_TRIS             TRISE
 #define LCD_DATA_PORT             PORTE
-#define LCD_RSSignal_Set()        LATBbits.LATB15 = 1 //set Register Select bit
-#define LCD_RSSignal_Clear()      LATBbits.LATB15 = 0 //clear Register Select bit
-#define LCD_RWSignal_Set()        LATDbits.LATD5 = 1  //set Read/Write bit
-#define LCD_RWSignal_Clear()      LATDbits.LATD5 = 0  //clear Read/Write bit
-#define LCD_EnableSignal_Set()    LATDbits.LATD4 = 1  //set Enable bit
-#define LCD_EnableSignal_Clear()  LATDbits.LATD4 = 0  //clear Enable bit
-#define LCD_RSSignal_Input()      TRISBbits.TRISB15 = 1 //set Register Select bit
-#define LCD_RSSignal_Output()     TRISBbits.TRISB15 = 0 //clear Register Select bit
-#define LCD_RWSignal_Input()      TRISDbits.TRISD5 = 1  //set Read/Write bit
-#define LCD_RWSignal_Output()     TRISDbits.TRISD5 = 0  //clear Read/Write bit
-#define LCD_EnableSignal_Input()  TRISDbits.TRISD4 = 1  //set Enable bit
-#define LCD_EnableSignal_Output() TRISDbits.TRISD4 = 0  //clear Enable bit
+#define LCD_RSSignal_Set()        LATBbits.LATB15 = 1 /* set Register Select bit */
+#define LCD_RSSignal_Clear()      LATBbits.LATB15 = 0 /* clear Register Select bit */
+#define LCD_RWSignal_Set()        LATDbits.LATD5 = 1  /* set Read/Write bit */
+#define LCD_RWSignal_Clear()      LATDbits.LATD5 = 0  /* clear Read/Write bit */
+#define LCD_EnableSignal_Set()    LATDbits.LATD4 = 1  /* set Enable bit */
+#define LCD_EnableSignal_Clear()  LATDbits.LATD4 = 0  /* clear Enable bit */
+#define LCD_RSSignal_Input()      TRISBbits.TRISB15 = 1 /* set Register Select bit */
+#define LCD_RSSignal_Output()     TRISBbits.TRISB15 = 0 /* clear Register Select bit */
+#define LCD_RWSignal_Input()      TRISDbits.TRISD5 = 1  /* set Read/Write bit */
+#define LCD_RWSignal_Output()     TRISDbits.TRISD5 = 0  /* clear Read/Write bit */
+#define LCD_EnableSignal_Input()  TRISDbits.TRISD4 = 1  /* set Enable bit */
+#define LCD_EnableSignal_Output() TRISDbits.TRISD4 = 0  /* clear Enable bit */
 /* Configure PORTE<7:0> as outputs/ inpputs.
  * One instruction cycle is required between a port direction change.  */
 #define LCD_WriteData(d)          LCD_DATA_LAT &= 0xFF00; LCD_DATA_LAT |= d
