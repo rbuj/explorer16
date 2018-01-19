@@ -41,4 +41,3 @@ inline void LCD_SendCommand(BF_AC_u *BF_AC, char command) {
         BF_AC->REG = LCD_DATA_PORT & 0x00FF;
     } while (BF_AC->BF_ACbits.BF);
 }
-
