@@ -25,6 +25,7 @@
 #include "lcd_regs.h"
 
 #define LCD_STARTUP     120000UL // Start up delay = 30ms -> cycles for __delay32
+#define LCD_CLEANUP      6560UL // Clean up delay = 1.64ms -> cycles for __delay32
 
 #define INCREMENT          1
 #define DECREMENT          0

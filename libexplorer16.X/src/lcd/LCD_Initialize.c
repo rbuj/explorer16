@@ -40,6 +40,7 @@ bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
     LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
 
     LCD_ClearScreen(&(LCD_REGs->BF_AC));
+    __delay32(LCD_CLEANUP);
 
     return true;
 }
