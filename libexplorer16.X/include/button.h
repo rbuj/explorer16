@@ -46,7 +46,7 @@ typedef enum {
     BUTTON_S6,
     BUTTON_S5,
     BUTTON_S4
-    //S1 is MCLR
+    /* S1 is MCLR */
 } BUTTON;
 
 bool BUTTON_IsPressed(BUTTON);
