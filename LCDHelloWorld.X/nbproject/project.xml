@@ -4,13 +4,13 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>LCDHelloWorld</name>
-            <creation-uuid>f2026c1a-4a37-45c5-abf6-d8251b801cc8</creation-uuid>
+            <creation-uuid>b3783334-9bd7-4d7b-920f-a6f5096340ab</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
-            <sourceEncoding>ISO-8859-1</sourceEncoding>
             <asminc-extensions/>
+            <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../libexplorer16.X</make-dep-project>
             </make-dep-projects>
