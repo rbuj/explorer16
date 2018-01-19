@@ -17,6 +17,10 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
+#ifndef APP_H
+#define APP_H
+
+#include <xc.h>
 #include "leds.h"
 #if defined(__dsPIC33FJ256GP710A__)
 #include "no_pmp_lcd.h"
@@ -39,3 +43,5 @@ typedef struct {
 
 extern APP_DATA appData;
 extern LCD_REGs_st LCD_REGs;
+
+#endif // APP_H

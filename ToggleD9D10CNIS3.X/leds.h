@@ -20,13 +20,13 @@
 #ifndef LEDS_H
 #define LEDS_H
 
+#include <xc.h>
+#include <stdbool.h> /* Includes true/false definition */
+
 #define LEDs_LAT        LATA
 #define LEDs_TRIS       TRISA
 #define LED_ON          1
 #define LED_OFF         0
-
-#include <xc.h>
-#include <stdbool.h> /* Includes true/false definition */
 
 typedef enum {
     LED_NONE,

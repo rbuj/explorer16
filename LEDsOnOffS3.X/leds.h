@@ -20,11 +20,32 @@
 #ifndef LEDS_H
 #define LEDS_H
 
+#include <xc.h>
+#include <stdbool.h> /* Includes true/false definition */
+
 #define LEDs_LAT        LATA
 #define LEDs_TRIS       TRISA
+#define LED_ON          1
+#define LED_OFF         0
 
-#include <xc.h>
+typedef enum {
+    LED_NONE,
+    LED_D3,
+    LED_D4,
+    LED_D5,
+    LED_D6,
+    LED_D7,
+    LED_D8,
+    LED_D9,
+    LED_D10
+} LED;
 
+void LED_Enable(LED) __attribute__ ((section (".libexplorer16")));
+void LED_OnOff(LED, bool) __attribute__ ((section (".libexplorer16")));
+void LED_Toggle(LED) __attribute__ ((section (".libexplorer16")));
+
+#define LED_On(LED) LED_OnOff(LED, LED_ON);
+#define LED_Off(LED) LED_OnOff(LED, LED_OFF);
 #define LEDs_Enable() LEDs_TRIS &= 0xFF00 // PORTA<7:0> as outputs
 #define LEDs_On() LEDs_LAT &= 0xFF00; LEDs_LAT += 0x00FF
 #define LEDs_Off() LEDs_LAT &= 0xFF00

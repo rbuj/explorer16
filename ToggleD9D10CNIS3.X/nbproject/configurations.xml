@@ -24,7 +24,6 @@
       <itemPath>pmp_lcd.h</itemPath>
       <itemPath>lcd_regs.h</itemPath>
       <itemPath>no_pmp_lcd.h</itemPath>
-      <itemPath>lcd_const.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

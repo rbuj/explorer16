@@ -17,14 +17,14 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include <stdbool.h>
-#include <stdint.h>
-#include <stddef.h>
-#include <xc.h>
-
 #ifndef TIMER_1MS
 #define TIMER_1MS
 
+#include <xc.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stddef.h>
+
 bool TIMER_Configuration();
 
-#endif //TIMER_1MS
+#endif // TIMER_1MS

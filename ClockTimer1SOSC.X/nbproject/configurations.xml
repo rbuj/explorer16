@@ -24,8 +24,8 @@
       <itemPath>leds.h</itemPath>
       <itemPath>buttons.h</itemPath>
       <itemPath>pmp_lcd.h</itemPath>
-      <itemPath>lcd_const.h</itemPath>
       <itemPath>no_pmp_lcd.h</itemPath>
+      <itemPath>lcd_regs.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -57,7 +57,6 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>lcd_regs.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>bsp</Elem>

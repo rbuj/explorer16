@@ -20,6 +20,9 @@
 #ifndef LED_H
 #define LED_H
 
+#include <xc.h>
+#include <stdbool.h> /* Includes true/false definition */
+
 #define LED_D3_LAT      LATAbits.LATA0
 #define LED_D4_LAT      LATAbits.LATA1
 #define LED_D5_LAT      LATAbits.LATA2
@@ -40,9 +43,6 @@
 
 #define INPUT  1
 #define OUTPUT 0
-
-#include <xc.h>
-#include <stdbool.h> /* Includes true/false definition */
 
 typedef enum {
     LED_NONE,

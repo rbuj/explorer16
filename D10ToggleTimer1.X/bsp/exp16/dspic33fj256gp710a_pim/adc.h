@@ -20,9 +20,10 @@
 #ifndef ADC_H
 #define ADC_H
 
+#include <xc.h>
 #include <stdbool.h>
 
-/*** ADC Channel Definitions *****************************************/
+/* ADC Channel Definitions */
 #define ADC_CHANNEL_POTENTIOMETER ADC_CHANNEL_5
 #define ADC_CHANNEL_TEMPERATURE_SENSOR ADC_CHANNEL_4
 
