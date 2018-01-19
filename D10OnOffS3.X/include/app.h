@@ -25,4 +25,4 @@
 #include "adc.h"
 #include "buttons.h"
 
-#endif // APP_H
+#endif /* APP_H */

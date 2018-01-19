@@ -53,4 +53,4 @@ typedef struct {
 extern APP_DATA appData;
 extern LCD_REGs_st LCD_REGs;
 
-#endif // APP_H
+#endif /* APP_H */

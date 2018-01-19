@@ -34,4 +34,4 @@ typedef enum {
 
 bool ADC_ChannelEnable(ADC_CHANNEL channel);
 
-#endif // ADC_H
+#endif /* ADC_H */

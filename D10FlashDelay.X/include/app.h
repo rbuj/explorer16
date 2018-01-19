@@ -24,4 +24,4 @@
 #include "leds.h"
 #include "adc.h"
 
-#endif // APP_H
+#endif /* APP_H */

@@ -26,7 +26,7 @@
 #include <libpic30.h> /* Includes __delay32 */
 #include "lcd_regs.h"
 
-#define LCD_STARTUP 120000UL // Start up delay = 30ms -> cycles for __delay32
+#define LCD_STARTUP 120000UL /* Start up delay = 30ms -> cycles for __delay32 */
 
 #define INCREMENT          1
 #define DECREMENT          0
@@ -89,4 +89,4 @@ void LCD_SetFunctionMode_Lines(LCD_REGs_st *, bool) __attribute__((section(".lib
 void LCD_SetFunctionMode_Font(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
 void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char) __attribute__((section(".libexplorer16")));
 
-#endif // LCD_H
+#endif /* LCD_H */

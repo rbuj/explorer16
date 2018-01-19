@@ -27,4 +27,4 @@
 
 bool TIMER_Configuration();
 
-#endif // TIMER_1MS
+#endif /* TIMER_1MS */

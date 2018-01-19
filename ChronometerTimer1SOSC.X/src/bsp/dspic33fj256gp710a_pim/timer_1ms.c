@@ -25,7 +25,7 @@
 #endif
 
 /* Definitions *****************************************************/
-#define TMR1_PERIOD                 0x0400 // 0x0400 = 32768 / 32
+#define TMR1_PERIOD                 0x0400 /* 0x0400 = 32768 / 32 */
 #define TIMER_16BIT_MODE            0x0000
 #define TIMER_INTERRUPT_PRIORITY    0x0001
 #define TIMER_INTERRUPT_PRIORITY_4  0x0004
@@ -33,23 +33,23 @@
 /*
  * T1CON: TIMER1 CONTROL REGISTER
  */
-// TCS
+/* TCS */
 #define TIMER_SOURCE_INTERNAL       0x0000
 #define TIMER_SOURCE_EXTERNAL       0x0002
-// TSYNC (When TCS = 1)
+/* TSYNC (When TCS = 1) */
 #define ENABLE_SINC_EXTERNAL_INPUT  0x0004
 #define DISABLE_SINC_EXTERNAL_INPUT 0x0000
-// TCKPS<1:0>
+/* TCKPS<1:0> */
 #define TIMER_PRESCALER_1           0x0000
 #define TIMER_PRESCALER_8           0x0010
 #define TIMER_PRESCALER_64          0x0020
 #define TIMER_PRESCALER_256         0x0030
-// TGATE (When TCS = 0)
+/* TGATE (When TCS = 0) */
 #define GATED_TIME_DISABLED         0x0000
 #define GATED_TIME_ENABLED          0x0040
-// TSIDL
+/* TSIDL */
 #define STOP_TIMER_IN_IDLE_MODE     0x2000
-// TON
+/* TON */
 #define TIMER_ON                    0x8000
 
 bool TIMER_Configuration() {

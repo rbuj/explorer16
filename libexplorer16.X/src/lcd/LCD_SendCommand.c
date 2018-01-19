@@ -30,7 +30,7 @@ inline void LCD_SendCommand(BF_AC_u *BF_AC, char command) {
     LCD_EnableSignal_Clear();
     LCD_ConfigureDataInput();
 
-    // Receive BF & AC
+    /* Receive BF & AC */
     LCD_RWSignal_Set(); /* select read operation */
     LCD_RSSignal_Clear(); /* select BF/AC register */
     __delay32(18);

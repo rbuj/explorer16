@@ -23,10 +23,10 @@
 #include <xc.h>
 #include <stdbool.h>
 
-// S1  is MCLR button
+/* S1  is MCLR button */
 #define S3_PORT  PORTDbits.RD6
 #define S6_PORT  PORTDbits.RD7
-#define S5_PORT  PORTAbits.RA7       // Overlaps with D10
+#define S5_PORT  PORTAbits.RA7       /* Overlaps with D10 */
 #define S4_PORT  PORTDbits.RD13
 
 #define S3_TRIS  TRISDbits.TRISD6
@@ -53,4 +53,4 @@ bool BUTTON_IsPressed(BUTTON);
 void BUTTON_Enable(BUTTON);
 bool BUTTON_CN_Configuration(BUTTON);
 
-#endif // BUTTON_H
+#endif /* BUTTON_H */

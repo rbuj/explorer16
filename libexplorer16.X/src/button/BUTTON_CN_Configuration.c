@@ -29,7 +29,7 @@ bool BUTTON_CN_Configuration(BUTTON button) {
             break;
         case BUTTON_S5:
 #if defined(__dsPIC30F5011__)
-            CNEN2bits.CN23IE = 1; // Overlaps with D10
+            CNEN2bits.CN23IE = 1; /* Overlaps with D10 */
 #elif defined(__PIC24FJ128GA010__)
             return false;
 #endif
@@ -40,7 +40,7 @@ bool BUTTON_CN_Configuration(BUTTON button) {
         case BUTTON_DISABLED:
             return false;
     }
-    IEC1bits.CNIE = 1; // Enable CN interrupts
-    IFS1bits.CNIF = 0; // Reset CN interrupt
+    IEC1bits.CNIE = 1; /* Enable CN interrupts */
+    IFS1bits.CNIF = 0; /* Reset CN interrupt */
     return true;
 }

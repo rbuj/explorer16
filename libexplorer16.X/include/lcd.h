@@ -26,8 +26,8 @@
 #include <libpic30.h> /* Includes __delay32 */
 #include "lcd_regs.h"
 
-#define LCD_STARTUP     120000UL // Start up delay = 30ms -> cycles for __delay32
-#define LCD_CLEANUP      6560UL // Clean up delay = 1.64ms -> cycles for __delay32
+#define LCD_STARTUP     120000UL /* Start up delay = 30ms -> cycles for __delay32 */
+#define LCD_CLEANUP      6560UL /* Clean up delay = 1.64ms -> cycles for __delay32 */
 
 #define INCREMENT          1
 #define DECREMENT          0
@@ -117,4 +117,4 @@ void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char);
 inline void LCD_SendData(BF_AC_u *, char);
 inline void LCD_SendCommand(BF_AC_u *, char);
 
-#endif // LCD_H
+#endif /* LCD_H */

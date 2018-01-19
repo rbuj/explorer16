@@ -29,7 +29,7 @@ bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
     LCD_EnableSignal_Clear();
 
     /* Pin direction */
-    LCD_ConfigureDataInput(); // Configure the data pins as input
+    LCD_ConfigureDataInput(); /* Configure the data pins as input */
     LCD_RSSignal_Output();
     LCD_RWSignal_Output();
     LCD_EnableSignal_Output();

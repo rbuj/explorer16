@@ -22,10 +22,10 @@
 bool ADC_ChannelEnable(ADC_CHANNEL channel) {
     switch (channel) {
         case ADC_CHANNEL_5:
-            AD1PCFGLbits.PCFG5 = 0; // ensure AN5/RB5 is analog (analog pot)
+            AD1PCFGLbits.PCFG5 = 0; /* ensure AN5/RB5 is analog (analog pot) */
             return true;
         case ADC_CHANNEL_4:
-            AD1PCFGLbits.PCFG4 = 0; // ensure AN4/RB4 is analog (temp sensor)
+            AD1PCFGLbits.PCFG4 = 0; /* ensure AN4/RB4 is analog (temp sensor) */
             return true;
         default:
             return false;

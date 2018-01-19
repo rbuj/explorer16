@@ -30,7 +30,7 @@
 #define LED_D7_LAT      LATAbits.LATA4
 #define LED_D8_LAT      LATAbits.LATA5
 #define LED_D9_LAT      LATAbits.LATA6
-#define LED_D10_LAT     LATAbits.LATA7      // Overlaps with S5
+#define LED_D10_LAT     LATAbits.LATA7      /* Overlaps with S5 */
 
 #define LED_D3_TRIS     TRISAbits.TRISA0
 #define LED_D4_TRIS     TRISAbits.TRISA1
@@ -39,7 +39,7 @@
 #define LED_D7_TRIS     TRISAbits.TRISA4
 #define LED_D8_TRIS     TRISAbits.TRISA5
 #define LED_D9_TRIS     TRISAbits.TRISA6
-#define LED_D10_TRIS    TRISAbits.TRISA7    // Overlaps with S5
+#define LED_D10_TRIS    TRISAbits.TRISA7    /* Overlaps with S5 */
 
 #define INPUT  1
 #define OUTPUT 0
@@ -63,4 +63,4 @@ void LEDs_Enable();
 void LEDs_On();
 void LEDs_Off();
 
-#endif // LED_H
+#endif /* LED_H */

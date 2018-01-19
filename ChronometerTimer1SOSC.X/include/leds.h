@@ -46,9 +46,9 @@ void LED_Toggle(LED) __attribute__ ((section (".libexplorer16")));
 
 #define LED_On(LED) LED_OnOff(LED, LED_ON);
 #define LED_Off(LED) LED_OnOff(LED, LED_OFF);
-#define LEDs_Enable() LEDs_TRIS &= 0xFF00 // PORTA<7:0> as outputs
+#define LEDs_Enable() LEDs_TRIS &= 0xFF00 /* PORTA<7:0> as outputs */
 #define LEDs_On() LEDs_LAT &= 0xFF00; LEDs_LAT += 0x00FF
 #define LEDs_Off() LEDs_LAT &= 0xFF00
 #define LEDs_Toggle() LEDs_LAT ^= 0x00FF
 
-#endif // LEDS_H
+#endif /* LEDS_H */
