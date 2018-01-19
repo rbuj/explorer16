@@ -19,7 +19,6 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>app.h</itemPath>
-      <itemPath>lcd.h</itemPath>
       <itemPath>lcd_regs.h</itemPath>
       <itemPath>lcd_const.h</itemPath>
       <itemPath>no_pmp_lcd.h</itemPath>
