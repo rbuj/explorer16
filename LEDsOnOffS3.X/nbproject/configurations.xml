@@ -12,17 +12,19 @@
                          displayName="dspic33fj256gp710a_pim"
                          projectFiles="true">
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/adc.h</itemPath>
-            <itemPath>bsp/exp16/dspic33fj256gp710a_pim/lcd.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pic24fj128ga010_pim" projectFiles="true">
             <itemPath>bsp/exp16/pic24fj128ga010_pim/adc.h</itemPath>
-            <itemPath>bsp/exp16/pic24fj128ga010_pim/lcd.h</itemPath>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
       <itemPath>app.h</itemPath>
       <itemPath>leds.h</itemPath>
       <itemPath>buttons.h</itemPath>
+      <itemPath>lcd_regs.h</itemPath>
+      <itemPath>pmp_lcd.h</itemPath>
+      <itemPath>lcd_const.h</itemPath>
+      <itemPath>no_pmp_lcd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -37,12 +39,10 @@
                          displayName="dspic33fj256gp710a_pim"
                          projectFiles="true">
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/adc.c</itemPath>
-            <itemPath>bsp/exp16/dspic33fj256gp710a_pim/lcd.c</itemPath>
             <itemPath>system_config/exp16/dspic33fj256gp710a_pim/system.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pic24fj128ga010_pim" projectFiles="true">
             <itemPath>bsp/exp16/pic24fj128ga010_pim/adc.c</itemPath>
-            <itemPath>bsp/exp16/pic24fj128ga010_pim/lcd.c</itemPath>
             <itemPath>system_config/exp16/pic24fj128ga010_pim/system.c</itemPath>
           </logicalFolder>
         </logicalFolder>
@@ -59,6 +59,9 @@
     <Elem>bsp</Elem>
     <Elem>.</Elem>
     <Elem>../D10OnOffS3.X</Elem>
+    <Elem>../ChronometerTimer1SOSC.X</Elem>
+    <Elem>../ClockTimer1SOSC.X</Elem>
+    <Elem>../LCDHelloWorld.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -422,30 +425,6 @@
         </C30Global>
       </item>
       <item path="bsp/exp16/pic24fj128ga010_pim/adc.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/pic24fj128ga010_pim/lcd.c" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/pic24fj128ga010_pim/lcd.h" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -823,34 +802,6 @@
         </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/adc.h"
-            ex="true"
-            overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.c"
-            ex="true"
-            overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.h"
             ex="true"
             overriding="false">
         <C30>

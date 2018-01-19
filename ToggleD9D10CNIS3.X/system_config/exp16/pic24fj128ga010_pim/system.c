@@ -86,7 +86,7 @@ void SYS_Initialize(void) {
     ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
     /* Initialize LCD */
-    LCD_Initialize();
+    LCD_Initialize(&LCD_REGs);
 }
 
 void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {

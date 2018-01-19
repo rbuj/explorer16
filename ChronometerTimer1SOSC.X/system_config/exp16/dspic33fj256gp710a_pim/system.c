@@ -105,7 +105,7 @@ void SYS_Initialize(void) {
     ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
     /* Initialize LCD */
-    LCD_Initialize();
+    LCD_Initialize(&LCD_REGs);
 
     /* Low-Power Secondary Oscillator (SOSC) */
     __builtin_write_OSCCONL(0x02); // Continuous Secondary Oscillator Operation

@@ -16,7 +16,11 @@
  */
 
 #include "leds.h"
-#include "lcd.h"
+#if defined(__dsPIC33FJ256GP710A__)
+#include "no_pmp_lcd.h"
+#elif defined(__PIC24FJ128GA010__)
+#include "pmp_lcd.h"
+#endif
 #include "adc.h"
 #include "buttons.h"
 
@@ -32,3 +36,4 @@ typedef struct {
 } APP_DATA;
 
 extern APP_DATA appData;
+extern LCD_REGs_st LCD_REGs;

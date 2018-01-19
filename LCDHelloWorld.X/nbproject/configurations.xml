@@ -12,15 +12,17 @@
                          displayName="dspic33fj256gp710a_pim"
                          projectFiles="true">
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/adc.h</itemPath>
-            <itemPath>bsp/exp16/dspic33fj256gp710a_pim/lcd.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pic24fj128ga010_pim" projectFiles="true">
             <itemPath>bsp/exp16/pic24fj128ga010_pim/adc.h</itemPath>
-            <itemPath>bsp/exp16/pic24fj128ga010_pim/lcd.h</itemPath>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
       <itemPath>app.h</itemPath>
+      <itemPath>lcd.h</itemPath>
+      <itemPath>lcd_regs.h</itemPath>
+      <itemPath>lcd_const.h</itemPath>
+      <itemPath>no_pmp_lcd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -35,12 +37,10 @@
                          displayName="dspic33fj256gp710a_pim"
                          projectFiles="true">
             <itemPath>bsp/exp16/dspic33fj256gp710a_pim/adc.c</itemPath>
-            <itemPath>bsp/exp16/dspic33fj256gp710a_pim/lcd.c</itemPath>
             <itemPath>system_config/exp16/dspic33fj256gp710a_pim/system.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pic24fj128ga010_pim" projectFiles="true">
             <itemPath>bsp/exp16/pic24fj128ga010_pim/adc.c</itemPath>
-            <itemPath>bsp/exp16/pic24fj128ga010_pim/lcd.c</itemPath>
             <itemPath>system_config/exp16/pic24fj128ga010_pim/system.c</itemPath>
           </logicalFolder>
         </logicalFolder>
@@ -56,6 +56,7 @@
   <sourceRootList>
     <Elem>bsp</Elem>
     <Elem>.</Elem>
+    <Elem>../ClockTimer1SOSC.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -73,6 +74,23 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../libexplorer16.X"
+                            CT="3"
+                            CN="dspic33fj256gp710a_pim"
+                            AC="false"
+                            BL="true"
+                            WD="../libexplorer16.X"
+                            BC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim"
+                            DBC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/dspic33fj256gp710a_pim&quot; &quot;dist/dspic33fj256gp710a_pim&quot;"
+                            OP="dist/dspic33fj256gp710a_pim/production/libexplorer16.X.a"
+                            DOP="dist/dspic33fj256gp710a_pim/debug/libexplorer16.X.a"
+                            FL="dist/dspic33fj256gp710a_pim/production/libexplorer16.X.a"
+                            PD="dist/dspic33fj256gp710a_pim/production/libexplorer16.X.a"
+                            DD="dist/dspic33fj256gp710a_pim/debug/libexplorer16.X.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -259,7 +277,6 @@
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
@@ -414,30 +431,6 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="bsp/exp16/pic24fj128ga010_pim/lcd.c" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/pic24fj128ga010_pim/lcd.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
       <item path="system_config/exp16/pic24fj128ga010_pim/system.c"
             ex="true"
             overriding="false">
@@ -467,6 +460,23 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../libexplorer16.X"
+                            CT="3"
+                            CN="pic24fj128ga010_pim"
+                            AC="true"
+                            BL="true"
+                            WD="../libexplorer16.X"
+                            BC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim"
+                            DBC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/pic24fj128ga010_pim&quot; &quot;dist/pic24fj128ga010_pim&quot;"
+                            OP="dist/pic24fj128ga010_pim/production/libexplorer16.X.a"
+                            DOP="dist/pic24fj128ga010_pim/debug/libexplorer16.X.a"
+                            FL="dist/pic24fj128ga010_pim/production/libexplorer16.X.a"
+                            PD="dist/pic24fj128ga010_pim/production/libexplorer16.X.a"
+                            DD="dist/pic24fj128ga010_pim/debug/libexplorer16.X.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -642,7 +652,6 @@
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
@@ -788,34 +797,6 @@
         </C30Global>
       </item>
       <item path="bsp/exp16/dspic33fj256gp710a_pim/adc.h"
-            ex="true"
-            overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.c"
-            ex="true"
-            overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="bsp/exp16/dspic33fj256gp710a_pim/lcd.h"
             ex="true"
             overriding="false">
         <C30>

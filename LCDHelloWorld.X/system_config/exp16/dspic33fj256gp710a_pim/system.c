@@ -96,7 +96,7 @@ void SYS_Initialize(void) {
     ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
     /* Initialize LCD */
-    LCD_Initialize();
+    LCD_Initialize(&LCD_REGs);
 }
 
 /******************************************************************************/

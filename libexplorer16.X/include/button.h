@@ -47,8 +47,8 @@ typedef enum {
     //S1 is MCLR
 } BUTTON;
 
-bool BUTTON_IsPressed(BUTTON) __attribute__ ((section (".libexplorer16")));
-void BUTTON_Enable(BUTTON) __attribute__ ((section (".libexplorer16")));
-bool BUTTON_CN_Configuration(BUTTON) __attribute__ ((section (".libexplorer16")));
+bool BUTTON_IsPressed(BUTTON);
+void BUTTON_Enable(BUTTON);
+bool BUTTON_CN_Configuration(BUTTON);
 
 #endif // BUTTON_H

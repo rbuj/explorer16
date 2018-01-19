@@ -54,11 +54,11 @@ typedef enum {
     LED_D10
 } LED;
 
-void LED_Enable(LED) __attribute__ ((section (".libexplorer16")));
-void LED_OnOff(LED, bool) __attribute__ ((section (".libexplorer16")));
-void LED_Toggle(LED) __attribute__ ((section (".libexplorer16")));
-void LEDs_Enable() __attribute__ ((section (".libexplorer16")));
-void LEDs_On() __attribute__ ((section (".libexplorer16")));
-void LEDs_Off() __attribute__ ((section (".libexplorer16")));
+void LED_Enable(LED);
+void LED_OnOff(LED, bool);
+void LED_Toggle(LED);
+void LEDs_Enable();
+void LEDs_On();
+void LEDs_Off();
 
 #endif // LED_H

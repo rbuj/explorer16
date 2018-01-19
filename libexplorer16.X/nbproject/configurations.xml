@@ -5,6 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>include/led.h</itemPath>
+      <itemPath>include/button.h</itemPath>
+      <itemPath>include/pmp_lcd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -13,12 +15,21 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f2" displayName="button" projectFiles="true">
+        <itemPath>src/button/BUTTON_CN_Configuration.c</itemPath>
+        <itemPath>src/button/BUTTON_Enable.c</itemPath>
+        <itemPath>src/button/BUTTON_IsPressed.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="led" projectFiles="true">
         <itemPath>src/led/LED_Enable.c</itemPath>
         <itemPath>src/led/LED_OnOff.c</itemPath>
         <itemPath>src/led/LED_Toggle.c</itemPath>
-        <itemPath>src/led/LED_On.c</itemPath>
-        <itemPath>src/led/LED_Off.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="pmp_lcd" projectFiles="true">
+        <itemPath>src/pmp/lcd/LCD_Initialize.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_Send.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_ClearScreen.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_Receive.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -31,6 +42,8 @@
     <Elem>include</Elem>
     <Elem>src/led</Elem>
     <Elem>src/button</Elem>
+    <Elem>src/pmp/lcd</Elem>
+    <Elem>src/lcd</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -245,6 +258,62 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
+      <item path="include/pmp_lcd.h" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_ClearScreen.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Blink.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Display.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_Initialize.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_PutChar.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_PutString.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_Receive.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_ReturnHome.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_Send.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_SetEntryMode_CursorMoviment.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_SetEntryMode_Shift.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode.c" ex="true" overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode_DataLenght.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode_Font.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode_Lines.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/pmp/lcd/LCD_ShiftDisplayMoveCursor.c"
+            ex="true"
+            overriding="false">
+      </item>
     </conf>
     <conf name="pic24fj128ga010_pim" type="3">
       <toolsSet>
@@ -446,6 +515,54 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
+      <item path="include/lcd.h" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_ClearScreen.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_DisplayCursorBlinkActivation.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/lcd/LCD_DisplayCursorBlinkActivation_Blink.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/lcd/LCD_DisplayCursorBlinkActivation_Display.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/lcd/LCD_Initialize.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_PutChar.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_PutString.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_ReturnHome.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_SetDDRAMAdrress.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_SetEntryMode_CursorMoviment.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/lcd/LCD_SetEntryMode_Shift.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_SetFunctionMode.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_SetFunctionMode_DataLenght.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="src/lcd/LCD_SetFunctionMode_Font.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_SetFunctionMode_Lines.c" ex="true" overriding="false">
+      </item>
+      <item path="src/lcd/LCD_ShiftDisplayMoveCursor.c" ex="true" overriding="false">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

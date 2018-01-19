@@ -30,6 +30,16 @@ void SYS_Initialize(void);
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
+LCD_REGs_st LCD_REGs = {
+    .ENTRY_MODE.REG = 0x04,
+    .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
+    .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
+    .FUNCTION_MODE.REG = 0x3C,
+    .RAM_ADDR.REG = 0x40,
+    .DD_RAM_ADDR.REG = 0x80,
+    .BF_AC.REG = 0x00
+};
+
 APP_DATA appData = {
     .messageLine1 = "00:00:00\n\r",
     .messageLine2 = "S3 start/reset\n\r",
@@ -44,8 +54,8 @@ int main(void) {
     SYS_Initialize();
 
     /* Display welcome message */
-    LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
-    LCD_PutString(appData.messageLine2, sizeof (appData.messageLine2) - 1);
+    LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
+    LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof (appData.messageLine2) - 1);
 
     /* Change notification for S3 */
     BUTTON_CN_Configuration(BUTTON_S3);
@@ -63,17 +73,17 @@ int main(void) {
             appData.seconds = 0;
             appData.minutes = 0;
             /* Clear LCD & show initial message */
-            LCD_ClearScreen();
+            LCD_ClearScreen(&(LCD_REGs.BF_AC));
             sprintf(appData.messageLine1, "00:00:00\n\r");
-            LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
-            LCD_PutString(appData.messageLine2, sizeof (appData.messageLine2) - 1);
+            LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
+            LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof (appData.messageLine2) - 1);
         }
         if (appData.lcd_update_flag) {
             /* Reset software flag */
             appData.lcd_update_flag = 0;
             /* Refresh clock in LCD */
             sprintf(appData.messageLine1, "\r%02u:%02u:%02u", appData.hours, appData.minutes, appData.seconds);
-            LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
+            LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
         }
         Sleep();
     };

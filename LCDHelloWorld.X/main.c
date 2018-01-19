@@ -34,6 +34,16 @@ void SYS_Initialize(void);
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
+LCD_REGs_st LCD_REGs = {
+    .ENTRY_MODE.REG = 0x04,
+    .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
+    .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
+    .FUNCTION_MODE.REG = 0x3C,
+    .RAM_ADDR.REG = 0x40,
+    .DD_RAM_ADDR.REG = 0x80,
+    .BF_AC.REG = 0x00
+};
+
 APP_DATA appData = {
     .messageLine1 = "Explorer 16 Demo\n\r",
     .messageLine2 = "An example of printing on a LCD"
@@ -53,36 +63,36 @@ int main(void) {
     /* Infinite Loop */
     while (true) {
         /* Display welcome message */
-        LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
+        LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
         __delay_ms(2000);
 
         for (i = 0; i < 4; i++) {
-            LCD_Display_Off();
+            LCD_Display_Off(&LCD_REGs);
             __delay_ms(500);
-            LCD_Display_On();
+            LCD_Display_On(&LCD_REGs);
             __delay_ms(500);
         }
 
         size_msg = strlen(appData.messageLine2);
-        LCD_CursorBlink_On();
+        LCD_CursorBlink_On(&LCD_REGs);
         for (i = 0; i < size_msg; i++) {
-            LCD_PutChar(appData.messageLine2[i]);
+            LCD_PutChar(&LCD_REGs, appData.messageLine2[i]);
             if (i >= LCD_MAX_COLUMN - 1) {
-                LCD_ShiftDisplay_Left();
+                LCD_ShiftDisplay_Left(&LCD_REGs);
             }
             __delay_ms(500);
         }
         __delay_ms(2000);
-        LCD_CursorBlink_Off();
+        LCD_CursorBlink_Off(&LCD_REGs);
 
-        LCD_ReturnHome();
+        LCD_ReturnHome(&(LCD_REGs.BF_AC));
         __delay_ms(3000);
         for (i = 0; i < LCD_MAX_COLUMN; i++) {
-            LCD_ShiftDisplay_Right();
+            LCD_ShiftDisplay_Right(&LCD_REGs);
             __delay_ms(500);
         }
 
-        LCD_ClearScreen();
+        LCD_ClearScreen(&(LCD_REGs.BF_AC));
         __delay_ms(1000);
     };
 

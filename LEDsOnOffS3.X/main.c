@@ -29,6 +29,16 @@ void SYS_Initialize(void);
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
+LCD_REGs_st LCD_REGs = {
+    .ENTRY_MODE.REG = 0x04,
+    .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
+    .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
+    .FUNCTION_MODE.REG = 0x3C,
+    .RAM_ADDR.REG = 0x40,
+    .DD_RAM_ADDR.REG = 0x80,
+    .BF_AC.REG = 0x00
+};
+
 APP_DATA appData = {
     .messageLine1 = "Explorer 16 Demo\n\r",
     .messageLine2 = "S3: LEDs ON"
@@ -42,8 +52,8 @@ int main(void) {
     SYS_Initialize();
 
     /* Display welcome message */
-    LCD_PutString(appData.messageLine1, sizeof (appData.messageLine1) - 1);
-    LCD_PutString(appData.messageLine2, sizeof (appData.messageLine2) - 1);
+    LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
+    LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof (appData.messageLine2) - 1);
 
     /* Infinite Loop */
     while (true) {
