@@ -44,9 +44,25 @@
         <itemPath>src/lcd/LCD_ShiftDisplayMoveCursor.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="lcd_pmp" projectFiles="true">
+        <itemPath>src/pmp/lcd/LCD_ClearScreen.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Blink.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Display.c</itemPath>
         <itemPath>src/pmp/lcd/LCD_Initialize.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_PutChar.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_PutString.c</itemPath>
         <itemPath>src/pmp/lcd/LCD_Receive.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_ReturnHome.c</itemPath>
         <itemPath>src/pmp/lcd/LCD_Send.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetDDRAMAdrress.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetEntryMode_CursorMoviment.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetEntryMode_Shift.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode_DataLenght.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode_Font.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_SetFunctionMode_Lines.c</itemPath>
+        <itemPath>src/pmp/lcd/LCD_ShiftDisplayMoveCursor.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="led" projectFiles="true">
         <itemPath>src/led/LED_Enable.c</itemPath>
@@ -292,7 +308,99 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/pmp/lcd/LCD_ClearScreen.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Blink.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_DisplayCursorBlinkActivation_Display.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/pmp/lcd/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_PutChar.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_PutString.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -316,7 +424,125 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/pmp/lcd/LCD_ReturnHome.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/pmp/lcd/LCD_Send.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_SetDDRAMAdrress.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_SetEntryMode_CursorMoviment.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_SetEntryMode_Shift.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode_DataLenght.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode_Font.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_SetFunctionMode_Lines.c"
+            ex="true"
+            overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/pmp/lcd/LCD_ShiftDisplayMoveCursor.c"
+            ex="true"
+            overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -541,7 +767,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_ClearScreen.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_ClearScreen.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -554,7 +780,7 @@
         </C30Global>
       </item>
       <item path="src/lcd/LCD_DisplayCursorBlinkActivation.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C30>
         </C30>
@@ -568,7 +794,7 @@
         </C30Global>
       </item>
       <item path="src/lcd/LCD_DisplayCursorBlinkActivation_Blink.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C30>
         </C30>
@@ -582,7 +808,7 @@
         </C30Global>
       </item>
       <item path="src/lcd/LCD_DisplayCursorBlinkActivation_Cursor.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C30>
         </C30>
@@ -596,7 +822,7 @@
         </C30Global>
       </item>
       <item path="src/lcd/LCD_DisplayCursorBlinkActivation_Display.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C30>
         </C30>
@@ -621,7 +847,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_PutChar.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_PutChar.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -633,7 +859,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_PutString.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_PutString.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -645,7 +871,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_ReturnHome.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_ReturnHome.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -681,7 +907,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_SetDDRAMAdrress.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_SetDDRAMAdrress.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -694,7 +920,7 @@
         </C30Global>
       </item>
       <item path="src/lcd/LCD_SetEntryMode_CursorMoviment.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C30>
         </C30>
@@ -707,7 +933,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_SetEntryMode_Shift.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_SetEntryMode_Shift.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -719,7 +945,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_SetFunctionMode.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_SetFunctionMode.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -732,7 +958,7 @@
         </C30Global>
       </item>
       <item path="src/lcd/LCD_SetFunctionMode_DataLenght.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C30>
         </C30>
@@ -745,7 +971,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_SetFunctionMode_Font.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_SetFunctionMode_Font.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -757,7 +983,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_SetFunctionMode_Lines.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_SetFunctionMode_Lines.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -769,7 +995,7 @@
         <C30Global>
         </C30Global>
       </item>
-      <item path="src/lcd/LCD_ShiftDisplayMoveCursor.c" ex="false" overriding="false">
+      <item path="src/lcd/LCD_ShiftDisplayMoveCursor.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
