@@ -135,7 +135,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="include;src/bsp/dspic33fj256gp710a_pim;../include"/>
+                  value="include;src/bsp/dspic33fj256gp710a_pim;../usr/include/libexplorer16"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -431,7 +431,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="include;src/bsp/pic24fj128ga010_pim;../include"/>
+                  value="include;src/bsp/pic24fj128ga010_pim;../usr/include/libexplorer16"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
