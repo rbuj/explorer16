@@ -15,11 +15,6 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>include/app.h</itemPath>
-      <itemPath>include/buttons.h</itemPath>
-      <itemPath>include/lcd_regs.h</itemPath>
-      <itemPath>include/leds.h</itemPath>
-      <itemPath>include/no_pmp_lcd.h</itemPath>
-      <itemPath>include/pmp_lcd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -136,7 +131,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="include;src/bsp/dspic33fj256gp710a_pim"/>
+                  value="include;src/bsp/dspic33fj256gp710a_pim;../include"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -297,18 +292,6 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
-      <item path="include/pmp_lcd.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
       <item path="src/bsp/pic24fj128ga010_pim/adc.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -416,7 +399,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="include;src/bsp/pic24fj128ga010_pim"/>
+                  value="include;src/bsp/pic24fj128ga010_pim;../include"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -506,9 +489,8 @@
       </C30Global>
       <ICD3PlatformTool>
         <property key="ADC 1" value="true"/>
-        <property key="ADC 2" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="DCI" value="true"/>
+        <property key="CRC" value="true"/>
         <property key="Freeze All Other Peripherals" value="true"/>
         <property key="I2C1" value="true"/>
         <property key="I2C2" value="true"/>
@@ -517,17 +499,11 @@
         <property key="INPUT CAPTURE 3" value="true"/>
         <property key="INPUT CAPTURE 4" value="true"/>
         <property key="INPUT CAPTURE 5" value="true"/>
-        <property key="INPUT CAPTURE 6" value="true"/>
-        <property key="INPUT CAPTURE 7" value="true"/>
-        <property key="INPUT CAPTURE 8" value="true"/>
         <property key="OUTPUT COMPARE 1" value="true"/>
         <property key="OUTPUT COMPARE 2" value="true"/>
         <property key="OUTPUT COMPARE 3" value="true"/>
         <property key="OUTPUT COMPARE 4" value="true"/>
         <property key="OUTPUT COMPARE 5" value="true"/>
-        <property key="OUTPUT COMPARE 6" value="true"/>
-        <property key="OUTPUT COMPARE 7" value="true"/>
-        <property key="OUTPUT COMPARE 8" value="true"/>
         <property key="SPI 1" value="true"/>
         <property key="SPI 2" value="true"/>
         <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
@@ -536,10 +512,6 @@
         <property key="TIMER3" value="true"/>
         <property key="TIMER4" value="true"/>
         <property key="TIMER5" value="true"/>
-        <property key="TIMER6" value="true"/>
-        <property key="TIMER7" value="true"/>
-        <property key="TIMER8" value="true"/>
-        <property key="TIMER9" value="true"/>
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
@@ -577,18 +549,6 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
-      <item path="include/no_pmp_lcd.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
       <item path="src/bsp/dspic33fj256gp710a_pim/adc.c" ex="true" overriding="false">
         <C30>
         </C30>
