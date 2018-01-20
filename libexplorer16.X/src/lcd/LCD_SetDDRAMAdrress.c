@@ -20,6 +20,6 @@
 #include "../../include/lcd.h"
 
 void LCD_SetDDRAMAdrress(LCD_REGs_st *LCD_REGs, unsigned char address) {
-    LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR = address;
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
+   LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR = address;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
 }

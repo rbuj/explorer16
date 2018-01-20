@@ -20,6 +20,6 @@
 #include "../../include/lcd.h"
 
 void LCD_SetFunctionMode_Lines(LCD_REGs_st *LCD_REGs, bool twoLines) {
-    LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.N = twoLines;
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
+   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.N = twoLines;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
 }

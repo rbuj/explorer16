@@ -20,20 +20,20 @@
 #include "../../include/button.h"
 
 void BUTTON_Enable(BUTTON button) {
-    switch (button) {
-        case BUTTON_S3:
-            S3_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_S6:
-            S6_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_S5:
-            S5_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_S4:
-            S4_TRIS = PIN_INPUT;
-            break;
-        case BUTTON_DISABLED:
-            break;
-    }
+   switch (button) {
+      case BUTTON_S3:
+         S3_TRIS = PIN_INPUT;
+         break;
+      case BUTTON_S6:
+         S6_TRIS = PIN_INPUT;
+         break;
+      case BUTTON_S5:
+         S5_TRIS = PIN_INPUT;
+         break;
+      case BUTTON_S4:
+         S4_TRIS = PIN_INPUT;
+         break;
+      case BUTTON_DISABLED:
+         break;
+   }
 }

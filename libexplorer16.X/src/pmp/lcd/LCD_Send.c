@@ -20,8 +20,8 @@
 #include "../../../include/pmp_lcd.h"
 
 inline void LCD_Send(BF_AC_u *BF_AC, uint16_t address, char content) {
-    LCD_WaitUntilPMPIsNotBusy();
-    PMADDR = address;
-    PMDIN1 = content;
-    LCD_WaitUntilLCDIsNotBusy(BF_AC);
+   LCD_WaitUntilPMPIsNotBusy();
+   PMADDR = address;
+   PMDIN1 = content;
+   LCD_WaitUntilLCDIsNotBusy(BF_AC);
 }

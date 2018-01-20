@@ -20,26 +20,26 @@
 #include "../../include/lcd.h"
 
 void LCD_PutChar(LCD_REGs_st *LCD_REGs, char inputCharacter) {
-    switch (inputCharacter) {
-        case '\r':
-            if (LCD_REGs->BF_AC.BF_ACbits.AC >= 40) {
-                LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_OFFSETbits.OFFSET = 0;
-            } else {
-                LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_OFFSETbits.OFFSET = 40;
-            }
-            LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
-            break;
-        case '\n':
-            LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDRbits.COL ^= 1;
-            LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
-            break;
-        case '\b':
-            LCD_MoveCursor_Left(LCD_REGs);
-            LCD_PutChar(LCD_REGs, ' ');
-            LCD_MoveCursor_Left(LCD_REGs);
-            break;
-        default:
-            LCD_SendData(&(LCD_REGs->BF_AC), inputCharacter);
-            break;
-    }
+   switch (inputCharacter) {
+      case '\r':
+         if (LCD_REGs->BF_AC.BF_ACbits.AC >= 40) {
+            LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_OFFSETbits.OFFSET = 0;
+         } else {
+            LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_OFFSETbits.OFFSET = 40;
+         }
+         LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
+         break;
+      case '\n':
+         LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDRbits.COL ^= 1;
+         LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
+         break;
+      case '\b':
+         LCD_MoveCursor_Left(LCD_REGs);
+         LCD_PutChar(LCD_REGs, ' ');
+         LCD_MoveCursor_Left(LCD_REGs);
+         break;
+      default:
+         LCD_SendData(&(LCD_REGs->BF_AC), inputCharacter);
+         break;
+   }
 }

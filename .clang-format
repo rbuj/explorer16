@@ -1,0 +1,73 @@
+# -*- yaml -*-
+
+# This file determines clang-format's style settings; for details, refer to
+# http://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+BasedOnStyle:  Google
+
+Language: Cpp
+
+# Specify the #include statement order.  This implements the order mandated by
+# the Google C++ Style Guide: related header, C headers, C++ headers, library
+# headers, and finally the project headers.
+#
+# To obtain updated lists of system headers used in the below expressions, see:
+# http://stackoverflow.com/questions/2027991/list-of-standard-header-files-in-c-and-c/2029106#2029106.
+IncludeCategories:
+  # Spacers used by drake/tools/formatter.py.
+  - Regex:    '^<clang-format-priority-15>$'
+    Priority: 15
+  - Regex:    '^<clang-format-priority-25>$'
+    Priority: 25
+  - Regex:    '^<clang-format-priority-35>$'
+    Priority: 35
+  - Regex:    '^<clang-format-priority-45>$'
+    Priority: 45
+  # C system headers.
+  - Regex:    '^[<"](aio|arpa/inet|assert|complex|cpio|ctype|curses|dirent|dlfcn|errno|fcntl|fenv|float|fmtmsg|fnmatch|ftw|glob|grp|iconv|inttypes|iso646|langinfo|libgen|limits|locale|math|monetary|mqueue|ndbm|netdb|net/if|netinet/in|netinet/tcp|nl_types|poll|pthread|pwd|regex|sched|search|semaphore|setjmp|signal|spawn|stdalign|stdarg|stdatomic|stdbool|stddef|stdint|stdio|stdlib|stdnoreturn|string|strings|stropts|sys/ipc|syslog|sys/mman|sys/msg|sys/resource|sys/select|sys/sem|sys/shm|sys/socket|sys/stat|sys/statvfs|sys/time|sys/times|sys/types|sys/uio|sys/un|sys/utsname|sys/wait|tar|term|termios|tgmath|threads|time|trace|uchar|ulimit|uncntrl|unistd|utime|utmpx|wchar|wctype|wordexp)\.h[">]$'
+    Priority: 20
+  # C++ system headers (xc16).
+  - Regex:    '^[<"](xc)\.h[">]$'
+    Priority: 10
+  # Other libraries' h files (with angles).
+  - Regex:    '^<.*'
+    Priority: 40
+  # Other libraries' h files (with quotes).
+  - Regex:    '^"'
+    Priority: 41
+
+ColumnLimit: 120
+AlignConsecutiveDeclarations: true
+AlignEscapedNewlines: Left
+AlignTrailingComments: true
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+AlwaysBreakBeforeMultilineStrings: false
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: false
+  AfterControlStatement: false
+  AfterUnion: false
+  AfterStruct: false
+  AfterEnum: false
+  
+IndentCaseLabels: true
+
+IndentWidth: 3
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+PointerAlignment: Left
+ReflowComments: false
+SpaceAfterCStyleCast: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 3
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+NamespaceIndentation: All
+SpaceAfterTemplateKeyword: false

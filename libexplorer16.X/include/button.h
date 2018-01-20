@@ -24,29 +24,29 @@
 #include <stdbool.h>
 
 /* S1  is MCLR button */
-#define S3_PORT  PORTDbits.RD6
-#define S6_PORT  PORTDbits.RD7
-#define S5_PORT  PORTAbits.RA7       /* Overlaps with D10 */
-#define S4_PORT  PORTDbits.RD13
+#define S3_PORT PORTDbits.RD6
+#define S6_PORT PORTDbits.RD7
+#define S5_PORT PORTAbits.RA7 /* Overlaps with D10 */
+#define S4_PORT PORTDbits.RD13
 
-#define S3_TRIS  TRISDbits.TRISD6
-#define S6_TRIS  TRISDbits.TRISD7
-#define S5_TRIS  TRISAbits.TRISA7
-#define S4_TRIS  TRISDbits.TRISD13
+#define S3_TRIS TRISDbits.TRISD6
+#define S6_TRIS TRISDbits.TRISD7
+#define S5_TRIS TRISAbits.TRISA7
+#define S4_TRIS TRISDbits.TRISD13
 
-#define BUTTON_PRESSED      0
-#define BUTTON_NOT_PRESSED  1
+#define BUTTON_PRESSED 0
+#define BUTTON_NOT_PRESSED 1
 
-#define PIN_INPUT           1
-#define PIN_OUTPUT          0
+#define PIN_INPUT 1
+#define PIN_OUTPUT 0
 
 typedef enum {
-    BUTTON_DISABLED,
-    BUTTON_S3,
-    BUTTON_S6,
-    BUTTON_S5,
-    BUTTON_S4
-    /* S1 is MCLR */
+   BUTTON_DISABLED,
+   BUTTON_S3,
+   BUTTON_S6,
+   BUTTON_S5,
+   BUTTON_S4
+   /* S1 is MCLR */
 } BUTTON;
 
 bool BUTTON_IsPressed(BUTTON);

@@ -20,32 +20,32 @@
 #include "../../include/led.h"
 
 void LED_Enable(LED led) {
-    switch (led) {
-        case LED_D3:
-            LED_D3_TRIS = OUTPUT;
-            break;
-        case LED_D4:
-            LED_D4_TRIS = OUTPUT;
-            break;
-        case LED_D5:
-            LED_D5_TRIS = OUTPUT;
-            break;
-        case LED_D6:
-            LED_D6_TRIS = OUTPUT;
-            break;
-        case LED_D7:
-            LED_D7_TRIS = OUTPUT;
-            break;
-        case LED_D8:
-            LED_D8_TRIS = OUTPUT;
-            break;
-        case LED_D9:
-            LED_D9_TRIS = OUTPUT;
-            break;
-        case LED_D10:
-            LED_D10_TRIS = OUTPUT;
-            break;
-        case LED_NONE:
-            break;
-    }
+   switch (led) {
+      case LED_D3:
+         LED_D3_TRIS = OUTPUT;
+         break;
+      case LED_D4:
+         LED_D4_TRIS = OUTPUT;
+         break;
+      case LED_D5:
+         LED_D5_TRIS = OUTPUT;
+         break;
+      case LED_D6:
+         LED_D6_TRIS = OUTPUT;
+         break;
+      case LED_D7:
+         LED_D7_TRIS = OUTPUT;
+         break;
+      case LED_D8:
+         LED_D8_TRIS = OUTPUT;
+         break;
+      case LED_D9:
+         LED_D9_TRIS = OUTPUT;
+         break;
+      case LED_D10:
+         LED_D10_TRIS = OUTPUT;
+         break;
+      case LED_NONE:
+         break;
+   }
 }

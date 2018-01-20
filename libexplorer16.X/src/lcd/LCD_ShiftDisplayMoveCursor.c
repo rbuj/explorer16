@@ -20,7 +20,7 @@
 #include "../../include/lcd.h"
 
 void LCD_ShiftDisplayMoveCursor(LCD_REGs_st *LCD_REGs, bool shiftDisplayCursor, bool rightLeft) {
-    LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.SHIFT_DISPLAY_MOVE_CURSORbits.SC = shiftDisplayCursor;
-    LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.SHIFT_DISPLAY_MOVE_CURSORbits.RL = rightLeft;
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.REG);
+   LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.SHIFT_DISPLAY_MOVE_CURSORbits.SC = shiftDisplayCursor;
+   LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.SHIFT_DISPLAY_MOVE_CURSORbits.RL = rightLeft;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.REG);
 }

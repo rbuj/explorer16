@@ -18,25 +18,27 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include <xc.h>
-#include <stdlib.h> /* Includes EXIT_SUCCESS definition */
-#include <stddef.h> /* Includes the type yielded by sizeof */
 #include <stdbool.h> /* Includes true/false definition */
+#include <stddef.h>  /* Includes the type yielded by sizeof */
+#include <stdlib.h>  /* Includes EXIT_SUCCESS definition */
 #include "app.h"
 
 void SYS_Initialize(void);
 
 /* Main Program */
 int main(void) {
-    /* Call the System Initialize routine */
-    SYS_Initialize();
+   /* Call the System Initialize routine */
+   SYS_Initialize();
 
-    /* Infinite Loop */
-    while (true) {
-        while (!BUTTON_IsPressed(BUTTON_S3));
-        LED_On(LED_D10);
-        while (BUTTON_IsPressed(BUTTON_S3));
-        LED_Off(LED_D10);
-    };
+   /* Infinite Loop */
+   while (true) {
+      while (!BUTTON_IsPressed(BUTTON_S3))
+         ;
+      LED_On(LED_D10);
+      while (BUTTON_IsPressed(BUTTON_S3))
+         ;
+      LED_Off(LED_D10);
+   };
 
-    return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }

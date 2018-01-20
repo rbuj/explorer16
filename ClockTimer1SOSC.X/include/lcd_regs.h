@@ -26,118 +26,120 @@
 /* ENTRY_MODE */
 
 typedef struct {
-    unsigned S : 1; /* S = 1 : Display Shift On. S = 0 : Display Shift Off. */
-    unsigned ID : 1; /* ID = 1 : Increment. ID = 0 : Decrement. */
-    unsigned : 6;
+   unsigned S : 1;  /* S = 1 : Display Shift On. S = 0 : Display Shift Off. */
+   unsigned ID : 1; /* ID = 1 : Increment. ID = 0 : Decrement. */
+   unsigned : 6;
 } ENTRY_MODEbits_st;
 
 typedef union {
-    unsigned char REG;
-    ENTRY_MODEbits_st ENTRY_MODEbits;
+   unsigned char     REG;
+   ENTRY_MODEbits_st ENTRY_MODEbits;
 } ENTRY_MODE_u;
 
 /* DISPLAY_CURSOR_BLINK_ACT */
 
 typedef struct {
-    unsigned B : 1; /* Blink. B = 1 : Cursor Blink On. Blink. B = 0 : Cursor Blink Off. */
-    unsigned C : 1; /* Cursor. C = 1 : Cursor Display On. C = 0 : Cursor Display Off. */
-    unsigned D : 1; /* Display. D = 1 : Display On. D = 1 : Display Off. */
-    unsigned : 5;
+   unsigned B : 1; /* Blink. B = 1 : Cursor Blink On. Blink. B = 0 : Cursor Blink
+                Off. */
+   unsigned C : 1; /* Cursor. C = 1 : Cursor Display On. C = 0 : Cursor Display
+                     Off. */
+   unsigned D : 1; /* Display. D = 1 : Display On. D = 1 : Display Off. */
+   unsigned : 5;
 } DISPLAY_CURSOR_BLINK_ACTbits_st;
 
 typedef union {
-    unsigned char REG;
-    DISPLAY_CURSOR_BLINK_ACTbits_st DISPLAY_CURSOR_BLINK_ACTbits;
+   unsigned char                   REG;
+   DISPLAY_CURSOR_BLINK_ACTbits_st DISPLAY_CURSOR_BLINK_ACTbits;
 } DISPLAY_CURSOR_BLINK_ACT_u;
 
 /* SHIFT_DISPLAY_MOVE_CURSOR */
 
 typedef struct {
-    unsigned : 2;
-    unsigned RL : 1; /* RL = 1 : Shift Right. RL = 0 : Shift Left. */
-    unsigned SC : 1; /* SC = 1 : Shift Display. S/C = 0 : Move Cursor. */
-    unsigned : 4;
+   unsigned : 2;
+   unsigned RL : 1; /* RL = 1 : Shift Right. RL = 0 : Shift Left. */
+   unsigned SC : 1; /* SC = 1 : Shift Display. S/C = 0 : Move Cursor. */
+   unsigned : 4;
 } SHIFT_DISPLAY_MOVE_CURSORbits_st;
 
 typedef union {
-    unsigned char REG;
-    SHIFT_DISPLAY_MOVE_CURSORbits_st SHIFT_DISPLAY_MOVE_CURSORbits;
+   unsigned char                    REG;
+   SHIFT_DISPLAY_MOVE_CURSORbits_st SHIFT_DISPLAY_MOVE_CURSORbits;
 } SHIFT_DISPLAY_MOVE_CURSOR_u;
 
 /* FUNCTION_MODE */
 
 typedef struct {
-    unsigned : 2;
-    unsigned F : 1; /* character font. F = 1 : 5x10 dots. F = 0 : 5X8 dots. */
-    unsigned N : 1; /* Number of display line. N = 1 : DualLine. N =0 : SignalLine. */
-    unsigned DL : 1; /* Data Length. DL = 1 : 8-Bit. DL = 0 : 4-Bit. */
-    unsigned : 3;
+   unsigned : 2;
+   unsigned F : 1;  /* character font. F = 1 : 5x10 dots. F = 0 : 5X8 dots. */
+   unsigned N : 1;  /* Number of display line. N = 1 : DualLine. N =0 :
+                      SignalLine. */
+   unsigned DL : 1; /* Data Length. DL = 1 : 8-Bit. DL = 0 : 4-Bit. */
+   unsigned : 3;
 } FUNCTION_MODEbits_st;
 
 typedef union {
-    unsigned char REG;
-    FUNCTION_MODEbits_st FUNCTION_MODEbits;
+   unsigned char        REG;
+   FUNCTION_MODEbits_st FUNCTION_MODEbits;
 } FUNCTION_MODE_u;
 
 /* RAM_ADDR */
 
 typedef struct {
-    unsigned ADDR : 6;
-    unsigned : 2;
+   unsigned ADDR : 6;
+   unsigned : 2;
 } RAM_ADDRbits_st;
 
 typedef union {
-    unsigned char REG;
-    RAM_ADDRbits_st RAM_ADDRbits;
+   unsigned char   REG;
+   RAM_ADDRbits_st RAM_ADDRbits;
 } RAM_ADDR_u;
 
 /* SET_DD_RAM_ADDR */
 
 typedef struct {
-    unsigned COL : 4;
-    unsigned BLK : 2;
-    unsigned ROW : 1;
-    unsigned : 1;
+   unsigned COL : 4;
+   unsigned BLK : 2;
+   unsigned ROW : 1;
+   unsigned : 1;
 } DD_RAM_ADDRbits_st;
 
 typedef struct {
-    unsigned OFFSET : 6;
-    unsigned : 2;
+   unsigned OFFSET : 6;
+   unsigned : 2;
 } DD_RAM_ADDR_OFFSETbits_st;
 
 typedef struct {
-    unsigned ADDR : 7;
-    unsigned : 1;
+   unsigned ADDR : 7;
+   unsigned : 1;
 } DD_RAM_ADDR_ADDRRESSbits_st;
 
 typedef union {
-    unsigned char REG;
-    DD_RAM_ADDRbits_st DD_RAM_ADDRbits;
-    DD_RAM_ADDR_OFFSETbits_st DD_RAM_ADDR_OFFSETbits;
-    DD_RAM_ADDR_ADDRRESSbits_st DD_RAM_ADDR_ADDRRESSbits;
+   unsigned char               REG;
+   DD_RAM_ADDRbits_st          DD_RAM_ADDRbits;
+   DD_RAM_ADDR_OFFSETbits_st   DD_RAM_ADDR_OFFSETbits;
+   DD_RAM_ADDR_ADDRRESSbits_st DD_RAM_ADDR_ADDRRESSbits;
 } DD_RAM_ADDR_u;
 
 /* BF_AC */
 
 typedef struct {
-    unsigned AC : 7;
-    unsigned BF : 1;
+   unsigned AC : 7;
+   unsigned BF : 1;
 } BF_ACbits_st;
 
 typedef union {
-    unsigned char REG;
-    BF_ACbits_st BF_ACbits;
+   unsigned char REG;
+   BF_ACbits_st  BF_ACbits;
 } BF_AC_u;
 
-
 typedef struct {
-    ENTRY_MODE_u ENTRY_MODE;
-    DISPLAY_CURSOR_BLINK_ACT_u DISPLAY_CURSOR_BLINK_ACT;
-    SHIFT_DISPLAY_MOVE_CURSOR_u SHIFT_DISPLAY_MOVE_CURSOR;
-    FUNCTION_MODE_u FUNCTION_MODE;
-    RAM_ADDR_u RAM_ADDR;
-    DD_RAM_ADDR_u DD_RAM_ADDR;
-    BF_AC_u BF_AC;
+   ENTRY_MODE_u                ENTRY_MODE;
+   DISPLAY_CURSOR_BLINK_ACT_u  DISPLAY_CURSOR_BLINK_ACT;
+   SHIFT_DISPLAY_MOVE_CURSOR_u SHIFT_DISPLAY_MOVE_CURSOR;
+   FUNCTION_MODE_u             FUNCTION_MODE;
+   RAM_ADDR_u                  RAM_ADDR;
+   DD_RAM_ADDR_u               DD_RAM_ADDR;
+   BF_AC_u                     BF_AC;
 } LCD_REGs_st;
 
 #endif /* LCD_REGS_H */

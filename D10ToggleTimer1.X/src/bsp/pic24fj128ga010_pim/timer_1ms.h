@@ -22,8 +22,8 @@
 
 #include <xc.h>
 #include <stdbool.h>
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 bool TIMER_Configuration();
 

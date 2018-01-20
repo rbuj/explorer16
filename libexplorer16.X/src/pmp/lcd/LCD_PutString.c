@@ -19,14 +19,14 @@
 
 #include "../../../include/pmp_lcd.h"
 
-void LCD_PutString(LCD_REGs_st *LCD_REGs, char* inputString, uint16_t length) {
-    while (length--) {
-        switch (*inputString) {
-            case 0x00:
-                return;
-            default:
-                LCD_PutChar(LCD_REGs, *inputString++);
-                break;
-        }
-    }
+void LCD_PutString(LCD_REGs_st* LCD_REGs, char* inputString, uint16_t length) {
+   while (length--) {
+      switch (*inputString) {
+         case 0x00:
+            return;
+         default:
+            LCD_PutChar(LCD_REGs, *inputString++);
+            break;
+      }
+   }
 }

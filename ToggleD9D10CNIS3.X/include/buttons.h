@@ -24,16 +24,16 @@
 #include <stdbool.h>
 
 typedef enum {
-    BUTTON_DISABLED,
-    BUTTON_S3,
-    BUTTON_S6,
-    BUTTON_S5,
-    BUTTON_S4
-    /* S1 is MCLR */
+   BUTTON_DISABLED,
+   BUTTON_S3,
+   BUTTON_S6,
+   BUTTON_S5,
+   BUTTON_S4
+   /* S1 is MCLR */
 } BUTTON;
 
-bool BUTTON_IsPressed(BUTTON) __attribute__ ((section (".libexplorer16")));
-void BUTTON_Enable(BUTTON) __attribute__ ((section (".libexplorer16")));
-bool BUTTON_CN_Configuration(BUTTON) __attribute__ ((section (".libexplorer16")));
+bool BUTTON_IsPressed(BUTTON) __attribute__((section(".libexplorer16")));
+void BUTTON_Enable(BUTTON) __attribute__((section(".libexplorer16")));
+bool BUTTON_CN_Configuration(BUTTON) __attribute__((section(".libexplorer16")));
 
 #endif /* BUTTON_H */

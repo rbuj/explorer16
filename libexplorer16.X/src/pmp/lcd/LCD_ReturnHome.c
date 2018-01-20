@@ -20,5 +20,5 @@
 #include "../../../include/pmp_lcd.h"
 
 void LCD_ReturnHome(BF_AC_u *BF_AC) {
-    LCD_SendCommand(BF_AC, LCD_COMMAND_RETURN_HOME);
+   LCD_SendCommand(BF_AC, LCD_COMMAND_RETURN_HOME);
 }

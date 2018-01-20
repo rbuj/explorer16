@@ -18,23 +18,16 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include <xc.h>
-#include <stdlib.h> /* Includes EXIT_SUCCESS definition */
-#include <stddef.h> /* Includes the type yielded by sizeof */
 #include <stdbool.h> /* Includes true/false definition */
+#include <stddef.h>  /* Includes the type yielded by sizeof */
+#include <stdlib.h>  /* Includes EXIT_SUCCESS definition */
 #include "app.h"
 
 void SYS_Initialize(void);
 
 /* Global Variable Declaration */
 LCD_REGs_st LCD_REGs = {
-    .ENTRY_MODE.REG = 0x04,
-    .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
-    .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
-    .FUNCTION_MODE.REG = 0x3C,
-    .RAM_ADDR.REG = 0x40,
-    .DD_RAM_ADDR.REG = 0x80,
-    .BF_AC.REG = 0x00
-};
+    .ENTRY_MODE.REG = 0x04, .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C, .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10, .FUNCTION_MODE.REG = 0x3C, .RAM_ADDR.REG = 0x40, .DD_RAM_ADDR.REG = 0x80, .BF_AC.REG = 0x00};
 
 APP_DATA appData = {
     .messageLine1 = "Explorer 16 Demo\n\r",
@@ -43,21 +36,21 @@ APP_DATA appData = {
 
 /* Main Program */
 int main(void) {
-    /* Call the System Initialize routine*/
-    SYS_Initialize();
+   /* Call the System Initialize routine*/
+   SYS_Initialize();
 
-    /* Display welcome message */
-    LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
-    LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof (appData.messageLine2) - 1);
+   /* Display welcome message */
+   LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof(appData.messageLine1) - 1);
+   LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof(appData.messageLine2) - 1);
 
-    /* Initialize Timer */
-    TIMER_Configuration();
+   /* Initialize Timer */
+   TIMER_Configuration();
 
-    /* Infinite Loop */
-    while (true) {
-        Sleep();
-        LED_Toggle(LED_D9); /* Toggle LED at 1 Hz rate */
-    };
+   /* Infinite Loop */
+   while (true) {
+      Sleep();
+      LED_Toggle(LED_D9); /* Toggle LED at 1 Hz rate */
+   };
 
-    return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }

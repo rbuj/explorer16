@@ -20,6 +20,6 @@
 #include "../../../include/pmp_lcd.h"
 
 void LCD_SetIncCursor_CursorMoviment(LCD_REGs_st *LCD_REGs, bool incdec) {
-    LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.ID = incdec;
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+   LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.ID = incdec;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
 }

@@ -18,24 +18,17 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include <xc.h>
-#include <stdio.h>  /* Includes EXIT_SUCCESS definition */
-#include <stdlib.h> /* Includes EXIT_SUCCESS definition */
-#include <stddef.h> /* Includes the type yielded by sizeof */
 #include <stdbool.h> /* Includes true/false definition */
+#include <stddef.h>  /* Includes the type yielded by sizeof */
+#include <stdio.h>   /* Includes EXIT_SUCCESS definition */
+#include <stdlib.h>  /* Includes EXIT_SUCCESS definition */
 #include "app.h"
 
 void SYS_Initialize(void);
 
 /* Global Variable Declaration */
 LCD_REGs_st LCD_REGs = {
-    .ENTRY_MODE.REG = 0x04,
-    .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
-    .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
-    .FUNCTION_MODE.REG = 0x3C,
-    .RAM_ADDR.REG = 0x40,
-    .DD_RAM_ADDR.REG = 0x80,
-    .BF_AC.REG = 0x00
-};
+    .ENTRY_MODE.REG = 0x04, .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C, .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10, .FUNCTION_MODE.REG = 0x3C, .RAM_ADDR.REG = 0x40, .DD_RAM_ADDR.REG = 0x80, .BF_AC.REG = 0x00};
 
 APP_DATA appData = {
     .messageLine1 = "00:00:00\n\r",
@@ -44,43 +37,43 @@ APP_DATA appData = {
 
 /* Main Program */
 int main(void) {
-    /* Call the System Initialize routine*/
-    SYS_Initialize();
+   /* Call the System Initialize routine*/
+   SYS_Initialize();
 
-    /* Display welcome message */
-    LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
-    LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof (appData.messageLine2) - 1);
+   /* Display welcome message */
+   LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof(appData.messageLine1) - 1);
+   LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof(appData.messageLine2) - 1);
 
-    /* Change notification for S3 */
-    BUTTON_CN_Configuration(BUTTON_S3);
+   /* Change notification for S3 */
+   BUTTON_CN_Configuration(BUTTON_S3);
 
-    /* Initialize Timer */
-    TIMER_Configuration();
+   /* Initialize Timer */
+   TIMER_Configuration();
 
-    /* Infinite Loop */
-    while (true) {
-        if (appData.lcd_clear_flag) {
-            /* Reset software flag */
-            appData.lcd_clear_flag = 0;
-            /* Reset software variables */
-            appData.hours = 0;
-            appData.seconds = 0;
-            appData.minutes = 0;
-            /* Clear LCD & show initial message */
-            LCD_ClearScreen(&(LCD_REGs.BF_AC));
-            sprintf(appData.messageLine1, "00:00:00\n\r");
-            LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
-            LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof (appData.messageLine2) - 1);
-        }
-        if (appData.lcd_update_flag) {
-            /* Reset software flag */
-            appData.lcd_update_flag = 0;
-            /* Refresh clock in LCD */
-            sprintf(appData.messageLine1, "\r%02u:%02u:%02u", appData.hours, appData.minutes, appData.seconds);
-            LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof (appData.messageLine1) - 1);
-        }
-        Sleep();
-    };
+   /* Infinite Loop */
+   while (true) {
+      if (appData.lcd_clear_flag) {
+         /* Reset software flag */
+         appData.lcd_clear_flag = 0;
+         /* Reset software variables */
+         appData.hours = 0;
+         appData.seconds = 0;
+         appData.minutes = 0;
+         /* Clear LCD & show initial message */
+         LCD_ClearScreen(&(LCD_REGs.BF_AC));
+         sprintf(appData.messageLine1, "00:00:00\n\r");
+         LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof(appData.messageLine1) - 1);
+         LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof(appData.messageLine2) - 1);
+      }
+      if (appData.lcd_update_flag) {
+         /* Reset software flag */
+         appData.lcd_update_flag = 0;
+         /* Refresh clock in LCD */
+         sprintf(appData.messageLine1, "\r%02u:%02u:%02u", appData.hours, appData.minutes, appData.seconds);
+         LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof(appData.messageLine1) - 1);
+      }
+      Sleep();
+   };
 
-    return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }

@@ -21,8 +21,8 @@
 #define APP_H
 
 #include <xc.h>
-#include "leds.h"
 #include "adc.h"
 #include "buttons.h"
+#include "leds.h"
 
 #endif /* APP_H */

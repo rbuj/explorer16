@@ -20,18 +20,18 @@
 #include "../../../include/pmp_lcd.h"
 
 bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
-    PMCON = 0x8383;
-    PMMODE = 0x030C;
-    PMAEN = 0x0001;
+   PMCON = 0x8383;
+   PMMODE = 0x030C;
+   PMAEN = 0x0001;
 
-    /* LCD: Wait for more than 30ms after VDD on */
-    __delay32(LCD_STARTUP);
+   /* LCD: Wait for more than 30ms after VDD on */
+   __delay32(LCD_STARTUP);
 
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
 
-    LCD_ClearScreen(&(LCD_REGs->BF_AC));
+   LCD_ClearScreen(&(LCD_REGs->BF_AC));
 
-    return true;
+   return true;
 }

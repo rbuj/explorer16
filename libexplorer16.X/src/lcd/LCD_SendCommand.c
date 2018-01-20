@@ -20,24 +20,24 @@
 #include "../../include/lcd.h"
 
 inline void LCD_SendCommand(BF_AC_u *BF_AC, char command) {
-    LCD_RWSignal_Clear(); /* select write operation */
-    LCD_RSSignal_Clear(); /* select instruction register */
-    LCD_ConfigureDataOutput();
-    LCD_WriteData(command);
-    LCD_EnableSignal_Set();
-    __delay32(18);
-    LCD_EnableSignal_Clear();
-    LCD_EnableSignal_Clear();
-    LCD_ConfigureDataInput();
+   LCD_RWSignal_Clear(); /* select write operation */
+   LCD_RSSignal_Clear(); /* select instruction register */
+   LCD_ConfigureDataOutput();
+   LCD_WriteData(command);
+   LCD_EnableSignal_Set();
+   __delay32(18);
+   LCD_EnableSignal_Clear();
+   LCD_EnableSignal_Clear();
+   LCD_ConfigureDataInput();
 
-    /* Receive BF & AC */
-    LCD_RWSignal_Set(); /* select read operation */
-    LCD_RSSignal_Clear(); /* select BF/AC register */
-    __delay32(18);
-    do {
-        LCD_EnableSignal_Set();
-        __delay32(18);
-        LCD_EnableSignal_Clear();
-        BF_AC->REG = LCD_DATA_PORT & 0x00FF;
-    } while (BF_AC->BF_ACbits.BF);
+   /* Receive BF & AC */
+   LCD_RWSignal_Set();   /* select read operation */
+   LCD_RSSignal_Clear(); /* select BF/AC register */
+   __delay32(18);
+   do {
+      LCD_EnableSignal_Set();
+      __delay32(18);
+      LCD_EnableSignal_Clear();
+      BF_AC->REG = LCD_DATA_PORT & 0x00FF;
+   } while (BF_AC->BF_ACbits.BF);
 }

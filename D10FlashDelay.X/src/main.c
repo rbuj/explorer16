@@ -18,12 +18,12 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #define Fosc 8000000ULL /* Primary oscillator frequency 8 MHz (external) */
-#define FCY Fosc/2 /* Required for __delay_ms(value) */
+#define FCY Fosc / 2    /* Required for __delay_ms(value) */
 
 #include <xc.h>
-#include <stdlib.h> /* Includes EXIT_SUCCESS definition */
-#include <stddef.h> /* Includes the type yielded by sizeof */
-#include <stdbool.h> /* Includes true/false definition */
+#include <stdbool.h>  /* Includes true/false definition */
+#include <stddef.h>   /* Includes the type yielded by sizeof */
+#include <stdlib.h>   /* Includes EXIT_SUCCESS definition */
 #include <libpic30.h> /* Includes __delay_ms */
 #include "app.h"
 
@@ -31,16 +31,16 @@ void SYS_Initialize(void);
 
 /* Main Program */
 int main(void) {
-    /* Call the System Initialize routine */
-    SYS_Initialize();
+   /* Call the System Initialize routine */
+   SYS_Initialize();
 
-    /* Infinite Loop */
-    while (true) {
-        LED_Off(LED_D10);
-        __delay_ms(500);
-        LED_On(LED_D10);
-        __delay_ms(500);
-    };
+   /* Infinite Loop */
+   while (true) {
+      LED_Off(LED_D10);
+      __delay_ms(500);
+      LED_On(LED_D10);
+      __delay_ms(500);
+   };
 
-    return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }

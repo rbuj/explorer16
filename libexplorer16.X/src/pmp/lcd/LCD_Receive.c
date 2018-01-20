@@ -20,11 +20,11 @@
 #include "../../../include/pmp_lcd.h"
 
 inline char LCD_Receive(uint16_t address) {
-    char dummy;
-    LCD_WaitUntilPMPIsNotBusy();
-    PMADDR = address;
-    dummy = PMDIN1;
-    LCD_WaitUntilPMPIsNotBusy();
-    dummy = PMDIN1;
-    return dummy;
+   char dummy;
+   LCD_WaitUntilPMPIsNotBusy();
+   PMADDR = address;
+   dummy = PMDIN1;
+   LCD_WaitUntilPMPIsNotBusy();
+   dummy = PMDIN1;
+   return dummy;
 }

@@ -20,6 +20,6 @@
 #include "../../../include/pmp_lcd.h"
 
 void LCD_SetFunctionMode_DataLenght(LCD_REGs_st *LCD_REGs, bool eightBitsDataLenght) {
-    LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.DL = eightBitsDataLenght;
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
+   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.DL = eightBitsDataLenght;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
 }

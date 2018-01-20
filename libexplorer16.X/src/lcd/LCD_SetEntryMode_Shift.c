@@ -20,6 +20,6 @@
 #include "../../include/lcd.h"
 
 void LCD_SetEntryMode_Shift(LCD_REGs_st *LCD_REGs, bool shift) {
-    LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.S = shift;
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+   LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.S = shift;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
 }

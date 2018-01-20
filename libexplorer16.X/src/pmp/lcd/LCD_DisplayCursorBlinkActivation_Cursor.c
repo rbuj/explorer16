@@ -20,6 +20,6 @@
 #include "../../../include/pmp_lcd.h"
 
 void LCD_DisplayCursorBlinkActivation_Cursor(LCD_REGs_st *LCD_REGs, bool cursor) {
-    LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
-    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
+   LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
 }

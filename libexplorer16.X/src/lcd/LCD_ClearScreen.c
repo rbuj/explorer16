@@ -20,5 +20,5 @@
 #include "../../include/lcd.h"
 
 void LCD_ClearScreen(BF_AC_u *BF_AC) {
-    LCD_SendCommand(BF_AC, LCD_COMMAND_CLEAR_SCREEN);
+   LCD_SendCommand(BF_AC, LCD_COMMAND_CLEAR_SCREEN);
 }
