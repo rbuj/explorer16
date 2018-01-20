@@ -37,9 +37,9 @@ cat << EOF > Makefile
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
-#  There exist several targets which are by default empty and which can be 
-#  used for execution of your targets. These targets are usually executed 
-#  before and after some main targets. They are: 
+#  There exist several targets which are by default empty and which can be
+#  used for execution of your targets. These targets are usually executed
+#  before and after some main targets. They are:
 #
 #     .build-pre:              called before 'build' target
 #     .build-post:             called after 'build' target
@@ -55,13 +55,13 @@ cat << EOF > Makefile
 #  Targets beginning with '.' are not intended to be called on their own.
 #
 #  Main targets can be executed directly, and they are:
-#  
+#
 #     build                    build a specific configuration
 #     clean                    remove built files from a configuration
 #     clobber                  remove all built files
 #     all                      build all configurations
 #     help                     print help mesage
-#  
+#
 #  Targets .build-impl, .clean-impl, .clobber-impl, .all-impl, and
 #  .help-impl are implemented in nbproject/makefile-impl.mk.
 #
@@ -81,7 +81,7 @@ cat << EOF > Makefile
 # NOCDDL
 
 
-# Environment 
+# Environment
 MKDIR=mkdir
 CP=cp
 CCADMIN=CCadmin
@@ -188,9 +188,14 @@ case "$OSTYPE" in
     else
       echo "can't find prjMakefilesGenerator.sh"
     fi
-    ;; 
+    ;;
   linux*)
-    echo "LINUX: NOT YET IMPLEMENTED"
+    GENERATOR=$(find /opt/microchip/mplabx/ -name prjMakefilesGenerator.sh | head -n 1)
+    if [ -n "$GENERATOR" ]; then
+      $GENERATOR -v ./
+    else
+      echo "can't find prjMakefilesGenerator.sh"
+    fi
     ;;
   msys*)
     echo "WINDOWS: NOT YET IMPLEMENTED"
