@@ -28,7 +28,7 @@ bool BUTTON_CN_Configuration(BUTTON button) {
          CNEN2bits.CN19IE = 1;
          break;
       case BUTTON_S5:
-#if defined(__dsPIC30F5011__)
+#if defined(__dsPIC33FJ256GP710A__)
          CNEN2bits.CN23IE = 1; /* Overlaps with D10 */
 #elif defined(__PIC24FJ128GA010__)
          return false;
