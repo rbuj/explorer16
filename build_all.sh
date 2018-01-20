@@ -1,5 +1,5 @@
 #!/bin/bash
-#  Remove files and folders from the build/dist dirs
+#  Build all projects/configurations
 #  Copyright (C) 2018  Robert Buj <rbuj@fedoraproject.org>
 #
 #  This file is part of explorer16 - https://github.com/rbuj/explorer16
@@ -24,7 +24,7 @@ WORK_BASE_DIR=$PWD
 
 for d in *.X/; do
   echo -ne "$d: "
-  cd $d && make clobber &> /dev/null
+  cd $d && make all &> /dev/null
   if [ $? -ne 0 ]; then
     echo "${RED}[ FAIL ]${NC}"
     continue
