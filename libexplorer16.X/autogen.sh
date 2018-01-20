@@ -80,13 +80,11 @@ cat << EOF > Makefile
 #
 # NOCDDL
 
-
 # Environment
 MKDIR=mkdir
 CP=cp
 CCADMIN=CCadmin
 RANLIB=ranlib
-
 
 # build
 build: .build-post
@@ -96,7 +94,6 @@ build: .build-post
 
 .build-post: .build-impl
 # Add your post 'build' code here...
-
 
 # clean
 clean: .clean-post
@@ -111,7 +108,6 @@ clean: .clean-post
 
 .clean-post: .clean-impl
 # Add your post 'clean' code here...
-
 
 # clobber
 clobber: .clobber-post
@@ -131,7 +127,6 @@ all: .all-post
 
 .all-post: .all-impl
 # Add your post 'all' code here...
-
 
 # help
 help: .help-post
@@ -190,6 +185,7 @@ case "$OSTYPE" in
     fi
     ;;
   linux*)
+    echo "LINUX"
     GENERATOR=$(find /opt/microchip/mplabx/ -name prjMakefilesGenerator.sh | head -n 1)
     if [ -n "$GENERATOR" ]; then
       $GENERATOR -v ./
