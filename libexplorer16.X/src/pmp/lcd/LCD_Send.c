@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "../../../include/pmp_lcd.h"
+#include "pmp_lcd.h"
 
 inline void LCD_Send(BF_AC_u *BF_AC, uint16_t address, char content) {
    LCD_WaitUntilPMPIsNotBusy();

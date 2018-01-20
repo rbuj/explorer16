@@ -17,7 +17,11 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "../../include/lcd.h"
+#if defined(__dsPIC33FJ256GP710A__)
+#include "lcd.h"
+#elif defined(__PIC24FJ128GA010__)
+#include "pmp_lcd.h"
+#endif
 
 void LCD_ShiftDisplayMoveCursor(LCD_REGs_st *LCD_REGs, bool shiftDisplayCursor, bool rightLeft) {
    LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.SHIFT_DISPLAY_MOVE_CURSORbits.SC = shiftDisplayCursor;

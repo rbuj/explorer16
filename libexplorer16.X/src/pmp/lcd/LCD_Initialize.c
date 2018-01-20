@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "../../../include/pmp_lcd.h"
+#include "pmp_lcd.h"
 
 bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
    PMCON = 0x8383;

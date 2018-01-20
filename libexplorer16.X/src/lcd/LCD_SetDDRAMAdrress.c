@@ -17,7 +17,11 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "../../include/lcd.h"
+#if defined(__dsPIC33FJ256GP710A__)
+#include "lcd.h"
+#elif defined(__PIC24FJ128GA010__)
+#include "pmp_lcd.h"
+#endif
 
 void LCD_SetDDRAMAdrress(LCD_REGs_st *LCD_REGs, unsigned char address) {
    LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR = address;
