@@ -78,12 +78,12 @@
         <linkerTool>
           <linkerLibItems>
             <linkerLibProjectItem>
-              <makeArtifact PL="../libexplorer16.X"
+              <makeArtifact PL="../lib/libexplorer16.X"
                             CT="3"
                             CN="dspic33fj256gp710a_pim"
                             AC="false"
                             BL="true"
-                            WD="../libexplorer16.X"
+                            WD="../lib/libexplorer16.X"
                             BC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim"
                             DBC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim TYPE_IMAGE=DEBUG_RUN"
                             CC="rm -rf &quot;build/dspic33fj256gp710a_pim&quot; &quot;dist/dspic33fj256gp710a_pim&quot;"
@@ -95,12 +95,12 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../liblcdexplorer16.X"
+              <makeArtifact PL="../lib/liblcdexplorer16.X"
                             CT="3"
                             CN="dspic33fj256gp710a_pim_8bit"
                             AC="false"
                             BL="true"
-                            WD="../liblcdexplorer16.X"
+                            WD="../lib/liblcdexplorer16.X"
                             BC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim_8bit"
                             DBC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim_8bit TYPE_IMAGE=DEBUG_RUN"
                             CC="rm -rf &quot;build/dspic33fj256gp710a_pim_8bit&quot; &quot;dist/dspic33fj256gp710a_pim_8bit&quot;"
@@ -367,12 +367,12 @@
         <linkerTool>
           <linkerLibItems>
             <linkerLibProjectItem>
-              <makeArtifact PL="../libexplorer16.X"
+              <makeArtifact PL="../lib/libexplorer16.X"
                             CT="3"
                             CN="pic24fj128ga010_pim"
                             AC="false"
                             BL="true"
-                            WD="../libexplorer16.X"
+                            WD="../lib/libexplorer16.X"
                             BC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim"
                             DBC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim TYPE_IMAGE=DEBUG_RUN"
                             CC="rm -rf &quot;build/pic24fj128ga010_pim&quot; &quot;dist/pic24fj128ga010_pim&quot;"
@@ -384,12 +384,12 @@
               </makeArtifact>
             </linkerLibProjectItem>
             <linkerLibProjectItem>
-              <makeArtifact PL="../liblcdexplorer16.X"
+              <makeArtifact PL="../lib/liblcdexplorer16.X"
                             CT="3"
                             CN="pic24fj128ga010_pim_pmp"
                             AC="false"
                             BL="true"
-                            WD="../liblcdexplorer16.X"
+                            WD="../lib/liblcdexplorer16.X"
                             BC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim_pmp"
                             DBC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim_pmp TYPE_IMAGE=DEBUG_RUN"
                             CC="rm -rf &quot;build/pic24fj128ga010_pim_pmp&quot; &quot;dist/pic24fj128ga010_pim_pmp&quot;"

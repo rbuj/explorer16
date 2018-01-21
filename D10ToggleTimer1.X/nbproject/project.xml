@@ -12,8 +12,8 @@
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects>
-                <make-dep-project>../liblcdexplorer16.X</make-dep-project>
-                <make-dep-project>../libexplorer16.X</make-dep-project>
+                <make-dep-project>../lib/libexplorer16.X</make-dep-project>
+                <make-dep-project>../lib/liblcdexplorer16.X</make-dep-project>
             </make-dep-projects>
         </data>
     </configuration>
