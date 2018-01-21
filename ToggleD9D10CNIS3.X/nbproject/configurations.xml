@@ -13,16 +13,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
-        <logicalFolder name="dspic33fj256gp710a_pim"
-                       displayName="dspic33fj256gp710a_pim"
-                       projectFiles="true">
-        </logicalFolder>
-        <logicalFolder name="pic24fj128ga010_pim"
-                       displayName="pic24fj128ga010_pim"
-                       projectFiles="true">
-        </logicalFolder>
-      </logicalFolder>
       <logicalFolder name="system_config"
                      displayName="system_config"
                      projectFiles="true">
