@@ -25,7 +25,7 @@ bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
    PMAEN = 0x0001;
 
    /* LCD: Wait for more than 30ms after VDD on */
-   __delay32(LCD_STARTUP);
+   __delay_us(30UL);
 
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);

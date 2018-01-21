@@ -35,14 +35,14 @@ bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
    LCD_EnableSignal_Output();
 
    /* LCD: Wait for more than 30ms after VDD on */
-   __delay32(LCD_STARTUP);
+   __delay_ms(30UL);
 
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
 
    LCD_ClearScreen(&(LCD_REGs->BF_AC));
-   __delay32(LCD_CLEANUP);
+   __delay_us(1640UL);
 
    return true;
 }

@@ -20,18 +20,13 @@
 #ifndef LCD_H
 #define LCD_H
 
+#define FCY 4000000UL
+
 #include <xc.h>
 #include <stdbool.h>  /* Includes true/false definition */
 #include <stdint.h>   /* Includes uint16_t definition */
 #include <libpic30.h> /* Includes __delay32 */
 #include "lcd_regs.h"
-
-#define LCD_STARTUP \
-   120000UL /* Start up delay = 30ms -> cycles for __delay32 \
-            */
-#define LCD_CLEANUP \
-   6560UL /* Clean up delay = 1.64ms -> cycles for __delay32 \
-          */
 
 #define INCREMENT 1
 #define DECREMENT 0
@@ -76,7 +71,7 @@
 #define LCD_RWSignal_Output() TRISDbits.TRISD5 = 0     /* clear Read/Write bit */
 #define LCD_EnableSignal_Input() TRISDbits.TRISD4 = 1  /* set Enable bit */
 #define LCD_EnableSignal_Output() TRISDbits.TRISD4 = 0 /* clear Enable bit */
-/* Configure PORTE<7:0> as outputs/ inpputs.
+/* Configure PORTE<7:0> as outputs/ inputs.
  * One instruction cycle is required between a port direction change.  */
 #define LCD_WriteData(d)   \
    LCD_DATA_LAT &= 0xFF00; \

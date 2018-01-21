@@ -20,15 +20,13 @@
 #ifndef PMP_LCD_H
 #define PMP_LCD_H
 
+#define FCY 4000000UL
+
 #include <xc.h>
 #include <stdbool.h>  /* Includes true/false definition */
 #include <stdint.h>   /* Includes uint16_t definition */
 #include <libpic30.h> /* Includes __delay32 */
 #include "lcd_regs.h"
-
-#define LCD_STARTUP \
-   120000UL /* Start up delay = 30ms -> cycles for __delay32 \
-            */
 
 #define INCREMENT 1
 #define DECREMENT 0
