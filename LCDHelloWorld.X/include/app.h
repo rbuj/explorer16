@@ -26,7 +26,6 @@
 #elif defined(__PIC24FJ128GA010__)
 #include "pmp_lcd.h"
 #endif
-#include "adc.h"
 
 #define LCD_MAX_COLUMN 16
 #define LCD_DISPLAY_DATA_RAM_SIZE 80

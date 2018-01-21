@@ -19,6 +19,7 @@
 
 #include <xc.h>
 #include <stdbool.h> /* Includes true/false definition */
+#include "adc.h"
 #include "app.h"
 
 /* FBS */

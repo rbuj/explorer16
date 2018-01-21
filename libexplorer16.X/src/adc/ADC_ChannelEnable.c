@@ -22,11 +22,25 @@
 bool ADC_ChannelEnable(ADC_CHANNEL channel) {
    switch (channel) {
       case ADC_CHANNEL_5:
+#if defined(__dsPIC33FJ256GP710A__)
+         AD1PCFGLbits.PCFG5 = 0; /* ensure AN5/RB5 is analog (analog pot) */
+         return true;
+#elif defined(__PIC24FJ128GA010__)
          AD1PCFGbits.PCFG5 = 0; /* ensure AN5/RB5 is analog (analog pot) */
          return true;
+#else
+         return false;
+#endif
       case ADC_CHANNEL_4:
+#if defined(__dsPIC33FJ256GP710A__)
+         AD1PCFGLbits.PCFG4 = 0; /* ensure AN4/RB4 is analog (temp sensor) */
+         return true;
+#elif defined(__PIC24FJ128GA010__)
          AD1PCFGbits.PCFG4; /* ensure AN4/RB4 is analog (temp sensor) */
          return true;
+#else
+         return false;
+#endif
       default:
          return false;
    }

@@ -8,11 +8,9 @@
         <logicalFolder name="f1"
                        displayName="dspic33fj256gp710a_pim"
                        projectFiles="true">
-          <itemPath>src/bsp/dspic33fj256gp710a_pim/adc.h</itemPath>
           <itemPath>src/bsp/dspic33fj256gp710a_pim/timer_1ms.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="pic24fj128ga010_pim" projectFiles="true">
-          <itemPath>src/bsp/pic24fj128ga010_pim/adc.h</itemPath>
           <itemPath>src/bsp/pic24fj128ga010_pim/timer_1ms.h</itemPath>
         </logicalFolder>
       </logicalFolder>
@@ -29,13 +27,11 @@
         <logicalFolder name="dspic33fj256gp710a_pim"
                        displayName="dspic33fj256gp710a_pim"
                        projectFiles="true">
-          <itemPath>src/bsp/dspic33fj256gp710a_pim/adc.c</itemPath>
           <itemPath>src/bsp/dspic33fj256gp710a_pim/timer_1ms.c</itemPath>
         </logicalFolder>
         <logicalFolder name="pic24fj128ga010_pim"
                        displayName="pic24fj128ga010_pim"
                        projectFiles="true">
-          <itemPath>src/bsp/pic24fj128ga010_pim/adc.c</itemPath>
           <itemPath>src/bsp/pic24fj128ga010_pim/timer_1ms.c</itemPath>
         </logicalFolder>
       </logicalFolder>
@@ -296,30 +292,6 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
-      <item path="src/bsp/pic24fj128ga010_pim/adc.c" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="src/bsp/pic24fj128ga010_pim/adc.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
       <item path="src/bsp/pic24fj128ga010_pim/timer_1ms.c"
             ex="true"
             overriding="false">
@@ -581,30 +553,6 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </ICD3PlatformTool>
-      <item path="src/bsp/dspic33fj256gp710a_pim/adc.c" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
-      <item path="src/bsp/dspic33fj256gp710a_pim/adc.h" ex="true" overriding="false">
-        <C30>
-        </C30>
-        <C30-AR>
-        </C30-AR>
-        <C30-AS>
-        </C30-AS>
-        <C30-LD>
-        </C30-LD>
-        <C30Global>
-        </C30Global>
-      </item>
       <item path="src/bsp/dspic33fj256gp710a_pim/timer_1ms.c"
             ex="true"
             overriding="false">
