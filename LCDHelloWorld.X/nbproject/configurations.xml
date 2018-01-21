@@ -72,6 +72,23 @@
                             DD="dist/dspic33fj256gp710a_pim/debug/libexplorer16.X.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../liblcdexplorer16.X"
+                            CT="3"
+                            CN="dspic33fj256gp710a_pim_8bit"
+                            AC="true"
+                            BL="true"
+                            WD="../liblcdexplorer16.X"
+                            BC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim_8bit"
+                            DBC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim_8bit TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/dspic33fj256gp710a_pim_8bit&quot; &quot;dist/dspic33fj256gp710a_pim_8bit&quot;"
+                            OP="dist/dspic33fj256gp710a_pim_8bit/production/liblcdexplorer16.X.a"
+                            DOP="dist/dspic33fj256gp710a_pim_8bit/debug/liblcdexplorer16.X.a"
+                            FL="dist/dspic33fj256gp710a_pim_8bit/production/liblcdexplorer16.X.a"
+                            PD="dist/dspic33fj256gp710a_pim_8bit/production/liblcdexplorer16.X.a"
+                            DD="dist/dspic33fj256gp710a_pim_8bit/debug/liblcdexplorer16.X.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -109,7 +126,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="include;src/bsp/dspic33fj256gp710a_pim;../usr/include/libexplorer16"/>
+                  value="include;src/bsp/dspic33fj256gp710a_pim;../usr/include/libexplorer16;../usr/include/liblcdexplorer16"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -137,6 +154,25 @@
       <C30-AR>
         <property key="additional-options-chop-files" value="false"/>
       </C30-AR>
+      <C30-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler" value=""/>
+        <property key="extra-include-directories-for-preprocessor" value=""/>
+        <property key="false-conditionals" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-section-info" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="oXC16asm-extra-opts" value=""/>
+        <property key="oXC16asm-list-to-file" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="relax" value="false"/>
+        <property key="warning-level" value="emit-warnings"/>
+      </C30-AS>
       <C30-LD>
         <property key="additional-options-use-response-files" value="false"/>
         <property key="boot-eeprom" value="no_eeprom"/>
@@ -190,7 +226,7 @@
         <property key="generic-16-bit" value="false"/>
         <property key="legacy-libc" value="false"/>
         <property key="mpreserve-all" value="false"/>
-        <property key="oXC16glb-macros" value=""/>
+        <property key="oXC16glb-macros" value="LCD_NO_PMP_8BIT"/>
         <property key="output-file-format" value="elf"/>
         <property key="preserve-all" value="false"/>
         <property key="preserve-file" value=""/>
@@ -239,6 +275,7 @@
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
@@ -316,6 +353,23 @@
                             DD="dist/pic24fj128ga010_pim/debug/libexplorer16.X.a">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../liblcdexplorer16.X"
+                            CT="3"
+                            CN="pic24fj128ga010_pim_pmp"
+                            AC="false"
+                            BL="true"
+                            WD="../liblcdexplorer16.X"
+                            BC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim_pmp"
+                            DBC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim_pmp TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/pic24fj128ga010_pim_pmp&quot; &quot;dist/pic24fj128ga010_pim_pmp&quot;"
+                            OP="dist/pic24fj128ga010_pim_pmp/production/liblcdexplorer16.X.a"
+                            DOP="dist/pic24fj128ga010_pim_pmp/debug/liblcdexplorer16.X.a"
+                            FL="dist/pic24fj128ga010_pim_pmp/production/liblcdexplorer16.X.a"
+                            PD="dist/pic24fj128ga010_pim_pmp/production/liblcdexplorer16.X.a"
+                            DD="dist/pic24fj128ga010_pim_pmp/debug/liblcdexplorer16.X.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -353,7 +407,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="include;src/bsp/pic24fj128ga010_pim;../usr/include/libexplorer16"/>
+                  value="include;src/bsp/pic24fj128ga010_pim;../usr/include/libexplorer16;../usr/include/liblcdexplorer16"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -434,7 +488,7 @@
         <property key="generic-16-bit" value="false"/>
         <property key="legacy-libc" value="false"/>
         <property key="mpreserve-all" value="false"/>
-        <property key="oXC16glb-macros" value=""/>
+        <property key="oXC16glb-macros" value="LCD_PMP"/>
         <property key="output-file-format" value="elf"/>
         <property key="preserve-all" value="false"/>
         <property key="preserve-file" value=""/>

@@ -17,13 +17,8 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
-#endif
+#include "lcd_no_pmp_4bit.h"
 
-void LCD_SetFunctionMode_Font(LCD_REGs_st *LCD_REGs, bool tenDots) {
-   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.F = tenDots;
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
+inline void LCD_SendData(BF_AC_u *BF_AC, char data) {
+   /* TODO */
 }

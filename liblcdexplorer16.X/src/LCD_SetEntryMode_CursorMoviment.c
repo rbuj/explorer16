@@ -17,13 +17,17 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
+#ifdef LCD_PMP
+#include "lcd_pmp.h"
+#endif
+#ifdef LCD_NO_PMP_8BIT
+#include "lcd_no_pmp_8bit.h"
+#endif
+#ifdef LCD_NO_PMP_4BIT
+#include "lcd_no_pmp_4bit.h"
 #endif
 
-void LCD_DisplayCursorBlinkActivation_Blink(LCD_REGs_st *LCD_REGs, bool blink) {
-   LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.DISPLAY_CURSOR_BLINK_ACTbits.B = blink;
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
+void LCD_SetIncCursor_CursorMoviment(LCD_REGs_st *LCD_REGs, bool incdec) {
+   LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.ID = incdec;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
 }

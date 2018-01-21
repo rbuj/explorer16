@@ -21,10 +21,11 @@
 #define APP_H
 
 #include <xc.h>
-#if defined(__dsPIC33FJ256GP710A__)
-#include "no_pmp_lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
+#ifdef LCD_PMP
+#include "lcd_pmp.h"
+#endif
+#ifdef LCD_NO_PMP_8BIT
+#include "lcd_no_pmp.h"
 #endif
 
 #define LCD_MAX_COLUMN 16

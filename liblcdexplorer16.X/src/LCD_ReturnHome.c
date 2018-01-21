@@ -17,11 +17,16 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "pmp_lcd.h"
+#ifdef LCD_PMP
+#include "lcd_pmp.h"
+#endif
+#ifdef LCD_NO_PMP_8BIT
+#include "lcd_no_pmp_8bit.h"
+#endif
+#ifdef LCD_NO_PMP_4BIT
+#include "lcd_no_pmp_4bit.h"
+#endif
 
-inline void LCD_Send(BF_AC_u *BF_AC, uint16_t address, char content) {
-   LCD_WaitUntilPMPIsNotBusy();
-   PMADDR = address;
-   PMDIN1 = content;
-   LCD_WaitUntilLCDIsNotBusy(BF_AC);
+void LCD_ReturnHome(BF_AC_u *BF_AC) {
+   LCD_SendCommand(BF_AC, LCD_COMMAND_RETURN_HOME);
 }

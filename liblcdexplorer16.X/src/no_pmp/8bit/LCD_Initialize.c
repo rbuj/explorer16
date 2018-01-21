@@ -17,15 +17,32 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
-#endif
+#include "lcd_no_pmp_8bit.h"
 
-void LCD_DisplayCursorBlinkActivation(LCD_REGs_st *LCD_REGs, bool display, bool cursor, bool blink) {
-   LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.DISPLAY_CURSOR_BLINK_ACTbits.D = display;
-   LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.DISPLAY_CURSOR_BLINK_ACTbits.C = cursor;
-   LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.DISPLAY_CURSOR_BLINK_ACTbits.B = blink;
+bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
+   /* Initialize data pins to zero */
+   LCD_WriteData(0x00);
+
+   /* Initialize the control signal data pins */
+   LCD_RWSignal_Clear();
+   LCD_RSSignal_Clear();
+   LCD_EnableSignal_Clear();
+
+   /* Pin direction */
+   LCD_ConfigureDataInput(); /* Configure the data pins as input */
+   LCD_RSSignal_Output();
+   LCD_RWSignal_Output();
+   LCD_EnableSignal_Output();
+
+   /* LCD: Wait for more than 30ms after VDD on */
+   __delay32(LCD_STARTUP);
+
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+
+   LCD_ClearScreen(&(LCD_REGs->BF_AC));
+   __delay32(LCD_CLEANUP);
+
+   return true;
 }

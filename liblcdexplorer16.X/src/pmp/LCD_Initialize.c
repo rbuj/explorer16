@@ -17,22 +17,12 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "lcd.h"
+#include "lcd_pmp.h"
 
 bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
-   /* Initialize data pins to zero */
-   LCD_WriteData(0x00);
-
-   /* Initialize the control signal data pins */
-   LCD_RWSignal_Clear();
-   LCD_RSSignal_Clear();
-   LCD_EnableSignal_Clear();
-
-   /* Pin direction */
-   LCD_ConfigureDataInput(); /* Configure the data pins as input */
-   LCD_RSSignal_Output();
-   LCD_RWSignal_Output();
-   LCD_EnableSignal_Output();
+   PMCON = 0x8383;
+   PMMODE = 0x030C;
+   PMAEN = 0x0001;
 
    /* LCD: Wait for more than 30ms after VDD on */
    __delay32(LCD_STARTUP);
@@ -42,7 +32,6 @@ bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
 
    LCD_ClearScreen(&(LCD_REGs->BF_AC));
-   __delay32(LCD_CLEANUP);
 
    return true;
 }

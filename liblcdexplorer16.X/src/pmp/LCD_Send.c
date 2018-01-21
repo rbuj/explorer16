@@ -17,13 +17,11 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
-#endif
+#include "lcd_pmp.h"
 
-void LCD_SetFunctionMode_DataLenght(LCD_REGs_st *LCD_REGs, bool eightBitsDataLenght) {
-   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.DL = eightBitsDataLenght;
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
+inline void LCD_Send(BF_AC_u *BF_AC, uint16_t address, char content) {
+   LCD_WaitUntilPMPIsNotBusy();
+   PMADDR = address;
+   PMDIN1 = content;
+   LCD_WaitUntilLCDIsNotBusy(BF_AC);
 }

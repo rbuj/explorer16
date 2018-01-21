@@ -17,13 +17,18 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
+#ifdef LCD_PMP
+#include "lcd_pmp.h"
+#endif
+#ifdef LCD_NO_PMP_8BIT
+#include "lcd_no_pmp_8bit.h"
+#endif
+#ifdef LCD_NO_PMP_4BIT
+#include "lcd_no_pmp_4bit.h"
 #endif
 
-void LCD_SetDDRAMAdrress(LCD_REGs_st *LCD_REGs, unsigned char address) {
-   LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR = address;
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
+void LCD_ShiftDisplayMoveCursor(LCD_REGs_st *LCD_REGs, bool shiftDisplayCursor, bool rightLeft) {
+   LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.SHIFT_DISPLAY_MOVE_CURSORbits.SC = shiftDisplayCursor;
+   LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.SHIFT_DISPLAY_MOVE_CURSORbits.RL = rightLeft;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->SHIFT_DISPLAY_MOVE_CURSOR.REG);
 }

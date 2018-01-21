@@ -17,13 +17,9 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
-#endif
+#include "lcd_no_pmp_4bit.h"
 
-void LCD_SetIncCursor_CursorMoviment(LCD_REGs_st *LCD_REGs, bool incdec) {
-   LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.ID = incdec;
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
+   /* TODO */
+   return false;
 }

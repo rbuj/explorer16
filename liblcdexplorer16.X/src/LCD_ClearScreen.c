@@ -17,12 +17,16 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
+#ifdef LCD_PMP
+#include "lcd_pmp.h"
+#endif
+#ifdef LCD_NO_PMP_8BIT
+#include "lcd_no_pmp_8bit.h"
+#endif
+#ifdef LCD_NO_PMP_4BIT
+#include "lcd_no_pmp_4bit.h"
 #endif
 
-void LCD_ReturnHome(BF_AC_u *BF_AC) {
-   LCD_SendCommand(BF_AC, LCD_COMMAND_RETURN_HOME);
+void LCD_ClearScreen(BF_AC_u *BF_AC) {
+   LCD_SendCommand(BF_AC, LCD_COMMAND_CLEAR_SCREEN);
 }

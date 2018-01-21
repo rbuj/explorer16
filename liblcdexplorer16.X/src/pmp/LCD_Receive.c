@@ -17,12 +17,14 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#if defined(__dsPIC33FJ256GP710A__)
-#include "lcd.h"
-#elif defined(__PIC24FJ128GA010__)
-#include "pmp_lcd.h"
-#endif
+#include "lcd_pmp.h"
 
-void LCD_ClearScreen(BF_AC_u *BF_AC) {
-   LCD_SendCommand(BF_AC, LCD_COMMAND_CLEAR_SCREEN);
+inline char LCD_Receive(uint16_t address) {
+   char dummy;
+   LCD_WaitUntilPMPIsNotBusy();
+   PMADDR = address;
+   dummy = PMDIN1;
+   LCD_WaitUntilPMPIsNotBusy();
+   dummy = PMDIN1;
+   return dummy;
 }

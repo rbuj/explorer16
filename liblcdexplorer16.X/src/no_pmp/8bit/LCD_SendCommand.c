@@ -17,21 +17,27 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "pmp_lcd.h"
+#include "lcd_no_pmp_8bit.h"
 
-bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
-   PMCON = 0x8383;
-   PMMODE = 0x030C;
-   PMAEN = 0x0001;
+inline void LCD_SendCommand(BF_AC_u *BF_AC, char command) {
+   LCD_RWSignal_Clear(); /* select write operation */
+   LCD_RSSignal_Clear(); /* select instruction register */
+   LCD_ConfigureDataOutput();
+   LCD_WriteData(command);
+   LCD_EnableSignal_Set();
+   __delay32(18);
+   LCD_EnableSignal_Clear();
+   LCD_EnableSignal_Clear();
+   LCD_ConfigureDataInput();
 
-   /* LCD: Wait for more than 30ms after VDD on */
-   __delay32(LCD_STARTUP);
-
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
-
-   LCD_ClearScreen(&(LCD_REGs->BF_AC));
-
-   return true;
+   /* Receive BF & AC */
+   LCD_RWSignal_Set();   /* select read operation */
+   LCD_RSSignal_Clear(); /* select BF/AC register */
+   __delay32(18);
+   do {
+      LCD_EnableSignal_Set();
+      __delay32(18);
+      LCD_EnableSignal_Clear();
+      BF_AC->REG = LCD_DATA_PORT & 0x00FF;
+   } while (BF_AC->BF_ACbits.BF);
 }

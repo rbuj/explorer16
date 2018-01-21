@@ -17,31 +17,17 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef APP_H
-#define APP_H
-
-#include <xc.h>
-#include "leds.h"
 #ifdef LCD_PMP
 #include "lcd_pmp.h"
 #endif
 #ifdef LCD_NO_PMP_8BIT
-#include "lcd_no_pmp.h"
+#include "lcd_no_pmp_8bit.h"
 #endif
-#include "buttons.h"
+#ifdef LCD_NO_PMP_4BIT
+#include "lcd_no_pmp_4bit.h"
+#endif
 
-#define LCD_MAX_COLUMN 16
-#define LCD_DISPLAY_DATA_RAM_SIZE 80
-#define LCD_LINE_DATA_RAM_SIZE (LCD_DISPLAY_DATA_RAM_SIZE / 2)
-#define LCD_SHIFT_DATA_RAM_SIZE LCD_LINE_DATA_RAM_SIZE - LCD_MAX_COLUMN
-
-typedef struct {
-   /* Arrays used for Explorer 16 LCD display */
-   char messageLine1[LCD_DISPLAY_DATA_RAM_SIZE];
-   char messageLine2[LCD_DISPLAY_DATA_RAM_SIZE];
-} APP_DATA;
-
-extern APP_DATA    appData;
-extern LCD_REGs_st LCD_REGs;
-
-#endif /* APP_H */
+void LCD_SetEntryMode_Shift(LCD_REGs_st *LCD_REGs, bool shift) {
+   LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.S = shift;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+}

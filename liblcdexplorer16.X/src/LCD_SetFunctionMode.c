@@ -17,14 +17,19 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "pmp_lcd.h"
+#ifdef LCD_PMP
+#include "lcd_pmp.h"
+#endif
+#ifdef LCD_NO_PMP_8BIT
+#include "lcd_no_pmp_8bit.h"
+#endif
+#ifdef LCD_NO_PMP_4BIT
+#include "lcd_no_pmp_4bit.h"
+#endif
 
-inline char LCD_Receive(uint16_t address) {
-   char dummy;
-   LCD_WaitUntilPMPIsNotBusy();
-   PMADDR = address;
-   dummy = PMDIN1;
-   LCD_WaitUntilPMPIsNotBusy();
-   dummy = PMDIN1;
-   return dummy;
+void LCD_SetFunctionMode(LCD_REGs_st *LCD_REGs, bool eightBitsDataLenght, bool twoLines, bool tenDots) {
+   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.DL = eightBitsDataLenght;
+   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.N = twoLines;
+   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.F = tenDots;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
 }

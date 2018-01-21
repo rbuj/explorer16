@@ -17,27 +17,17 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "lcd.h"
+#ifdef LCD_PMP
+#include "lcd_pmp.h"
+#endif
+#ifdef LCD_NO_PMP_8BIT
+#include "lcd_no_pmp_8bit.h"
+#endif
+#ifdef LCD_NO_PMP_4BIT
+#include "lcd_no_pmp_4bit.h"
+#endif
 
-inline void LCD_SendCommand(BF_AC_u *BF_AC, char command) {
-   LCD_RWSignal_Clear(); /* select write operation */
-   LCD_RSSignal_Clear(); /* select instruction register */
-   LCD_ConfigureDataOutput();
-   LCD_WriteData(command);
-   LCD_EnableSignal_Set();
-   __delay32(18);
-   LCD_EnableSignal_Clear();
-   LCD_EnableSignal_Clear();
-   LCD_ConfigureDataInput();
-
-   /* Receive BF & AC */
-   LCD_RWSignal_Set();   /* select read operation */
-   LCD_RSSignal_Clear(); /* select BF/AC register */
-   __delay32(18);
-   do {
-      LCD_EnableSignal_Set();
-      __delay32(18);
-      LCD_EnableSignal_Clear();
-      BF_AC->REG = LCD_DATA_PORT & 0x00FF;
-   } while (BF_AC->BF_ACbits.BF);
+void LCD_SetFunctionMode_DataLenght(LCD_REGs_st *LCD_REGs, bool eightBitsDataLenght) {
+   LCD_REGs->FUNCTION_MODE.FUNCTION_MODEbits.DL = eightBitsDataLenght;
+   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
 }

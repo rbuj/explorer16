@@ -3,18 +3,15 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>LCDHelloWorld</name>
-            <creation-uuid>b3783334-9bd7-4d7b-920f-a6f5096340ab</creation-uuid>
+            <name>liblcdexplorer16</name>
+            <creation-uuid>57e67626-0a10-4166-8ad0-63a41c9a0a91</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
-            <make-dep-projects>
-                <make-dep-project>../liblcdexplorer16.X</make-dep-project>
-                <make-dep-project>../libexplorer16.X</make-dep-project>
-            </make-dep-projects>
+            <make-dep-projects/>
         </data>
     </configuration>
 </project>
