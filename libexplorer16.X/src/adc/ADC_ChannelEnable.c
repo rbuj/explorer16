@@ -36,7 +36,7 @@ bool ADC_ChannelEnable(ADC_CHANNEL channel) {
          AD1PCFGLbits.PCFG4 = 0; /* ensure AN4/RB4 is analog (temp sensor) */
          return true;
 #elif defined(__PIC24FJ128GA010__)
-         AD1PCFGbits.PCFG4; /* ensure AN4/RB4 is analog (temp sensor) */
+         AD1PCFGbits.PCFG4 = 0; /* ensure AN4/RB4 is analog (temp sensor) */
          return true;
 #else
          return false;
