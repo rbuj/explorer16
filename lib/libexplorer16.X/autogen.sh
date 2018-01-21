@@ -1,1 +1,1 @@
-../usr/bin/autogen.sh
+../../usr/bin/autogen.sh
