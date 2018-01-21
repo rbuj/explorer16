@@ -17,9 +17,6 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#define Fosc 8000000ULL /* Primary oscillator frequency 8 MHz (external) */
-#define FCY Fosc / 2    /* Required for __delay_ms(value) */
-
 #include <xc.h>
 #include <stdbool.h>  /* Includes true/false definition */
 #include <stddef.h>   /* Includes the type yielded by sizeof */

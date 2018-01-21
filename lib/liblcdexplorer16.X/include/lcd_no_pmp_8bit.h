@@ -20,8 +20,6 @@
 #ifndef LCD_H
 #define LCD_H
 
-#define FCY 4000000UL
-
 #include <xc.h>
 #include <stdbool.h>  /* Includes true/false definition */
 #include <stdint.h>   /* Includes uint16_t definition */
