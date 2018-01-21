@@ -72,23 +72,23 @@
 #define LCD_FunctionMode_TenBitFont(ptr) LCD_SetFunctionMode_Font(ptr, TEN_DOTS)
 #define LCD_FunctionMode_EightBitFont(ptr) LCD_SetFunctionMode_Font(ptr, FIVE_DOTS)
 
-bool LCD_Initialize(LCD_REGs_st *) __attribute__((section(".libexplorer16")));
-void LCD_ClearScreen(BF_AC_u *) __attribute__((section(".libexplorer16")));
-void LCD_ReturnHome(BF_AC_u *) __attribute__((section(".libexplorer16")));
-void LCD_PutString(LCD_REGs_st *, char *, uint16_t) __attribute__((section(".libexplorer16")));
-void LCD_PutChar(LCD_REGs_st *, char) __attribute__((section(".libexplorer16")));
+bool LCD_Initialize(LCD_REGs_st *) __attribute__((section(".liblcdexplorer16")));
+void LCD_ClearScreen(BF_AC_u *) __attribute__((section(".liblcdexplorer16")));
+void LCD_ReturnHome(BF_AC_u *) __attribute__((section(".liblcdexplorer16")));
+void LCD_PutString(LCD_REGs_st *, char *, uint16_t) __attribute__((section(".liblcdexplorer16")));
+void LCD_PutChar(LCD_REGs_st *, char) __attribute__((section(".liblcdexplorer16")));
 
-void LCD_ShiftDisplayMoveCursor(LCD_REGs_st *, bool, bool) __attribute__((section(".libexplorer16")));
-void LCD_SetEntryMode_CursorMoviment(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_SetEntryMode_Shift(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_DisplayCursorBlinkActivation(LCD_REGs_st *, bool, bool, bool) __attribute__((section(".libexplorer16")));
-void LCD_DisplayCursorBlinkActivation_Display(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_DisplayCursorBlinkActivation_Cursor(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_DisplayCursorBlinkActivation_Blink(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_SetFunctionMode(LCD_REGs_st *, bool, bool, bool) __attribute__((section(".libexplorer16")));
-void LCD_SetFunctionMode_DataLenght(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_SetFunctionMode_Lines(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_SetFunctionMode_Font(LCD_REGs_st *, bool) __attribute__((section(".libexplorer16")));
-void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char) __attribute__((section(".libexplorer16")));
+void LCD_ShiftDisplayMoveCursor(LCD_REGs_st *, bool, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_SetEntryMode_CursorMoviment(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_SetEntryMode_Shift(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_DisplayCursorBlinkActivation(LCD_REGs_st *, bool, bool, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_DisplayCursorBlinkActivation_Display(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_DisplayCursorBlinkActivation_Cursor(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_DisplayCursorBlinkActivation_Blink(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_SetFunctionMode(LCD_REGs_st *, bool, bool, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_SetFunctionMode_DataLenght(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_SetFunctionMode_Lines(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_SetFunctionMode_Font(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
+void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char) __attribute__((section(".liblcdexplorer16")));
 
 #endif /* LCD_H */
