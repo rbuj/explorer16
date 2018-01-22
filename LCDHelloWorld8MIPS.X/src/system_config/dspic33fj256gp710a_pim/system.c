@@ -22,22 +22,42 @@
 #include "adc.h"
 #include "app.h"
 
-/* CONFIG2 */
-#pragma config POSCMOD = XT   /* Primary Oscillator Select (XT Oscillator mode selected) */
-#pragma config OSCIOFNC = OFF /* Primary Oscillator Output Function (OSC2/CLKO/RC15 functions as CLKO (FOSC/2)) */
-#pragma config FCKSM = CSDCMD /* Clock Switching and Monitor (Clock switching and Fail-Safe Clock Monitor are disabled) */
-#pragma config FNOSC = PRIPLL /* Oscillator Select->Primary Oscillator with PLL module (HSPLL, ECPLL) */
-#pragma config IESO = ON      /* Internal External Switch Over Mode (IESO mode (Two-Speed Start-up) enabled) */
+/* FBS */
+#pragma config BWRP = WRPROTECT_OFF /* Boot Segment Write Protect (Boot Segment may be written) */
+#pragma config BSS = NO_FLASH       /* Boot Segment Program Flash Code Protection (No Boot program Flash segment) */
+#pragma config RBS = NO_RAM         /* Boot Segment RAM Protection (No Boot RAM) */
 
-/* CONFIG1 */
-#pragma config WDTPS = PS32768 /* Watchdog Timer Postscaler (1:32,768) */
-#pragma config FWPSA = PR128   /* WDT Prescaler (Prescaler ratio of 1:128) */
-#pragma config WINDIS = ON     /* Watchdog Timer Window (Standard Watchdog Timer enabled,(Windowed-mode is disabled)) */
-#pragma config FWDTEN = OFF    /* Watchdog Timer Enable (Watchdog Timer is disabled) */
-#pragma config ICS = PGx2      /* Comm Channel Select (Emulator/debugger uses EMUC2/EMUD2) */
-#pragma config GWRP = OFF      /* General Code Segment Write Protect (Writes to program memory are allowed) */
-#pragma config GCP = OFF       /* General Code Segment Code Protect (Code protection is disabled) */
-#pragma config JTAGEN = OFF    /* JTAG Port Enable (JTAG port is disabled) */
+/* FSS */
+#pragma config SWRP = WRPROTECT_OFF /* Secure Segment Program Write Protect (Secure Segment may be written) */
+#pragma config SSS = NO_FLASH       /* Secure Segment Program Flash Code Protection (No Secure Segment) */
+#pragma config RSS = NO_RAM         /* Secure Segment Data RAM Protection (No Secure RAM) */
+
+/* FGS */
+#pragma config GWRP = OFF /* General Code Segment Write Protect (User program memory is not write-protected) */
+#pragma config GSS = OFF  /* General Segment Code Protection (User program memory is not code-protected) */
+
+/* FOSCSEL */
+#pragma config FNOSC = FRCPLL /* Oscillator Mode (Internal Fast RC (FRC)) */
+#pragma config IESO = OFF  /* Two-speed Oscillator Start-Up Enable (Start up with user-selected oscillator) */
+
+/* FOSC */
+#pragma config POSCMD = NONE    /* Primary Oscillator Source (XT Oscillator Mode) */
+#pragma config OSCIOFNC = OFF  /* OSC2 Pin Function (OSC2 pin has digital I/O function) */
+#pragma config FCKSM = CSDCMD /* Clock Switching and Monitor (Both Clock Switching and Fail-Safe Clock Monitor are disabled) */
+
+/* FWDT */
+#pragma config WDTPOST = PS32768 /* Watchdog Timer Postscaler (1:32,768) */
+#pragma config WDTPRE = PR128    /* WDT Prescaler (1:128) */
+#pragma config PLLKEN = ON       /* PLL Lock Enable bit (Clock switch to PLL source will wait until the PLL lock signal is valid.) */
+#pragma config WINDIS = OFF      /* Watchdog Timer Window (Watchdog Timer in Non-Window mode) */
+#pragma config FWDTEN = OFF      /* Watchdog Timer Enable (Watchdog timer enabled/disabled by user software) */
+
+/* FPOR */
+#pragma config FPWRT = PWR128 /* POR Timer Value (128ms) */
+
+/* FICD */
+#pragma config ICS = PGD1   /* Comm Channel Select (Communicate on PGC1/EMUC1 and PGD1/EMUD1) */
+#pragma config JTAGEN = OFF /* JTAG Port Enable (JTAG is Disabled) */
 
 void OSCILLATOR_Initialize(void);
 
@@ -49,26 +69,30 @@ void __attribute__((__interrupt__, auto_psv)) _OscillatorFail(void);
 void __attribute__((__interrupt__, auto_psv)) _AddressError(void);
 void __attribute__((__interrupt__, auto_psv)) _StackError(void);
 void __attribute__((__interrupt__, auto_psv)) _MathError(void);
+#if defined(__HAS_DMA__)
+void __attribute__((interrupt, no_auto_psv)) _DMACError(void);
+#endif
 /* </editor-fold> */
 /* <editor-fold defaultstate="collapsed" desc="Alternate Interrupt Vector Table: Use if ALTIVT=1 (INTCON2<15>)"> */
-#if defined(__PIC24F__) || defined(__PIC24H__)
+#if defined(__dsPIC33F__)
 void __attribute__((__interrupt__, auto_psv)) _AltOscillatorFail(void);
 void __attribute__((__interrupt__, auto_psv)) _AltAddressError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltStackError(void);
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void);
+#if defined(__HAS_DMA__)
+void __attribute__((interrupt, no_auto_psv)) _AltDMACError(void);
+#endif
 #endif
 /* </editor-fold> */
-/* <editor-fold defaultstate="collapsed" desc="Additional traps in the 24E family. No Alternate Vectors in the 24E family. "> */
-#if defined(__PIC24E__)
-
+/* <editor-fold defaultstate="collapsed" desc="Additional traps in the 33E family. No Alternate Vectors in the 33E family. "> */
+#if defined(__dsPIC33E__)
 void __attribute__((interrupt, no_auto_psv)) _HardTrapError(void);
-void __attribute__((interrupt, no_auto_psv)) _DMACError(void);
 void __attribute__((interrupt, no_auto_psv)) _SoftTrapError(void);
-
 #endif
 /* </editor-fold> */
 /* <editor-fold defaultstate="collapsed" desc="Default interrupt handler"> */
 void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void);
+
 /* </editor-fold> */
 
 void SYS_Initialize(void) {
@@ -76,15 +100,15 @@ void SYS_Initialize(void) {
     OSCILLATOR_Initialize();
 
     /* Enable ADC to the Potentiometer channel */
-   ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
+    ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
-   /* Initialize LCD */
-   LCD_Initialize(&LCD_REGs);
+    /* Initialize LCD */
+    LCD_Initialize(&LCD_REGs);
 }
 
 void OSCILLATOR_Initialize(void) {
-    /* NOSC PRIPLL; SOSCEN disabled; OSWEN Switch is Complete; */
-    __builtin_write_OSCCONL((uint8_t) (0x0300 & 0x00FF));
+    /* NOSC FRCPLL; SOSCEN disabled; OSWEN Switch is Complete; */
+    __builtin_write_OSCCONL((uint8_t) (0x0100 & 0x00FF));
     /* RCDIV FRC/2; DOZE 1:8; DOZEN disabled; ROI disabled; */
     CLKDIV = 0x3100;
     /* TUN Center frequency; */
@@ -94,87 +118,104 @@ void OSCILLATOR_Initialize(void) {
 /******************************************************************************/
 /* Trap Handling                                                              */
 /******************************************************************************/
+
 /* <editor-fold defaultstate="collapsed" desc="Primary (non-alternate) address error trap function declarations"> */
 
 void __attribute__((__interrupt__, auto_psv)) _OscillatorFail(void) {
-   INTCON1bits.OSCFAIL = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.OSCFAIL = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AddressError(void) {
-   INTCON1bits.ADDRERR = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.ADDRERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
 
 void __attribute__((__interrupt__, auto_psv)) _StackError(void) {
-   INTCON1bits.STKERR = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.STKERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
 
 void __attribute__((__interrupt__, auto_psv)) _MathError(void) {
-   INTCON1bits.MATHERR = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.MATHERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
+
+#if defined(__HAS_DMA__)
+
+void __attribute__((interrupt, no_auto_psv)) _DMACError(void) {
+    INTCON1bits.DMACERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
+}
+
+#endif
 
 /* </editor-fold> */
 /* <editor-fold defaultstate="collapsed" desc="Alternate address error trap function declarations"> */
-#if defined(__PIC24F__) || defined(__PIC24H__)
+#if defined(__dsPIC33F__)
 
 void __attribute__((__interrupt__, auto_psv)) _AltOscillatorFail(void) {
-   INTCON1bits.OSCFAIL = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.OSCFAIL = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltAddressError(void) {
-   INTCON1bits.ADDRERR = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.ADDRERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltStackError(void) {
-   INTCON1bits.STKERR = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.STKERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
 
 void __attribute__((__interrupt__, auto_psv)) _AltMathError(void) {
-   INTCON1bits.MATHERR = 0; /* Clear the trap flag */
-   while (true)
-      ;
+    INTCON1bits.MATHERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
+}
+
+#if defined(__HAS_DMA__)
+
+void __attribute__((interrupt, no_auto_psv)) _AltDMACError(void) {
+    INTCON1bits.DMACERR = 0; /* Clear the trap flag */
+    while (true)
+        ;
 }
 
 #endif
+
+#endif
 /* </editor-fold> */
-/* <editor-fold defaultstate="collapsed" desc="Specific traps for PIC24E family"> */
-#if defined(__PIC24E__)
+/* <editor-fold defaultstate="collapsed" desc="Specific traps for dsPIC33E family"> */
+#if defined(__dsPIC33E__)
 
 void __attribute__((interrupt, no_auto_psv)) _HardTrapError(void) {
-   while (true)
-      ;
-}
-
-void __attribute__((interrupt, no_auto_psv)) _DMACError(void) {
-   while (1)
-      ;
+    while (true)
+        ;
 }
 
 void __attribute__((interrupt, no_auto_psv)) _SoftTrapError(void) {
-   while (true)
-      ;
+    while (true)
+        ;
 }
 
 #endif
 /* </editor-fold> */
+
 /* <editor-fold defaultstate="collapsed" desc="Default Interrupt Handler"> */
 
 void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void) {
-   while (true)
-      ;
+    while (true)
+        ;
 }
 
 /* </editor-fold> */

@@ -95,20 +95,22 @@ void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void);
 /* </editor-fold> */
 
 void SYS_Initialize(void) {
-   /* Enable ADC to the Potentiometer channel */
+    /* OSCILLATOR */
+    OSCILLATOR_Initialize();
+
+    /* Enable ADC to the Potentiometer channel */
    ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
    /* Initialize LCD */
    LCD_Initialize(&LCD_REGs);
 }
 
-void OSCILLATOR_Initialize(void)
-{
-    // NOSC PRIPLL; SOSCEN disabled; OSWEN Switch is Complete; 
+void OSCILLATOR_Initialize(void) {
+    /* NOSC PRIPLL; SOSCEN disabled; OSWEN Switch is Complete; */
     __builtin_write_OSCCONL((uint8_t) (0x0300 & 0x00FF));
-    // RCDIV FRC/1; DOZE 1:8; DOZEN disabled; ROI disabled; 
+    /* RCDIV FRC/1; DOZE 1:8; DOZEN disabled; ROI disabled; */
     CLKDIV = 0x3000;
-    // TUN Center frequency; 
+    /* TUN Center frequency; */
     OSCTUN = 0x0000;
 }
 

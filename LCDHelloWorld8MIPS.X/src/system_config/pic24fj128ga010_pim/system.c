@@ -23,10 +23,10 @@
 #include "app.h"
 
 /* CONFIG2 */
-#pragma config POSCMOD = XT   /* Primary Oscillator Select (XT Oscillator mode selected) */
+#pragma config POSCMOD = NONE   /* Primary Oscillator Select (XT Oscillator mode selected) */
 #pragma config OSCIOFNC = OFF /* Primary Oscillator Output Function (OSC2/CLKO/RC15 functions as CLKO (FOSC/2)) */
 #pragma config FCKSM = CSDCMD /* Clock Switching and Monitor (Clock switching and Fail-Safe Clock Monitor are disabled) */
-#pragma config FNOSC = PRIPLL /* Oscillator Select->Primary Oscillator with PLL module (HSPLL, ECPLL) */
+#pragma config FNOSC = FRCPLL    /* Oscillator Select (Primary Oscillator (XT, HS, EC)) */
 #pragma config IESO = ON      /* Internal External Switch Over Mode (IESO mode (Two-Speed Start-up) enabled) */
 
 /* CONFIG1 */
@@ -83,8 +83,8 @@ void SYS_Initialize(void) {
 }
 
 void OSCILLATOR_Initialize(void) {
-    /* NOSC PRIPLL; SOSCEN disabled; OSWEN Switch is Complete; */
-    __builtin_write_OSCCONL((uint8_t) (0x0300 & 0x00FF));
+    /* NOSC FRCPLL; SOSCEN disabled; OSWEN Switch is Complete; */
+    __builtin_write_OSCCONL((uint8_t) (0x0100 & 0x00FF));
     /* RCDIV FRC/2; DOZE 1:8; DOZEN disabled; ROI disabled; */
     CLKDIV = 0x3100;
     /* TUN Center frequency; */

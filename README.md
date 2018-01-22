@@ -9,7 +9,8 @@ Samples for Explorer 16 Development Board of Microchip
 | [D10OnOffS3](D10OnOffS3.X/) | Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Toggle switch on/off the D10 LED @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
 | [D10FlashDelay](D10FlashDelay.X/) | Flash LED D10 using __delay_ms(d) macro. | x | x |
-| [LCDHelloWorld4MIPS](LCDHelloWorld4MIPS.X/) | Print a message in the LCD Display. | x | x |
+| [LCDHelloWorld4MIPS](LCDHelloWorld4MIPS.X/) | Print a message in the LCD Display @ 4 MIPS. | x | x |
+| [LCDHelloWorld8MIPS](LCDHelloWorld8MIPS.X/) | Print a message in the LCD Display @ 8 MIPS. | x | x |
 | [LCDHelloWorld16MIPS](LCDHelloWorld16MIPS.X/) | Print a message in the LCD Display @ 16 MIPS. | x | x |
 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Switch on D3:D10 LEDs by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Toggle switch on/off the D3:D10 LEDs @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
@@ -38,13 +39,14 @@ Samples for Explorer 16 Development Board of Microchip
 | 1 | [D10FlashDelay](D10FlashDelay.X/) | Write to output pin / D10; Use delay macro; |
 | 2 | [D10OnOffS3](D10OnOffS3.X/) | Write to output pin / D10; Read from input pin / S3; |
 | 3 | [LCDHelloWorld4MIPS](LCDHelloWorld4MIPS.X/) | Write to LCD @ 4 MIPS (Busy flag check) |
-| 4 | [LCDHelloWorld16MIPS](LCDHelloWorld16MIPS.X/) | Write to LCD @ 16 MIPS (Busy flag check) |
-| 5 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Parallel write to output pins / D3:10; Read from input pin / S3; Write to LCD; |
-| 6 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | Change Notification Interrupt / S3; Write to output pin / D10; Write to LCD; |
-| 7 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pin / D10; Write to LCD; |
-| 8 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pins / D3:10; Write to LCD; |
-| 9 | [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
-| 10 | [ChronometerTimer1SOSC](ChronometerTimer1SOSC/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
+| 4 | [LCDHelloWorld8MIPS](LCDHelloWorld8MIPS.X/) | Write to LCD @ 8 MIPS (Busy flag check) |
+| 5 | [LCDHelloWorld16MIPS](LCDHelloWorld16MIPS.X/) | Write to LCD @ 16 MIPS (Busy flag check) |
+| 6 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Parallel write to output pins / D3:10; Read from input pin / S3; Write to LCD; |
+| 7 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | Change Notification Interrupt / S3; Write to output pin / D10; Write to LCD; |
+| 8 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pin / D10; Write to LCD; |
+| 9 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pins / D3:10; Write to LCD; |
+| 10 | [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
+| 11 | [ChronometerTimer1SOSC](ChronometerTimer1SOSC/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
 
 ## Requirements
 
