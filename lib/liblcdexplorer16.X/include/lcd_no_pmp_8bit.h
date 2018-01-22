@@ -81,6 +81,56 @@
    LCD_DATA_TRIS |= 0x00FF;      \
    Nop()
 
+#if FCY == 4000000UL
+#define delay_gt70ns() Nop() /* 250ns */
+#define delay_gt300ns() \
+   Nop();               \
+   Nop()                      /* 500ns */
+#define delay_gt200ns() Nop() /* 250ns */
+#define delay_gt1000ns() \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop()
+#elif FCY == 8000000UL
+#define delay_gt70ns() Nop() /* 125ns */
+#define delay_gt300ns() \
+   Nop();               \
+   Nop();               \
+   Nop() /* 375ns */
+#define delay_gt200ns() \
+   Nop();               \
+   Nop() /* 250ns */
+#define delay_gt1000ns() \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop()
+#elif FCY == 16000000UL
+#define delay_gt70ns() \
+   Nop();              \
+   Nop() /* 125ns */
+#define delay_gt300ns() \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop() /* +310ns */
+#define delay_gt200ns() \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop() /* 250ns */
+#define delay_gt1000ns() __delay_us(1)
+#else
+#pragma message "not supported"
+#endif
+
 #define LCD_CursorMoviment_Inc(ptr) LCD_SetIncCursor_CursorMoviment(ptr, INCREMENT)
 #define LCD_CursorMoviment_Dec(ptr) LCD_SetIncCursor_CursorMoviment(ptr, DECREMENT)
 #define LCD_DisplayShift_On(ptr) LCD_SetEntryMode_Shift(ptr, DISPLAY_SHIFT_ON)
@@ -123,5 +173,6 @@ void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char);
 
 inline void LCD_SendData(BF_AC_u *, char);
 inline void LCD_SendCommand(BF_AC_u *, char);
+inline char LCD_ReceiveBusyAC();
 
 #endif /* LCD_H */

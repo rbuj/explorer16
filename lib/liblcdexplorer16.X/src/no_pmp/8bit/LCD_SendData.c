@@ -22,22 +22,18 @@
 inline void LCD_SendData(BF_AC_u *BF_AC, char data) {
    LCD_RWSignal_Clear(); /* select write operation */
    LCD_RSSignal_Set();   /* select data register */
+   delay_gt70ns();       /* Delay must be greater than Min. RS, R/W Address Setup Time (60us) + Hold Time (10us) */
    LCD_ConfigureDataOutput();
    LCD_EnableSignal_Set();
    LCD_WriteData(data);
-   __delay_us(4);
+   delay_gt300ns();
    LCD_EnableSignal_Clear();
-   __delay_us(4);
+   delay_gt200ns(); /* greater than 200ns */
 
+   /* dummy read BF & AC */
+   BF_AC->REG = LCD_ReceiveBusyAC();
    /* Receive BF & AC */
    do {
-      LCD_ConfigureDataInput();
-      LCD_RWSignal_Set();   /* select read operation */
-      LCD_RSSignal_Clear(); /* select BF/AC register */
-      LCD_EnableSignal_Set();
-      __delay_us(4);
-      BF_AC->REG = LCD_DATA_PORT & 0x00FF;
-      LCD_EnableSignal_Clear();
-      __delay_us(4);
+      BF_AC->REG = LCD_ReceiveBusyAC();
    } while (BF_AC->BF_ACbits.BF);
 }

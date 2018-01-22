@@ -17,23 +17,9 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "lcd_no_pmp_8bit.h"
+#include "lcd_no_pmp_4bit.h"
 
-inline void LCD_SendCommand(BF_AC_u *BF_AC, char command) {
-   LCD_RWSignal_Clear(); /* select write operation */
-   LCD_RSSignal_Clear(); /* select instruction register */
-   delay_gt70ns();       /* Delay must be greater than Min. RS, R/W Address Setup Time (60us) + Hold Time (10us) */
-   LCD_ConfigureDataOutput();
-   LCD_EnableSignal_Set();
-   LCD_WriteData(command);
-   delay_gt300ns();
-   LCD_EnableSignal_Clear();
-   delay_gt200ns(); /* greater than 200ns */
-
-   /* dummy read BF & AC */
-   BF_AC->REG = LCD_ReceiveBusyAC();
-   /* Receive BF & AC */
-   do {
-      BF_AC->REG = LCD_ReceiveBusyAC();
-   } while (BF_AC->BF_ACbits.BF);
+inline char LCD_ReceiveBusyAC() {
+   /* TODO */
+   return 0x00;
 }

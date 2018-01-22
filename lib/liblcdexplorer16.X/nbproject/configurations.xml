@@ -21,11 +21,13 @@
           <itemPath>src/no_pmp/4bit/LCD_SendData.c</itemPath>
           <itemPath>src/no_pmp/4bit/LCD_Initialize.c</itemPath>
           <itemPath>src/no_pmp/4bit/LCD_SendCommand.c</itemPath>
+          <itemPath>src/no_pmp/4bit/LCD_ReceiveBusyAC.c</itemPath>
         </logicalFolder>
         <logicalFolder name="8bit" displayName="8bit" projectFiles="true">
           <itemPath>src/no_pmp/8bit/LCD_SendData.c</itemPath>
           <itemPath>src/no_pmp/8bit/LCD_Initialize.c</itemPath>
           <itemPath>src/no_pmp/8bit/LCD_SendCommand.c</itemPath>
+          <itemPath>src/no_pmp/8bit/LCD_ReceiveBusyAC.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="pmp" displayName="pmp" projectFiles="true">
@@ -298,6 +300,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/4bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -636,6 +650,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/8bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -933,6 +959,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/4bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -958,6 +996,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/8bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -1238,6 +1288,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/4bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -1546,6 +1608,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/8bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -1843,6 +1917,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/4bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -2181,6 +2267,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/8bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -2478,6 +2576,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/4bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -2503,6 +2613,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/8bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -2783,6 +2905,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/4bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -3091,6 +3225,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/8bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -3388,6 +3534,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/4bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -3726,6 +3884,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/8bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -4023,6 +4193,18 @@
         <C30Global>
         </C30Global>
       </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
       <item path="src/no_pmp/4bit/LCD_SendCommand.c" ex="true" overriding="false">
         <C30>
         </C30>
@@ -4048,6 +4230,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/8bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -4328,6 +4522,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/4bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/4bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
@@ -4625,6 +4831,18 @@
         </C30Global>
       </item>
       <item path="src/no_pmp/8bit/LCD_Initialize.c" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
+      </item>
+      <item path="src/no_pmp/8bit/LCD_ReceiveBusyAC.c" ex="true" overriding="false">
         <C30>
         </C30>
         <C30-AR>
