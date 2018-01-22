@@ -36,10 +36,21 @@ void LCD_PutChar(LCD_REGs_st *LCD_REGs, char inputCharacter) {
             LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_OFFSETbits.OFFSET = 40;
          }
          LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
+         /* Check Address Counter
+         while (LCD_REGs->BF_AC.BF_ACbits.AC != LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR) {
+            LCD_REGs->BF_AC.REG = LCD_ReceiveBusyAC();
+         };
+          */
          break;
       case '\n':
-         LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDRbits.COL ^= 1;
+         LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR = LCD_REGs->BF_AC.BF_ACbits.AC;
+         LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDRbits.ROW ^= 1;
          LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
+         /* Check Address Counter
+         while (LCD_REGs->BF_AC.BF_ACbits.AC != LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR) {
+            LCD_REGs->BF_AC.REG = LCD_ReceiveBusyAC();
+         };
+          */
          break;
       case '\b':
          LCD_MoveCursor_Left(LCD_REGs);
