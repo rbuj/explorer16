@@ -1,4 +1,4 @@
-# LCDHelloWorld
+# LCDHelloWorld4MIPS
 ## Description
 Print a message in the LCD Display
 

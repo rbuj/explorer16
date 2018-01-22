@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>LCDHelloWorld</name>
+            <name>LCDHelloWorld4MIPS</name>
             <creation-uuid>b3783334-9bd7-4d7b-920f-a6f5096340ab</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

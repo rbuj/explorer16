@@ -9,7 +9,7 @@ Samples for Explorer 16 Development Board of Microchip
 | [D10OnOffS3](D10OnOffS3.X/) | Switch on D10 LED by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Toggle switch on/off the D10 LED @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
 | [D10FlashDelay](D10FlashDelay.X/) | Flash LED D10 using __delay_ms(d) macro. | x | x |
-| [LCDHelloWorld](LCDHelloWorld.X/) | Print a message in the LCD Display. | x | x |
+| [LCDHelloWorld4MIPS](LCDHelloWorld4MIPS.X/) | Print a message in the LCD Display. | x | x |
 | [LCDHelloWorld16MIPS](LCDHelloWorld16MIPS.X/) | Print a message in the LCD Display @ 16 MIPS. | x | x |
 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Switch on D3:D10 LEDs by pressing and holding S3 switch button, LED is switched off when it's not pressed. | x | x |
 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Toggle switch on/off the D3:D10 LEDs @ 1 Hz using Timer1 Interrupt and SOSC as clock source. | x | x |
@@ -24,7 +24,7 @@ Samples for Explorer 16 Development Board of Microchip
 | Write to output pin / D10 | [D10FlashDelay](D10FlashDelay.X/) | x | x |
 | Use delay macro | [D10FlashDelay](D10FlashDelay.X/) | x | x |
 | Read from input pin / S3 | [D10OnOffS3](D10OnOffS3.X/) | x | x |
-| Write to LCD using Parallel Master Port (PMP) | [LCDHelloWorld](LCDHelloWorld.X/) | x |  |
+| Write to LCD using Parallel Master Port (PMP) | [LCDHelloWorld4MIPS](LCDHelloWorld4MIPS.X/) | x |  |
 | Write to LCD (w/ PMP) | [LCDHelloWorld](LCDHelloWorld.X/) | x | x |
 | Parallel write to output pins / D3:10 | [LEDsOnOffS3](LEDsOnOffS3.X/) | x | x |
 | Change Notification Interrupt / S3 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | x | x |
@@ -37,7 +37,7 @@ Samples for Explorer 16 Development Board of Microchip
 | - | ---------------- | ------------- |
 | 1 | [D10FlashDelay](D10FlashDelay.X/) | Write to output pin / D10; Use delay macro; |
 | 2 | [D10OnOffS3](D10OnOffS3.X/) | Write to output pin / D10; Read from input pin / S3; |
-| 3 | [LCDHelloWorld](LCDHelloWorld.X/) | Write to LCD @ 4 MIPS (Busy flag check) |
+| 3 | [LCDHelloWorld4MIPS](LCDHelloWorld4MIPS.X/) | Write to LCD @ 4 MIPS (Busy flag check) |
 | 4 | [LCDHelloWorld16MIPS](LCDHelloWorld16MIPS.X/) | Write to LCD @ 16 MIPS (Busy flag check) |
 | 5 | [LEDsOnOffS3](LEDsOnOffS3.X/) | Parallel write to output pins / D3:10; Read from input pin / S3; Write to LCD; |
 | 6 | [ToggleD9D10CNIS3](ToggleD9D10CNIS3.X/) | Change Notification Interrupt / S3; Write to output pin / D10; Write to LCD; |
