@@ -37,8 +37,8 @@
 #pragma config GSS = OFF  /* General Segment Code Protection (User program memory is not code-protected) */
 
 /* FOSCSEL */
-#pragma config FNOSC = FRC /* Oscillator Mode (Internal Fast RC (FRC)) */
-#pragma config IESO = OFF  /* Two-speed Oscillator Start-Up Enable (Start up with user-selected oscillator) */
+#pragma config FNOSC = PRIPLL /* Oscillator Select->Primary Oscillator with PLL module (HSPLL, ECPLL) */
+#pragma config IESO = ON      /* Internal External Switch Over Mode (IESO mode (Two-Speed Start-up) enabled) */
 
 /* FOSC */
 #pragma config POSCMD = XT    /* Primary Oscillator Source (XT Oscillator Mode) */
@@ -58,6 +58,8 @@
 /* FICD */
 #pragma config ICS = PGD1   /* Comm Channel Select (Communicate on PGC1/EMUC1 and PGD1/EMUD1) */
 #pragma config JTAGEN = OFF /* JTAG Port Enable (JTAG is Disabled) */
+
+void OSCILLATOR_Initialize(void);
 
 /******************************************************************************/
 /* Trap Function Prototypes                                                   */
@@ -93,54 +95,21 @@ void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void);
 /* </editor-fold> */
 
 void SYS_Initialize(void) {
-   /* Enable D10 */
-   LED_Enable(LED_D10);
-
-   /* Turn Off D10 */
-   LED_Off(LED_D10);
-
-   /* Enable Switch S3 */
-   BUTTON_Enable(BUTTON_S3);
-
    /* Enable ADC to the Potentiometer channel */
    ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
    /* Initialize LCD */
    LCD_Initialize(&LCD_REGs);
-
-   /* Low-Power Secondary Oscillator (SOSC) */
-   __builtin_write_OSCCONL(0x02); /* Continuous Secondary Oscillator Operation */
 }
 
-void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void) {
-   if (IFS1bits.CNIF == 1) {
-      if (BUTTON_IsPressed(BUTTON_S3)) {
-         appData.lcd_clear_flag = 1;
-         TMR1 = 0;          /* clear timer1 register */
-         IFS0bits.T1IF = 0; /* reset Timer 1 interrupt flag */
-      }
-      IFS1bits.CNIF = 0; /* Reset CN interrupt */
-   }
-}
-
-void __attribute__((__interrupt__, auto_psv)) _T1Interrupt(void) {
-   if (appData.seconds < 59) {
-      appData.seconds++;
-   } else {
-      appData.seconds = 0x00;
-      if (appData.minutes < 59) {
-         appData.minutes++;
-      } else {
-         appData.minutes = 0x00;
-         if (appData.hours < 23) {
-            appData.hours++;
-         } else {
-            appData.hours = 0x00;
-         }
-      }
-   }
-   appData.lcd_update_flag = 1; /* Update LCD in main loop */
-   IFS0bits.T1IF = 0;           /* reset Timer 1 interrupt flag */
+void OSCILLATOR_Initialize(void)
+{
+    // NOSC PRIPLL; SOSCEN disabled; OSWEN Switch is Complete; 
+    __builtin_write_OSCCONL((uint8_t) (0x0300 & 0x00FF));
+    // RCDIV FRC/1; DOZE 1:8; DOZEN disabled; ROI disabled; 
+    CLKDIV = 0x3000;
+    // TUN Center frequency; 
+    OSCTUN = 0x0000;
 }
 
 /******************************************************************************/

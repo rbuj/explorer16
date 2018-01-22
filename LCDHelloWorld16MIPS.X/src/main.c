@@ -46,13 +46,13 @@ int main(void) {
    while (true) {
       /* Display welcome message */
       LCD_PutString(&LCD_REGs, appData.messageLine1, sizeof(appData.messageLine1) - 1);
-      __delay_ms(2000ULL);
+      __delay_ms(2000);
 
       for (i = 0; i < 4; i++) {
          LCD_Display_Off(&LCD_REGs);
-         __delay_ms(500ULL);
+         __delay_ms(500);
          LCD_Display_On(&LCD_REGs);
-         __delay_ms(500ULL);
+         __delay_ms(500);
       }
 
       size_msg = strlen(appData.messageLine2);
@@ -62,20 +62,20 @@ int main(void) {
          if (i >= LCD_MAX_COLUMN - 1) {
             LCD_ShiftDisplay_Left(&LCD_REGs);
          }
-         __delay_ms(500ULL);
+         __delay_ms(500);
       }
-      __delay_ms(2000ULL);
+      __delay_ms(2000);
       LCD_CursorBlink_Off(&LCD_REGs);
 
       LCD_ReturnHome(&(LCD_REGs.BF_AC));
-      __delay_ms(3000ULL);
+      __delay_ms(3000);
       for (i = 0; i < LCD_MAX_COLUMN; i++) {
          LCD_ShiftDisplay_Right(&LCD_REGs);
-         __delay_ms(500ULL);
+         __delay_ms(500);
       }
 
       LCD_ClearScreen(&(LCD_REGs.BF_AC));
-      __delay_ms(1000ULL);
+      __delay_ms(1000);
    };
 
    return EXIT_SUCCESS;

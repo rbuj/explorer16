@@ -42,7 +42,7 @@
 
 /* FOSC */
 #pragma config POSCMD = XT    /* Primary Oscillator Source (XT Oscillator Mode) */
-#pragma config OSCIOFNC = ON  /* OSC2 Pin Function (OSC2 pin has digital I/O function) */
+#pragma config OSCIOFNC = OFF /* OSC2 Pin Function (OSC2 pin has digital I/O function) */
 #pragma config FCKSM = CSDCMD /* Clock Switching and Monitor (Both Clock Switching and Fail-Safe Clock Monitor are disabled) */
 
 /* FWDT */

@@ -20,29 +20,31 @@
 #include "lcd_no_pmp_8bit.h"
 
 bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
-   /* Initialize data pins to zero */
-   LCD_WriteData(0x00);
+    /* Initialize data pins to zero */
+    LCD_WriteData(0x00);
 
-   /* Initialize the control signal data pins */
-   LCD_RWSignal_Clear();
-   LCD_RSSignal_Clear();
-   LCD_EnableSignal_Clear();
+    /* Initialize the control signal data pins */
+    LCD_RWSignal_Clear();
+    LCD_RSSignal_Clear();
+    LCD_EnableSignal_Clear();
 
-   /* Pin direction */
-   LCD_ConfigureDataInput(); /* Configure the data pins as input */
-   LCD_RSSignal_Output();
-   LCD_RWSignal_Output();
-   LCD_EnableSignal_Output();
+    /* Pin direction */
+    LCD_ConfigureDataInput(); /* Configure the data pins as input */
+    LCD_RSSignal_Output();
+    LCD_RWSignal_Output();
+    LCD_EnableSignal_Output();
 
-   /* LCD: Wait for more than 30ms after VDD on */
-   __delay_ms(30UL);
+    /* LCD: Wait for more than 30ms after VDD on */
+    __delay_ms(30UL); /* +30ms (1.25x) */
 
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
+    __delay_us(50); /* +40us (1.25x) */
+    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
+    __delay_us(50); /* +40us (1.25x) */
+    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
+    __delay_us(50); /* +40us (1.25x) */
+    LCD_ClearScreen(&(LCD_REGs->BF_AC));
+    __delay_ms(3); /* +1.64us (2.0x) */
 
-   LCD_ClearScreen(&(LCD_REGs->BF_AC));
-   __delay_us(1640UL);
-
-   return true;
+    return true;
 }
