@@ -71,8 +71,7 @@
 #define LCD_EnableSignal_Output() TRISDbits.TRISD4 = 0 /* clear Enable bit */
 /* Configure PORTE<7:0> as outputs/ inputs.
  * One instruction cycle is required between a port direction change.  */
-#define LCD_WriteData(d)   \
-   LCD_DATA_LAT = (LCD_DATA_LAT & 0xFF00) | d
+#define LCD_WriteData(d) LCD_DATA_LAT = (LCD_DATA_LAT & 0xFF00) | d
 #define LCD_ConfigureDataOutput() \
    LCD_DATA_TRIS &= 0xFF00;       \
    Nop()
@@ -81,11 +80,11 @@
    Nop()
 
 #if FCY == 4000000UL
-#define delay_gt70ns() Nop() /* 250ns */
+#define delay_gt70ns() Nop()  /* 250ns */
+#define delay_gt200ns() Nop() /* 250ns */
 #define delay_gt300ns() \
    Nop();               \
-   Nop()                      /* 500ns */
-#define delay_gt200ns() Nop() /* 250ns */
+   Nop() /* 500ns */
 #define delay_gt1000ns() \
    Nop();                \
    Nop();                \
@@ -93,13 +92,13 @@
    Nop()
 #elif FCY == 8000000UL
 #define delay_gt70ns() Nop() /* 125ns */
+#define delay_gt200ns() \
+   Nop();               \
+   Nop() /* 250ns */
 #define delay_gt300ns() \
    Nop();               \
    Nop();               \
    Nop() /* 375ns */
-#define delay_gt200ns() \
-   Nop();               \
-   Nop() /* 250ns */
 #define delay_gt1000ns() \
    Nop();                \
    Nop();                \
@@ -113,6 +112,11 @@
 #define delay_gt70ns() \
    Nop();              \
    Nop() /* 125ns */
+#define delay_gt200ns() \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop() /* 250ns */
 #define delay_gt300ns() \
    Nop();               \
    Nop();               \
@@ -120,11 +124,6 @@
    Nop();               \
    Nop();               \
    Nop() /* +310ns */
-#define delay_gt200ns() \
-   Nop();               \
-   Nop();               \
-   Nop();               \
-   Nop() /* 250ns */
 #define delay_gt1000ns() __delay_us(1)
 #else
 #pragma message "not supported"
