@@ -33,7 +33,6 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
-      <itemPath>MyConfig.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
