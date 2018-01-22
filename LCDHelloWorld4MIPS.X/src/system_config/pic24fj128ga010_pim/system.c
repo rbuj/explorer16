@@ -25,9 +25,10 @@
 /* CONFIG2 */
 #pragma config POSCMOD = XT   /* Primary Oscillator Select (XT Oscillator mode selected) */
 #pragma config OSCIOFNC = OFF /* Primary Oscillator Output Function (OSC2/CLKO/RC15 functions as CLKO (FOSC/2)) */
-#pragma config FCKSM = CSDCMD /* Clock Switching and Monitor (Clock switching and Fail-Safe Clock Monitor are disabled) */
-#pragma config FNOSC = PRI    /* Oscillator Select (Primary Oscillator (XT, HS, EC)) */
-#pragma config IESO = ON      /* Internal External Switch Over Mode (IESO mode (Two-Speed Start-up) enabled) */
+#pragma config FCKSM = \
+    CSDCMD                 /* Clock Switching and Monitor (Clock switching and Fail-Safe Clock Monitor are disabled) */
+#pragma config FNOSC = PRI /* Oscillator Select (Primary Oscillator (XT, HS, EC)) */
+#pragma config IESO = ON   /* Internal External Switch Over Mode (IESO mode (Two-Speed Start-up) enabled) */
 
 /* CONFIG1 */
 #pragma config WDTPS = PS32768 /* Watchdog Timer Postscaler (1:32,768) */

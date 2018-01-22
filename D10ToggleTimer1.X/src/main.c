@@ -26,8 +26,13 @@
 void SYS_Initialize(void);
 
 /* Global Variable Declaration */
-LCD_REGs_st LCD_REGs = {
-    .ENTRY_MODE.REG = 0x04, .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C, .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10, .FUNCTION_MODE.REG = 0x3C, .RAM_ADDR.REG = 0x40, .DD_RAM_ADDR.REG = 0x80, .BF_AC.REG = 0x00};
+LCD_REGs_st LCD_REGs = {.ENTRY_MODE.REG = 0x04,
+                        .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
+                        .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
+                        .FUNCTION_MODE.REG = 0x3C,
+                        .RAM_ADDR.REG = 0x40,
+                        .DD_RAM_ADDR.REG = 0x80,
+                        .BF_AC.REG = 0x00};
 
 APP_DATA appData = {
     .messageLine1 = "Explorer 16 Demo\n\r",

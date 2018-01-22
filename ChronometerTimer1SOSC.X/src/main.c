@@ -27,8 +27,13 @@
 void SYS_Initialize(void);
 
 /* Global Variable Declaration */
-LCD_REGs_st LCD_REGs = {
-    .ENTRY_MODE.REG = 0x04, .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C, .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10, .FUNCTION_MODE.REG = 0x3C, .RAM_ADDR.REG = 0x40, .DD_RAM_ADDR.REG = 0x80, .BF_AC.REG = 0x00};
+LCD_REGs_st LCD_REGs = {.ENTRY_MODE.REG = 0x04,
+                        .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
+                        .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
+                        .FUNCTION_MODE.REG = 0x3C,
+                        .RAM_ADDR.REG = 0x40,
+                        .DD_RAM_ADDR.REG = 0x80,
+                        .BF_AC.REG = 0x00};
 
 APP_DATA appData = {
     .messageLine1 = "S3 start/reset\n\r",
@@ -65,7 +70,8 @@ int main(void) {
          /* Reset software flag */
          appData.lcd_update_flag = 0;
          /* Refresh clock in LCD */
-         sprintf(appData.messageLine2, "\r%02u:%02u.%03lu", appData.minutes, appData.seconds, (((unsigned long) appData.microseconds) * 1000) / 32);
+         sprintf(appData.messageLine2, "\r%02u:%02u.%03lu", appData.minutes, appData.seconds,
+                 (((unsigned long) appData.microseconds) * 1000) / 32);
          LCD_PutString(&LCD_REGs, appData.messageLine2, sizeof(appData.messageLine2) - 1);
       }
       Sleep();

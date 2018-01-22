@@ -43,14 +43,16 @@
 /* FOSC */
 #pragma config POSCMD = XT    /* Primary Oscillator Source (XT Oscillator Mode) */
 #pragma config OSCIOFNC = OFF /* OSC2 Pin Function (OSC2 pin has digital I/O function) */
-#pragma config FCKSM = CSDCMD /* Clock Switching and Monitor (Both Clock Switching and Fail-Safe Clock Monitor are disabled) */
+#pragma config FCKSM = \
+    CSDCMD /* Clock Switching and Monitor (Both Clock Switching and Fail-Safe Clock Monitor are disabled) */
 
 /* FWDT */
 #pragma config WDTPOST = PS32768 /* Watchdog Timer Postscaler (1:32,768) */
 #pragma config WDTPRE = PR128    /* WDT Prescaler (1:128) */
-#pragma config PLLKEN = ON       /* PLL Lock Enable bit (Clock switch to PLL source will wait until the PLL lock signal is valid.) */
-#pragma config WINDIS = OFF      /* Watchdog Timer Window (Watchdog Timer in Non-Window mode) */
-#pragma config FWDTEN = OFF      /* Watchdog Timer Enable (Watchdog timer enabled/disabled by user software) */
+#pragma config PLLKEN = \
+    ON /* PLL Lock Enable bit (Clock switch to PLL source will wait until the PLL lock signal is valid.) */
+#pragma config WINDIS = OFF /* Watchdog Timer Window (Watchdog Timer in Non-Window mode) */
+#pragma config FWDTEN = OFF /* Watchdog Timer Enable (Watchdog timer enabled/disabled by user software) */
 
 /* FPOR */
 #pragma config FPWRT = PWR128 /* POR Timer Value (128ms) */
@@ -95,10 +97,10 @@ void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void);
 /* </editor-fold> */
 
 void SYS_Initialize(void) {
-    /* OSCILLATOR */
-    OSCILLATOR_Initialize();
+   /* OSCILLATOR */
+   OSCILLATOR_Initialize();
 
-    /* Enable ADC to the Potentiometer channel */
+   /* Enable ADC to the Potentiometer channel */
    ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
    /* Initialize LCD */
@@ -106,12 +108,12 @@ void SYS_Initialize(void) {
 }
 
 void OSCILLATOR_Initialize(void) {
-    /* NOSC PRIPLL; SOSCEN disabled; OSWEN Switch is Complete; */
-    __builtin_write_OSCCONL((uint8_t) (0x0300 & 0x00FF));
-    /* RCDIV FRC/1; DOZE 1:8; DOZEN disabled; ROI disabled; */
-    CLKDIV = 0x3000;
-    /* TUN Center frequency; */
-    OSCTUN = 0x0000;
+   /* NOSC PRIPLL; SOSCEN disabled; OSWEN Switch is Complete; */
+   __builtin_write_OSCCONL((uint8_t)(0x0300 & 0x00FF));
+   /* RCDIV FRC/1; DOZE 1:8; DOZEN disabled; ROI disabled; */
+   CLKDIV = 0x3000;
+   /* TUN Center frequency; */
+   OSCTUN = 0x0000;
 }
 
 /******************************************************************************/

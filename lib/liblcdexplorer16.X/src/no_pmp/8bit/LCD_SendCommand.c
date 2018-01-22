@@ -20,24 +20,24 @@
 #include "lcd_no_pmp_8bit.h"
 
 inline void LCD_SendCommand(BF_AC_u *BF_AC, char command) {
-    LCD_RWSignal_Clear(); /* select write operation */
-    LCD_RSSignal_Clear(); /* select instruction register */
-    LCD_ConfigureDataOutput();
-    LCD_EnableSignal_Set();
-    LCD_WriteData(command);
-    __delay_us(4);
-    LCD_EnableSignal_Clear();
-    __delay_us(4);
+   LCD_RWSignal_Clear(); /* select write operation */
+   LCD_RSSignal_Clear(); /* select instruction register */
+   LCD_ConfigureDataOutput();
+   LCD_EnableSignal_Set();
+   LCD_WriteData(command);
+   __delay_us(4);
+   LCD_EnableSignal_Clear();
+   __delay_us(4);
 
-    /* Receive BF & AC */
-    do {
-        LCD_ConfigureDataInput();
-        LCD_RSSignal_Clear(); /* select BF/AC register */
-        LCD_RWSignal_Set(); /* select read operation */
-        LCD_EnableSignal_Set();
-        __delay_us(4);
-        BF_AC->REG = LCD_DATA_PORT & 0x00FF;
-        LCD_EnableSignal_Clear();
-        __delay_us(4);
-    } while (BF_AC->BF_ACbits.BF);
+   /* Receive BF & AC */
+   do {
+      LCD_ConfigureDataInput();
+      LCD_RSSignal_Clear(); /* select BF/AC register */
+      LCD_RWSignal_Set();   /* select read operation */
+      LCD_EnableSignal_Set();
+      __delay_us(4);
+      BF_AC->REG = LCD_DATA_PORT & 0x00FF;
+      LCD_EnableSignal_Clear();
+      __delay_us(4);
+   } while (BF_AC->BF_ACbits.BF);
 }
