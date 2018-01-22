@@ -72,8 +72,7 @@
 /* Configure PORTE<7:0> as outputs/ inputs.
  * One instruction cycle is required between a port direction change.  */
 #define LCD_WriteData(d)   \
-   LCD_DATA_LAT &= 0xFF00; \
-   LCD_DATA_LAT |= d
+   LCD_DATA_LAT = (LCD_DATA_LAT & 0xFF00) | d
 #define LCD_ConfigureDataOutput() \
    LCD_DATA_TRIS &= 0xFF00;       \
    Nop()
