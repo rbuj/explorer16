@@ -38,13 +38,9 @@ bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
    __delay_ms(30UL); /* +30ms (1.25x) */
 
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->FUNCTION_MODE.REG);
-   __delay_us(50); /* +40us (1.25x) */
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DISPLAY_CURSOR_BLINK_ACT.REG);
-   __delay_us(50); /* +40us (1.25x) */
    LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->ENTRY_MODE.REG);
-   __delay_us(50); /* +40us (1.25x) */
    LCD_ClearScreen(&(LCD_REGs->BF_AC));
-   __delay_ms(3); /* +1.64us (2.0x) */
 
    return true;
 }
