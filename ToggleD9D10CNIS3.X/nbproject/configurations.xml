@@ -148,7 +148,7 @@
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros" value=""/>
         <property key="scalar-model" value="default"/>
-        <property key="use-cci" value="false"/>
+        <property key="use-cci" value="true"/>
         <property key="use-iar" value="false"/>
       </C30>
       <C30-AR>
@@ -409,7 +409,7 @@
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros" value=""/>
         <property key="scalar-model" value="default"/>
-        <property key="use-cci" value="false"/>
+        <property key="use-cci" value="true"/>
         <property key="use-iar" value="false"/>
       </C30>
       <C30-AR>
