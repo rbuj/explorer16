@@ -27,7 +27,17 @@
 #include "lcd_no_pmp_4bit.h"
 #endif
 
-void LCD_SetDDRAMAdrress(LCD_REGs_st *LCD_REGs, unsigned char address) {
-   LCD_REGs->DD_RAM_ADDR.DD_RAM_ADDR_ADDRRESSbits.ADDR = address;
-   LCD_SendCommand(&(LCD_REGs->BF_AC), LCD_REGs->DD_RAM_ADDR.REG);
+void LCD_InitializeCGRAM(LCD_REGs_st *LCD_REGs) {
+   /* Backup software register for DD RAM: used in LCD_PutChar '\n', '\r' */
+   uint8_t ac_dd = LCD_REGs->BF_AC.BF_ACbits.AC;
+
+   uint8_t i;
+
+   LCD_SetCGRAMAddress(LCD_REGs, 0x00);
+   for (i = 0; i < 64; i++) {
+      LCD_SendData(&(LCD_REGs->BF_AC), LCD_REGs->CG_RAM[i]);
+   }
+
+   /* Restore DD RAM Address from backup */
+   LCD_SetDDRAMAddress(LCD_REGs, ac_dd);
 }

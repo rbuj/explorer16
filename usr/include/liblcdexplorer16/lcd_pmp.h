@@ -73,6 +73,7 @@
 #define LCD_FunctionMode_EightBitFont(ptr) LCD_SetFunctionMode_Font(ptr, FIVE_DOTS)
 
 bool LCD_Initialize(LCD_REGs_st *) __attribute__((section(".liblcdexplorer16")));
+void LCD_InitializeCGRAM(LCD_REGs_st *) __attribute__((section(".liblcdexplorer16")));
 void LCD_ClearScreen(BF_AC_u *) __attribute__((section(".liblcdexplorer16")));
 void LCD_ReturnHome(BF_AC_u *) __attribute__((section(".liblcdexplorer16")));
 void LCD_PutString(LCD_REGs_st *, char *, uint16_t) __attribute__((section(".liblcdexplorer16")));

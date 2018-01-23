@@ -110,7 +110,7 @@ typedef struct {
 
 typedef struct {
    unsigned ADDR : 7;
-   unsigned : 1;
+   unsigned CG_DD : 1;
 } DD_RAM_ADDR_ADDRRESSbits_st;
 
 typedef union {
@@ -140,6 +140,7 @@ typedef struct {
    RAM_ADDR_u                  RAM_ADDR;
    DD_RAM_ADDR_u               DD_RAM_ADDR;
    BF_AC_u                     BF_AC;
+   unsigned short              CG_RAM[64];
 } LCD_REGs_st;
 
 #endif /* LCD_REGS_H */

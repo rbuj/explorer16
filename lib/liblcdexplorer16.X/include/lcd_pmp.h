@@ -81,8 +81,13 @@
 #define LCD_FunctionMode_OneLine(ptr) LCD_SetFunctionMode_Lines(ptr, SINGLE_LINE)
 #define LCD_FunctionMode_TenBitFont(ptr) LCD_SetFunctionMode_Font(ptr, TEN_DOTS)
 #define LCD_FunctionMode_EightBitFont(ptr) LCD_SetFunctionMode_Font(ptr, FIVE_DOTS)
+#define LCD_SetCGRAMAddress(ptr, d) LCD_SetRAMAddress(ptr, d | 0x40, false)
+#define LCD_SetCGRAMAddressChar5x8(ptr, d) LCD_SetRAMAddress(ptr, (d * 8) | 0x40, false)
+#define LCD_SetCGRAMAddressChar5x10(ptr, d) LCD_SetRAMAddress(ptr, (d * 10) | 0x40, false)
+#define LCD_SetDDRAMAddress(ptr, d) LCD_SetRAMAddress(ptr, d, true)
 
 bool LCD_Initialize(LCD_REGs_st *);
+void LCD_InitializeCGRAM(LCD_REGs_st *);
 void LCD_ClearScreen(BF_AC_u *);
 void LCD_ReturnHome(BF_AC_u *);
 void LCD_PutString(LCD_REGs_st *, char *, uint16_t);
@@ -99,7 +104,7 @@ void LCD_SetFunctionMode(LCD_REGs_st *, bool, bool, bool);
 void LCD_SetFunctionMode_DataLenght(LCD_REGs_st *, bool);
 void LCD_SetFunctionMode_Lines(LCD_REGs_st *, bool);
 void LCD_SetFunctionMode_Font(LCD_REGs_st *, bool);
-void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char);
+void LCD_SetRAMAddress(LCD_REGs_st *, unsigned char, bool);
 
 inline void LCD_Send(BF_AC_u *, uint16_t, char);
 inline char LCD_Receive(uint16_t);

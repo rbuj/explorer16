@@ -43,7 +43,6 @@
       <itemPath>src/LCD_PutChar.c</itemPath>
       <itemPath>src/LCD_PutString.c</itemPath>
       <itemPath>src/LCD_ReturnHome.c</itemPath>
-      <itemPath>src/LCD_SetDDRAMAdrress.c</itemPath>
       <itemPath>src/LCD_SetEntryMode_CursorMoviment.c</itemPath>
       <itemPath>src/LCD_SetEntryMode_Shift.c</itemPath>
       <itemPath>src/LCD_SetFunctionMode_DataLenght.c</itemPath>
@@ -51,6 +50,8 @@
       <itemPath>src/LCD_SetFunctionMode_Lines.c</itemPath>
       <itemPath>src/LCD_SetFunctionMode.c</itemPath>
       <itemPath>src/LCD_ShiftDisplayMoveCursor.c</itemPath>
+      <itemPath>src/LCD_SetRAMAddress.c</itemPath>
+      <itemPath>src/LCD_InitializeCGRAM.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

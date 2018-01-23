@@ -32,10 +32,20 @@ void SYS_Initialize(void);
 LCD_REGs_st LCD_REGs = {.ENTRY_MODE.REG = 0x04,
                         .DISPLAY_CURSOR_BLINK_ACT.REG = 0x0C,
                         .SHIFT_DISPLAY_MOVE_CURSOR.REG = 0x10,
-                        .FUNCTION_MODE.REG = 0x3C,
+                        .FUNCTION_MODE.REG = 0x38,
                         .RAM_ADDR.REG = 0x40,
                         .DD_RAM_ADDR.REG = 0x80,
-                        .BF_AC.REG = 0x00};
+                        .BF_AC.REG = 0x00,
+                        .CG_RAM = {
+                            0b01000, 0b00100, 0b01110, 0b00001, 0b01111, 0b10001, 0b01111, 0b00000, /* custom char: à */
+                            0b01000, 0b00100, 0b01110, 0b10001, 0b11110, 0b10000, 0b01110, 0b00000, /* custom char: è */
+                            0b00010, 0b00100, 0b01110, 0b10001, 0b11110, 0b10000, 0b01110, 0b00000, /* custom char: é */
+                            0b00010, 0b00100, 0b00000, 0b01100, 0b00100, 0b00100, 0b01110, 0b00000, /* custom char: í */
+                            0b00000, 0b01010, 0b00000, 0b01100, 0b00100, 0b00100, 0b01110, 0b00000, /* custom char: ï */
+                            0b01000, 0b00100, 0b00000, 0b01110, 0b10001, 0b10001, 0b01110, 0b00000, /* custom char: ò */
+                            0b00010, 0b00100, 0b00000, 0b01110, 0b10001, 0b10001, 0b01110, 0b00000, /* custom char: ó */
+                            0b00010, 0b00100, 0b00000, 0b10001, 0b10001, 0b10011, 0b01101, 0b00000  /* custom char: ú */
+                        }};
 
 APP_DATA appData = {.messageLine1 = "Explorer 16 Demo\n\r", .messageLine2 = "An example of printing on a LCD"};
 
@@ -46,6 +56,8 @@ int main(void) {
 
    /* Call the System Initialize routine */
    SYS_Initialize();
+
+   LCD_InitializeCGRAM(&LCD_REGs);
 
    /* Infinite Loop */
    while (true) {
@@ -78,9 +90,37 @@ int main(void) {
          LCD_ShiftDisplay_Right(&LCD_REGs);
          __delay_ms(500);
       }
+      __delay_ms(1000ULL);
 
       LCD_ClearScreen(&(LCD_REGs.BF_AC));
-      __delay_ms(1000);
+      LCD_PutChar(&LCD_REGs, '8');
+      LCD_PutChar(&LCD_REGs, ' ');
+      LCD_PutChar(&LCD_REGs, 'c');
+      LCD_PutChar(&LCD_REGs, 'u');
+      LCD_PutChar(&LCD_REGs, 's');
+      LCD_PutChar(&LCD_REGs, 't');
+      LCD_PutChar(&LCD_REGs, 'o');
+      LCD_PutChar(&LCD_REGs, 'm');
+      LCD_PutChar(&LCD_REGs, ' ');
+      LCD_PutChar(&LCD_REGs, 'c');
+      LCD_PutChar(&LCD_REGs, 'h');
+      LCD_PutChar(&LCD_REGs, 'a');
+      LCD_PutChar(&LCD_REGs, 'r');
+      LCD_PutChar(&LCD_REGs, 's');
+      LCD_PutChar(&LCD_REGs, ':');
+      LCD_PutChar(&LCD_REGs, '\n');
+      LCD_PutChar(&LCD_REGs, '\r');
+      LCD_PutChar(&LCD_REGs, 0x00);
+      LCD_PutChar(&LCD_REGs, 0x01);
+      LCD_PutChar(&LCD_REGs, 0x02);
+      LCD_PutChar(&LCD_REGs, 0x03);
+      LCD_PutChar(&LCD_REGs, 0x04);
+      LCD_PutChar(&LCD_REGs, 0x05);
+      LCD_PutChar(&LCD_REGs, 0x06);
+      LCD_PutChar(&LCD_REGs, 0x07);
+      __delay_ms(5000ULL);
+
+      LCD_ClearScreen(&(LCD_REGs.BF_AC));
    };
 
    return EXIT_SUCCESS;

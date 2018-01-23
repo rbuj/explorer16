@@ -38,6 +38,7 @@
   <sourceRootList>
     <Elem>src</Elem>
     <Elem>include</Elem>
+    <Elem>../usr/include/liblcdexplorer16</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
