@@ -95,9 +95,6 @@ void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void);
 /* </editor-fold> */
 
 void SYS_Initialize(void) {
-   /* OSCILLATOR */
-   OSCILLATOR_Initialize();
-
    /* Enable ADC to the Potentiometer channel */
    ADC_ChannelEnable(ADC_CHANNEL_POTENTIOMETER);
 
