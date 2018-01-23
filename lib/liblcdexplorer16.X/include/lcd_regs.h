@@ -140,7 +140,9 @@ typedef struct {
    RAM_ADDR_u                  RAM_ADDR;
    DD_RAM_ADDR_u               DD_RAM_ADDR;
    BF_AC_u                     BF_AC;
+#ifdef LCD_CGRAM
    unsigned short              CG_RAM[64];
+#endif
 } LCD_REGs_st;
 
 #endif /* LCD_REGS_H */

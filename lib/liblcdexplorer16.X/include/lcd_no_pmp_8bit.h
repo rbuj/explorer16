@@ -149,9 +149,11 @@
 #define LCD_FunctionMode_OneLine(ptr) LCD_SetFunctionMode_Lines(ptr, SINGLE_LINE)
 #define LCD_FunctionMode_TenBitFont(ptr) LCD_SetFunctionMode_Font(ptr, TEN_DOTS)
 #define LCD_FunctionMode_EightBitFont(ptr) LCD_SetFunctionMode_Font(ptr, FIVE_DOTS)
+#ifdef LCD_CGRAM
 #define LCD_SetCGRAMAddress(ptr, d) LCD_SetRAMAddress(ptr, d | 0x40, false)
 #define LCD_SetCGRAMAddressChar5x8(ptr, d) LCD_SetRAMAddress(ptr, (d * 8) | 0x40, false)
 #define LCD_SetCGRAMAddressChar5x10(ptr, d) LCD_SetRAMAddress(ptr, (d * 10) | 0x40, false)
+#endif
 #define LCD_SetDDRAMAddress(ptr, d) LCD_SetRAMAddress(ptr, d, true)
 
 bool LCD_Initialize(LCD_REGs_st *);
