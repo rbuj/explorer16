@@ -90,6 +90,8 @@ void LCD_SetFunctionMode(LCD_REGs_st *, bool, bool, bool) __attribute__((section
 void LCD_SetFunctionMode_DataLenght(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
 void LCD_SetFunctionMode_Lines(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
 void LCD_SetFunctionMode_Font(LCD_REGs_st *, bool) __attribute__((section(".liblcdexplorer16")));
-void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char) __attribute__((section(".liblcdexplorer16")));
 
+#ifdef LCD_CG_RAM
+void LCD_SetDDRAMAdrress(LCD_REGs_st *, unsigned char) __attribute__((section(".liblcdexplorer16")));
+#endif
 #endif /* LCD_H */

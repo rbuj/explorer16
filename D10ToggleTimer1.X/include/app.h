@@ -21,13 +21,8 @@
 #define APP_H
 
 #include <xc.h>
+#include "lcd.h"
 #include "leds.h"
-#ifdef LCD_PMP
-#include "lcd_pmp.h"
-#endif
-#ifdef LCD_NO_PMP_8BIT
-#include "lcd_no_pmp.h"
-#endif
 #include "timer_1ms.h"
 
 #define LCD_MAX_COLUMN 16

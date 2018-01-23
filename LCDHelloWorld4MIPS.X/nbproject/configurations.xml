@@ -228,7 +228,7 @@
         <property key="generic-16-bit" value="false"/>
         <property key="legacy-libc" value="false"/>
         <property key="mpreserve-all" value="false"/>
-        <property key="oXC16glb-macros" value="LCD_NO_PMP_8BIT;FCY=4000000UL"/>
+        <property key="oXC16glb-macros" value="FCY=4000000UL;LCD_CG_RAM"/>
         <property key="output-file-format" value="elf"/>
         <property key="preserve-all" value="false"/>
         <property key="preserve-file" value=""/>
@@ -489,7 +489,7 @@
         <property key="generic-16-bit" value="false"/>
         <property key="legacy-libc" value="false"/>
         <property key="mpreserve-all" value="false"/>
-        <property key="oXC16glb-macros" value="LCD_PMP;FCY=4000000UL"/>
+        <property key="oXC16glb-macros" value="FCY=4000000UL;LCD_CG_RAM"/>
         <property key="output-file-format" value="elf"/>
         <property key="preserve-all" value="false"/>
         <property key="preserve-file" value=""/>
@@ -527,7 +527,6 @@
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
@@ -740,7 +739,7 @@
         <property key="generic-16-bit" value="false"/>
         <property key="legacy-libc" value="false"/>
         <property key="mpreserve-all" value="false"/>
-        <property key="oXC16glb-macros" value="LCD_NO_PMP_8BIT;FCY=4000000UL"/>
+        <property key="oXC16glb-macros" value="FCY=4000000UL;LCD_CG_RAM"/>
         <property key="output-file-format" value="elf"/>
         <property key="preserve-all" value="false"/>
         <property key="preserve-file" value=""/>
@@ -778,7 +777,6 @@
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
