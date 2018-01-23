@@ -62,8 +62,8 @@
                             AC="true"
                             BL="true"
                             WD="../lib/libexplorer16.X"
-                            BC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim"
-                            DBC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim TYPE_IMAGE=DEBUG_RUN"
+                            BC="${MAKE} -e FCY=4000000UL -f Makefile CONF=dspic33fj256gp710a_pim"
+                            DBC="${MAKE} -e FCY=4000000UL -f Makefile CONF=dspic33fj256gp710a_pim TYPE_IMAGE=DEBUG_RUN"
                             CC="rm -rf &quot;build/dspic33fj256gp710a_pim&quot; &quot;dist/dspic33fj256gp710a_pim&quot;"
                             OP="dist/dspic33fj256gp710a_pim/production/libexplorer16.X.a"
                             DOP="dist/dspic33fj256gp710a_pim/debug/libexplorer16.X.a"
@@ -75,18 +75,18 @@
             <linkerLibProjectItem>
               <makeArtifact PL="../lib/liblcdexplorer16.X"
                             CT="3"
-                            CN="dspic33fj256gp710a_pim_8bits_4mips"
+                            CN="dspic33fj256gp710a_pim_8bits"
                             AC="false"
                             BL="true"
                             WD="../lib/liblcdexplorer16.X"
-                            BC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim_8bits_4mips"
-                            DBC="${MAKE}  -f Makefile CONF=dspic33fj256gp710a_pim_8bits_4mips TYPE_IMAGE=DEBUG_RUN"
-                            CC="rm -rf &quot;build/dspic33fj256gp710a_pim_8bits_4mips&quot; &quot;dist/dspic33fj256gp710a_pim_8bits_4mips&quot;"
-                            OP="dist/dspic33fj256gp710a_pim_8bits_4mips/production/liblcdexplorer16.X.a"
-                            DOP="dist/dspic33fj256gp710a_pim_8bits_4mips/debug/liblcdexplorer16.X.a"
-                            FL="dist/dspic33fj256gp710a_pim_8bits_4mips/production/liblcdexplorer16.X.a"
-                            PD="dist/dspic33fj256gp710a_pim_8bits_4mips/production/liblcdexplorer16.X.a"
-                            DD="dist/dspic33fj256gp710a_pim_8bits_4mips/debug/liblcdexplorer16.X.a">
+                            BC="${MAKE} -e FCY=4000000UL -f Makefile CONF=dspic33fj256gp710a_pim_8bits"
+                            DBC="${MAKE} -e FCY=4000000UL -f Makefile CONF=dspic33fj256gp710a_pim_8bits TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/dspic33fj256gp710a_pim_8bits&quot; &quot;dist/dspic33fj256gp710a_pim_8bits&quot;"
+                            OP="dist/dspic33fj256gp710a_pim_8bits/production/liblcdexplorer16.X.a"
+                            DOP="dist/dspic33fj256gp710a_pim_8bits/debug/liblcdexplorer16.X.a"
+                            FL="dist/dspic33fj256gp710a_pim_8bits/production/liblcdexplorer16.X.a"
+                            PD="dist/dspic33fj256gp710a_pim_8bits/production/liblcdexplorer16.X.a"
+                            DD="dist/dspic33fj256gp710a_pim_8bits/debug/liblcdexplorer16.X.a">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>
@@ -323,8 +323,8 @@
                             AC="false"
                             BL="true"
                             WD="../lib/libexplorer16.X"
-                            BC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim"
-                            DBC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim TYPE_IMAGE=DEBUG_RUN"
+                            BC="${MAKE} -e FCY=4000000UL -f Makefile CONF=pic24fj128ga010_pim"
+                            DBC="${MAKE} -e FCY=4000000UL -f Makefile CONF=pic24fj128ga010_pim TYPE_IMAGE=DEBUG_RUN"
                             CC="rm -rf &quot;build/pic24fj128ga010_pim&quot; &quot;dist/pic24fj128ga010_pim&quot;"
                             OP="dist/pic24fj128ga010_pim/production/libexplorer16.X.a"
                             DOP="dist/pic24fj128ga010_pim/debug/libexplorer16.X.a"
@@ -336,18 +336,18 @@
             <linkerLibProjectItem>
               <makeArtifact PL="../lib/liblcdexplorer16.X"
                             CT="3"
-                            CN="pic24fj128ga010_pim_pmp_4mips"
+                            CN="pic24fj128ga010_pim_pmp"
                             AC="false"
                             BL="true"
                             WD="../lib/liblcdexplorer16.X"
-                            BC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim_pmp_4mips"
-                            DBC="${MAKE}  -f Makefile CONF=pic24fj128ga010_pim_pmp_4mips TYPE_IMAGE=DEBUG_RUN"
-                            CC="rm -rf &quot;build/pic24fj128ga010_pim_pmp_4mips&quot; &quot;dist/pic24fj128ga010_pim_pmp_4mips&quot;"
-                            OP="dist/pic24fj128ga010_pim_pmp_4mips/production/liblcdexplorer16.X.a"
-                            DOP="dist/pic24fj128ga010_pim_pmp_4mips/debug/liblcdexplorer16.X.a"
-                            FL="dist/pic24fj128ga010_pim_pmp_4mips/production/liblcdexplorer16.X.a"
-                            PD="dist/pic24fj128ga010_pim_pmp_4mips/production/liblcdexplorer16.X.a"
-                            DD="dist/pic24fj128ga010_pim_pmp_4mips/debug/liblcdexplorer16.X.a">
+                            BC="${MAKE} -e FCY=4000000UL -f Makefile CONF=pic24fj128ga010_pim_pmp"
+                            DBC="${MAKE} -e FCY=4000000UL -f Makefile CONF=pic24fj128ga010_pim_pmp TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/pic24fj128ga010_pim_pmp&quot; &quot;dist/pic24fj128ga010_pim_pmp&quot;"
+                            OP="dist/pic24fj128ga010_pim_pmp/production/liblcdexplorer16.X.a"
+                            DOP="dist/pic24fj128ga010_pim_pmp/debug/liblcdexplorer16.X.a"
+                            FL="dist/pic24fj128ga010_pim_pmp/production/liblcdexplorer16.X.a"
+                            PD="dist/pic24fj128ga010_pim_pmp/production/liblcdexplorer16.X.a"
+                            DD="dist/pic24fj128ga010_pim_pmp/debug/liblcdexplorer16.X.a">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>
