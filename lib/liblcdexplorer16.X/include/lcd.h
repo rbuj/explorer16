@@ -17,8 +17,8 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef PMP_LCD_H
-#define PMP_LCD_H
+#ifndef LCD_H
+#define LCD_H
 
 #include <xc.h>
 #include <stdbool.h>  /* Includes true/false definition */
@@ -194,4 +194,4 @@ inline void LCD_SendCommand(BF_AC_u *, char);
 inline char LCD_ReceiveBusyAC();
 #endif /* LCD_NO_PMP_4BIT | LCD_NO_PMP_8BIT */
 
-#endif /* PMP_LCD_H */
+#endif /* LCD_H */
