@@ -38,8 +38,6 @@
   <sourceRootList>
     <Elem>src/button</Elem>
     <Elem>src/led</Elem>
-    <Elem>src/lcd</Elem>
-    <Elem>src/pmp/lcd</Elem>
     <Elem>include</Elem>
     <Elem>src/adc</Elem>
   </sourceRootList>
