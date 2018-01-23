@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "lcd_no_pmp_8bit.h"
+#include "lcd.h"
 
 inline void LCD_SendData(BF_AC_u *BF_AC, char data) {
    LCD_RWSignal_Clear(); /* select write operation */

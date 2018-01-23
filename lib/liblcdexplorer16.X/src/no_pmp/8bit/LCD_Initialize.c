@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "lcd_no_pmp_8bit.h"
+#include "lcd.h"
 
 bool LCD_Initialize(LCD_REGs_st *LCD_REGs) {
    /* Initialize data pins to zero */

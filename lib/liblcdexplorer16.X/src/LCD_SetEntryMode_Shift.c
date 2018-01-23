@@ -17,15 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifdef LCD_PMP
-#include "lcd_pmp.h"
-#endif
-#ifdef LCD_NO_PMP_8BIT
-#include "lcd_no_pmp_8bit.h"
-#endif
-#ifdef LCD_NO_PMP_4BIT
-#include "lcd_no_pmp_4bit.h"
-#endif
+#include "lcd.h"
 
 void LCD_SetEntryMode_Shift(LCD_REGs_st *LCD_REGs, bool shift) {
    LCD_REGs->ENTRY_MODE.ENTRY_MODEbits.S = shift;

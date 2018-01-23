@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "lcd_pmp.h"
+#include "lcd.h"
 
 inline char LCD_Receive(uint16_t address) {
    char dummy;

@@ -50,17 +50,6 @@
 #define LCD_COMMAND_CLEAR_SCREEN 0x01
 #define LCD_COMMAND_RETURN_HOME 0x02
 
-#define LCD_SendCommand(ptr, d) LCD_Send(ptr, 0x0000, d)
-#define LCD_SendData(ptr, d) LCD_Send(ptr, 0x0001, d)
-#define LCD_ReceiveBusyAC() LCD_Receive(0x0000)
-#define LCD_ReceiveRamContent() LCD_Receive(0x0001)
-
-#define LCD_WaitUntilPMPIsNotBusy() while (PMMODEbits.BUSY)
-#define LCD_WaitUntilLCDIsNotBusy(ptr) \
-   do {                                \
-      ptr->REG = LCD_ReceiveBusyAC();  \
-   } while (ptr->BF_ACbits.BF)
-
 #define LCD_CursorMoviment_Inc(ptr) LCD_SetIncCursor_CursorMoviment(ptr, INCREMENT)
 #define LCD_CursorMoviment_Dec(ptr) LCD_SetIncCursor_CursorMoviment(ptr, DECREMENT)
 #define LCD_DisplayShift_On(ptr) LCD_SetEntryMode_Shift(ptr, DISPLAY_SHIFT_ON)
@@ -108,7 +97,101 @@ void LCD_SetFunctionMode_Lines(LCD_REGs_st *, bool);
 void LCD_SetFunctionMode_Font(LCD_REGs_st *, bool);
 void LCD_SetRAMAddress(LCD_REGs_st *, unsigned char, bool);
 
+#ifdef LCD_PMP
+#define LCD_SendCommand(ptr, d) LCD_Send(ptr, 0x0000, d)
+#define LCD_SendData(ptr, d) LCD_Send(ptr, 0x0001, d)
+#define LCD_ReceiveBusyAC() LCD_Receive(0x0000)
+#define LCD_ReceiveRamContent() LCD_Receive(0x0001)
+#define LCD_WaitUntilPMPIsNotBusy() while (PMMODEbits.BUSY)
+#define LCD_WaitUntilLCDIsNotBusy(ptr) \
+   do {                                \
+      ptr->REG = LCD_ReceiveBusyAC();  \
+   } while (ptr->BF_ACbits.BF)
+
 inline void LCD_Send(BF_AC_u *, uint16_t, char);
 inline char LCD_Receive(uint16_t);
+#else /* LCD_NO_PMP_8BIT | LCD_NO_PMP_8BIT */
+#if FCY == 4000000UL
+#define delay_gt70ns() Nop()  /* 250ns */
+#define delay_gt200ns() Nop() /* 250ns */
+#define delay_gt300ns() \
+   Nop();               \
+   Nop() /* 500ns */
+#define delay_gt1000ns() \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop()
+#elif FCY == 8000000UL
+#define delay_gt70ns() Nop() /* 125ns */
+#define delay_gt200ns() \
+   Nop();               \
+   Nop() /* 250ns */
+#define delay_gt300ns() \
+   Nop();               \
+   Nop();               \
+   Nop() /* 375ns */
+#define delay_gt1000ns() \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop();                \
+   Nop()
+#elif FCY == 16000000UL
+#define delay_gt70ns() \
+   Nop();              \
+   Nop() /* 125ns */
+#define delay_gt200ns() \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop() /* 250ns */
+#define delay_gt300ns() \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop();               \
+   Nop() /* +310ns */
+#define delay_gt1000ns() __delay_us(1)
+#else
+#pragma message "not supported"
+#endif /* FCY*/
+#define LCD_DATA_LAT LATE
+#define LCD_DATA_TRIS TRISE
+#define LCD_DATA_PORT PORTE
+#define LCD_RSSignal_Set() LATBbits.LATB15 = 1 /* set Register Select bit */
+#define LCD_RSSignal_Clear() \
+   LATBbits.LATB15 = 0                              /* clear Register Select bit \
+                                                     */
+#define LCD_RWSignal_Set() LATDbits.LATD5 = 1       /* set Read/Write bit */
+#define LCD_RWSignal_Clear() LATDbits.LATD5 = 0     /* clear Read/Write bit */
+#define LCD_EnableSignal_Set() LATDbits.LATD4 = 1   /* set Enable bit */
+#define LCD_EnableSignal_Clear() LATDbits.LATD4 = 0 /* clear Enable bit */
+#define LCD_RSSignal_Input() \
+   TRISBbits.TRISB15 = 1                               /* set Register Select bit \
+                                                        */
+#define LCD_RSSignal_Output() TRISBbits.TRISB15 = 0    /* clear Register Select bit */
+#define LCD_RWSignal_Input() TRISDbits.TRISD5 = 1      /* set Read/Write bit */
+#define LCD_RWSignal_Output() TRISDbits.TRISD5 = 0     /* clear Read/Write bit */
+#define LCD_EnableSignal_Input() TRISDbits.TRISD4 = 1  /* set Enable bit */
+#define LCD_EnableSignal_Output() TRISDbits.TRISD4 = 0 /* clear Enable bit */
+/* Configure PORTE<7:0> as outputs/ inputs.
+ * One instruction cycle is required between a port direction change.  */
+#define LCD_WriteData(d) LCD_DATA_LAT = (LCD_DATA_LAT & 0xFF00) | d
+#define LCD_ConfigureDataOutput() \
+   LCD_DATA_TRIS &= 0xFF00;       \
+   Nop()
+#define LCD_ConfigureDataInput() \
+   LCD_DATA_TRIS |= 0x00FF;      \
+   Nop()
+
+inline void LCD_SendData(BF_AC_u *, char);
+inline void LCD_SendCommand(BF_AC_u *, char);
+inline char LCD_ReceiveBusyAC();
+#endif /* LCD_NO_PMP_4BIT | LCD_NO_PMP_8BIT */
 
 #endif /* PMP_LCD_H */
