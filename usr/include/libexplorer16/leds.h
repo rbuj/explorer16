@@ -25,22 +25,77 @@
 
 #define LEDs_LAT LATA
 #define LEDs_TRIS TRISA
-#define LED_ON 1
-#define LED_OFF 0
 
-typedef enum { LED_NONE, LED_D3, LED_D4, LED_D5, LED_D6, LED_D7, LED_D8, LED_D9, LED_D10 } LED;
+#define LED_ON 1  /**< This macro is used for switching ON a led. */
+#define LED_OFF 0 /**< This macro is used for switching OFF a led. */
+#define INPUT 1   /**< This macro is used for setting a pin as input pin. */
+#define OUTPUT 0  /**< This macro is used for setting a pin as output pin. */
 
-void LED_Enable(LED) __attribute__((section(".libexplorer16")));
-void LED_OnOff(LED, bool) __attribute__((section(".libexplorer16")));
-void LED_Toggle(LED) __attribute__((section(".libexplorer16")));
+/**
+ * enum of LEDs.
+ * An enumeration that is used for identifying each one of the leds.
+ */
+typedef enum {
+   LED_NONE, /**< none */
+   LED_D3,   /**< LED D3 */
+   LED_D4,   /**< LED D4 */
+   LED_D5,   /**< LED D5 */
+   LED_D6,   /**< LED D6 */
+   LED_D7,   /**< LED D7 */
+   LED_D8,   /**< LED D8 */
+   LED_D9,   /**< LED D9 */
+   LED_D10   /**< LED D10 */
+} LED;
 
+/**
+ * Set a LED's pin as output for switching it ON/OFF.
+ * @param led The led to enable.
+ */
+void LED_Enable(LED led) __attribute__((section(".libexplorer16")));
+
+/**
+ * Switch ON/OFF a LED.
+ * @param led The led witch you want to switch ON/OFF.
+ * @param value If true, switch ON the led, otherwise switch it OFF.
+ */
+void LED_OnOff(LED led, bool value) __attribute__((section(".libexplorer16")));
+
+/**
+ * Toggle a led ON/OFF.
+ * @param led The led to toggle.
+ */
+void LED_Toggle(LED led) __attribute__((section(".libexplorer16")));
+
+/**
+ * Switch ON a LED.
+ */
 #define LED_On(LED) LED_OnOff(LED, LED_ON);
+
+/**
+ * Switch OFF a LED.
+ */
 #define LED_Off(LED) LED_OnOff(LED, LED_OFF);
+
+/**
+ * Set the pins of all the LEDs as output pins for switching them ON/OFF.
+ */
 #define LEDs_Enable() LEDs_TRIS &= 0xFF00 /* PORTA<7:0> as outputs */
+
+/**
+ * Switch ON all the LEDs.
+ */
 #define LEDs_On()      \
    LEDs_LAT &= 0xFF00; \
    LEDs_LAT += 0x00FF
+
+/**
+ * Switch OFF all the LEDs.
+ */
 #define LEDs_Off() LEDs_LAT &= 0xFF00
+
+/**
+ * Toggle ON/OFF all the LEDs.
+ */
 #define LEDs_Toggle() LEDs_LAT ^= 0x00FF
 
 #endif /* LEDS_H */

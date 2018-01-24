@@ -19,6 +19,10 @@
 
 #include "button.h"
 
+/**
+ * Set a button pin as input.
+ * @param button The button to enable.
+ */
 void BUTTON_Enable(BUTTON button) {
    switch (button) {
       case BUTTON_S3:

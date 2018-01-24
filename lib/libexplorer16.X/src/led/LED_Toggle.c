@@ -19,6 +19,10 @@
 
 #include "led.h"
 
+/**
+ * Toggle a led ON/OFF.
+ * @param led The led to toggle.
+ */
 void LED_Toggle(LED led) {
    switch (led) {
       case LED_D3:

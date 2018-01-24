@@ -19,6 +19,10 @@
 
 #include "led.h"
 
+/**
+ * Set a LED's pin as output for switching it ON/OFF.
+ * @param led The led to enable.
+ */
 void LED_Enable(LED led) {
    switch (led) {
       case LED_D3:

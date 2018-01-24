@@ -19,6 +19,11 @@
 
 #include "led.h"
 
+/**
+ * Switch ON/OFF a LED.
+ * @param led The led witch you want to switch ON/OFF.
+ * @param value If true, switch ON the led, otherwise switch it OFF.
+ */
 void LED_OnOff(LED led, bool value) {
    switch (led) {
       case LED_D3:

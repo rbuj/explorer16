@@ -19,6 +19,10 @@
 
 #include "button.h"
 
+/**
+ * Check if a button is pressed.
+ * @param button The button to check.
+ */
 bool BUTTON_IsPressed(BUTTON button) {
    switch (button) {
       case BUTTON_S3:

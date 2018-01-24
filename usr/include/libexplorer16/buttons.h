@@ -23,17 +23,34 @@
 #include <xc.h>
 #include <stdbool.h>
 
+/**
+ * enum of buttons.
+ * An enumeration that is used for identifying each one of the buttons. S1 is MCLR.
+ */
 typedef enum {
-   BUTTON_DISABLED,
-   BUTTON_S3,
-   BUTTON_S6,
-   BUTTON_S5,
-   BUTTON_S4
-   /* S1 is MCLR */
+   BUTTON_DISABLED, /**< disabled */
+   BUTTON_S3,       /**< S3 */
+   BUTTON_S4,       /**< S4 */
+   BUTTON_S5,       /**< S5 */
+   BUTTON_S6        /**< S6 */
 } BUTTON;
 
-bool BUTTON_IsPressed(BUTTON) __attribute__((section(".libexplorer16")));
-void BUTTON_Enable(BUTTON) __attribute__((section(".libexplorer16")));
-bool BUTTON_CN_Configuration(BUTTON) __attribute__((section(".libexplorer16")));
+/**
+ * Check if a button is pressed.
+ * @param button The button to check.
+ */
+bool BUTTON_IsPressed(BUTTON button) __attribute__((section(".libexplorer16")));
+
+/**
+ * Set a button pin as input.
+ * @param button The button to enable.
+ */
+void BUTTON_Enable(BUTTON button) __attribute__((section(".libexplorer16")));
+
+/**
+ * Set up change notification for a given button.
+ * @param button The button to enable CN.
+ */
+bool BUTTON_CN_Configuration(BUTTON button) __attribute__((section(".libexplorer16")));
 
 #endif /* BUTTON_H */

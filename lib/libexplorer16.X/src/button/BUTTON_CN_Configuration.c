@@ -19,6 +19,10 @@
 
 #include "button.h"
 
+/**
+ * Set up change notification for a given button.
+ * @param button The button to enable CN.
+ */
 bool BUTTON_CN_Configuration(BUTTON button) {
    switch (button) {
       case BUTTON_S3:

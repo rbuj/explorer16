@@ -26,7 +26,7 @@
 /* S1  is MCLR button */
 #define S3_PORT PORTDbits.RD6
 #define S6_PORT PORTDbits.RD7
-#define S5_PORT PORTAbits.RA7 /* Overlaps with D10 */
+#define S5_PORT PORTAbits.RA7 /*!< Overlaps with D10 */
 #define S4_PORT PORTDbits.RD13
 
 #define S3_TRIS TRISDbits.TRISD6
@@ -34,23 +34,36 @@
 #define S5_TRIS TRISAbits.TRISA7
 #define S4_TRIS TRISDbits.TRISD13
 
-#define BUTTON_PRESSED 0
-#define BUTTON_NOT_PRESSED 1
+#define BUTTON_PRESSED 0     /**< This macro is used for getting the status of a button */
+#define BUTTON_NOT_PRESSED 1 /**< This macro is used for getting the status of a button */
+#define PIN_INPUT 1          /**< This macro is used for setting a pin as input pin. */
+#define PIN_OUTPUT 0         /**< This macro is used for setting a pin as output pin. */
 
-#define PIN_INPUT 1
-#define PIN_OUTPUT 0
-
+/**
+ * enum of buttons.
+ * An enumeration that is used for identifying each one of the buttons. S1 is MCLR.
+ */
 typedef enum {
-   BUTTON_DISABLED,
-   BUTTON_S3,
-   BUTTON_S6,
-   BUTTON_S5,
-   BUTTON_S4
-   /* S1 is MCLR */
+   BUTTON_DISABLED, /**< disabled */
+   BUTTON_S3,       /**< S3 */
+   BUTTON_S4,       /**< S4 */
+   BUTTON_S5,       /**< S5 */
+   BUTTON_S6        /**< S6 */
 } BUTTON;
 
+/**
+ * Check if a button is pressed.
+ */
 bool BUTTON_IsPressed(BUTTON);
+
+/**
+ * Set a button pin as input pin.
+ */
 void BUTTON_Enable(BUTTON);
+
+/**
+ * Set up change notification for a given button.
+ */
 bool BUTTON_CN_Configuration(BUTTON);
 
 #endif /* BUTTON_H */
