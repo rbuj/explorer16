@@ -55,7 +55,7 @@ void LED_Enable(LED led) __attribute__((section(".libexplorer16")));
 
 /**
  * Switch ON/OFF a LED.
- * @param led The led witch you want to switch ON/OFF.
+ * @param led The led which you want to switch ON/OFF.
  * @param value If true, switch ON the led, otherwise switch it OFF.
  */
 void LED_OnOff(LED led, bool value) __attribute__((section(".libexplorer16")));
