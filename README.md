@@ -46,7 +46,7 @@ Some simple examples for Explorer 16 Development Board of Microchip.
 | 8 | [D10ToggleTimer1](D10ToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pin / D10; Write to LCD; |
 | 9 | [LEDsToggleTimer1](LEDsToggleTimer1.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Write to output pins / D3:10; Write to LCD; |
 | 10 | [ClockTimer1SOSC](ClockTimer1SOSC.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
-| 11 | [ChronometerTimer1SOSC](ChronometerTimer1SOSC/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
+| 11 | [ChronometerTimer1SOSC](ChronometerTimer1SOSC.X/) | Low-Power Secondary Oscillator (SOSC) / Timer 1; Change Notification Interrupt / S3; Write to LCD; |
 
 ## Requirements
 
