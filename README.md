@@ -1,5 +1,5 @@
-# explorer16
-Samples for Explorer 16 Development Board of Microchip
+# Explorer 16 Development Board
+Some simple examples for Explorer 16 Development Board of Microchip.
 
 ###### Project List
 | Project Name     | Short description | [1] | [2] |
