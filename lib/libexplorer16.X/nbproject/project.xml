@@ -12,6 +12,25 @@
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
+            <sourceRootList>
+                <sourceRootElem>src/button</sourceRootElem>
+                <sourceRootElem>src/led</sourceRootElem>
+                <sourceRootElem>include</sourceRootElem>
+                <sourceRootElem>src/adc</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>dspic33fj256gp710a_pim</name>
+                    <type>3</type>
+                </confElem>
+                <confElem>
+                    <name>pic24fj128ga010_pim</name>
+                    <type>3</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
         </data>
     </configuration>
 </project>

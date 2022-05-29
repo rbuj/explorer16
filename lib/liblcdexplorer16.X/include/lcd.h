@@ -108,8 +108,8 @@ void LCD_SetRAMAddress(LCD_REGs_st *, unsigned char, bool);
       ptr->REG = LCD_ReceiveBusyAC();  \
    } while (ptr->BF_ACbits.BF)
 
-inline void LCD_Send(BF_AC_u *, uint16_t, char);
-inline char LCD_Receive(uint16_t);
+void LCD_Send(BF_AC_u *, uint16_t, char);
+char LCD_Receive(uint16_t);
 #else /* LCD_NO_PMP_8BIT | LCD_NO_PMP_8BIT */
 #if FCY == 4000000UL
 #define delay_gt70ns() Nop()  /* 250ns */
@@ -158,7 +158,7 @@ inline char LCD_Receive(uint16_t);
    Nop() /* +310ns */
 #define delay_gt1000ns() __delay_us(1)
 #else
-#pragma message "not supported"
+#warning "not supported"
 #endif /* FCY*/
 #define LCD_DATA_LAT LATE
 #define LCD_DATA_TRIS TRISE
@@ -189,9 +189,9 @@ inline char LCD_Receive(uint16_t);
    LCD_DATA_TRIS |= 0x00FF;      \
    Nop()
 
-inline void LCD_SendData(BF_AC_u *, char);
-inline void LCD_SendCommand(BF_AC_u *, char);
-inline char LCD_ReceiveBusyAC();
+void LCD_SendData(BF_AC_u *, char);
+void LCD_SendCommand(BF_AC_u *, char);
+char LCD_ReceiveBusyAC(void);
 #endif /* LCD_NO_PMP_4BIT | LCD_NO_PMP_8BIT */
 
 #endif /* LCD_H */

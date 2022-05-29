@@ -19,7 +19,7 @@
 
 #include "lcd.h"
 
-inline char LCD_ReceiveBusyAC() {
+inline char LCD_ReceiveBusyAC(void) {
    /* TODO */
    return 0x00;
 }

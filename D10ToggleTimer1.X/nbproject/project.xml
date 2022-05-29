@@ -15,6 +15,23 @@
                 <make-dep-project>../lib/libexplorer16.X</make-dep-project>
                 <make-dep-project>../lib/liblcdexplorer16.X</make-dep-project>
             </make-dep-projects>
+            <sourceRootList>
+                <sourceRootElem>include</sourceRootElem>
+                <sourceRootElem>src</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>dspic33fj256gp710a_pim</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>pic24fj128ga010_pim</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
         </data>
     </configuration>
 </project>

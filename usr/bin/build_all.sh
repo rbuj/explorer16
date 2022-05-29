@@ -22,7 +22,7 @@ GREEN=`tput setaf 2`
 NC=`tput sgr0` # No Color
 WORK_BASE_DIR=$PWD
 
-for d in *.X/; do
+for d in $WORK_BASE_DIR/*.X/; do
   echo -ne "$d: "
   cd $d && make all &> /dev/null
   if [ $? -ne 0 ]; then
@@ -31,5 +31,4 @@ for d in *.X/; do
   else
     echo "${GREEN}[ OK ]${NC}"
   fi
-  cd $WORK_BASE_DIR
 done
